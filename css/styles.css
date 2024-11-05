@@ -1,165 +1,147 @@
-/* Reset some default browser styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-/* Body styling */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #74ebd5, #9face6); /* Gradient background */
-    background-size: cover; /* Make the background cover the entire screen */
+    background: linear-gradient(135deg, #ffd580, #ff9966);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    color: #333;
-    overflow: hidden; /* Prevent scrolling */
 }
 
-/* Container styling */
 .login-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 350px;
+    width: 400px;
+}
+
+/* Logo styling */
+.login-container h1 {
     text-align: center;
+    margin-bottom: 30px;
 }
 
 /* Form elements */
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
 label {
     display: block;
     text-align: left;
     margin-bottom: 8px;
-    color: #333;
+    font-size: 18px;
     font-weight: bold;
+    color: #000;
 }
 
-input[type="text"], input[type="password"], select {
+input[type="text"], 
+input[type="password"], 
+select {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
     font-size: 16px;
-    transition: border-color 0.3s;
+    background-color: #f8f9fa;
 }
 
-input[type="text"]:focus, input[type="password"]:focus, select:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-/* Button styling */
-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-button:focus {
-    outline: none;
-    background-color: #0056b3;
-}
-
-/* Placeholder styling for accessibility */
-::placeholder {
-    color: #aaa;
-    font-size: 14px;
-}
-
-/* Additional text or messages */
-p#message {
-    margin-top: 10px;
-    color: red;
-}
-
-/* Password visibility icon container */
+/* Password container */
 .password-container {
     position: relative;
-    width: 100%;
-}
-
-.password-container input {
-    width: 100%;
-    padding-right: 40px;
+    margin-bottom: 20px;
 }
 
 .password-container i {
     position: absolute;
-    right: 10px;
-    top: 35%;
+    right: 12px;
+    top: 50%;
     transform: translateY(-50%);
-    color: #ccc;
+    color: #666;
+    cursor: pointer;
 }
 
-/* Disabled button styling */
+/* Login button */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #b31b1b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #8b1515;
+}
+
 button:disabled {
-    background-color: #ccc;
+    background-color: #cccccc;
     cursor: not-allowed;
 }
 
-/* Show data section styling */
-.showdata {
-    margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for a soft look */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 350px;
-    text-align: left;
-    display: none; /* Hide until login */
+/* Remember username checkbox */
+input[type="checkbox"] {
+    margin-right: 8px;
 }
 
-/* Enhance show data content */
+form {
+    text-align: left;
+}
+
+/* Forgot password link */
+#message {
+    margin-top: 20px;
+    color: #b31b1b;
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Show data section */
+.showdata {
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    display: none;
+}
+
 .showdata h2 {
-    font-size: 20px;
     color: #333;
     margin-bottom: 15px;
 }
 
 .showdata p {
     margin: 10px 0;
-    font-size: 16px;
-    color: #555;
+    color: #666;
 }
 
-.showdata strong {
-    font-weight: bold;
+/* Role select removal since it's not in the image */
+#role, 
+label[for="role"] {
+    display: none;
 }
 
-/* Optionally, add a subtle animation to the login form */
+/* Specific text styling */
+label[for="username"] {
+    content: "User ID:";
+}
+
+label[for="password"] {
+    content: "Password:";
+}
+
+/* Remove animations to match the simpler university style */
 .login-container {
-    animation: fadeIn 1.5s ease-out;
-}
-
-/* Fade-in animation for the login form */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    animation: none;
 }
