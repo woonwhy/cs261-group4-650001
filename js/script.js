@@ -25,12 +25,17 @@ function showError(errorType) {
 function submitLogin() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-
+   const role = document.getElementById('role').value;
     // ตรวจสอบข้อมูลว่าง
     if (!username || !password) {
         showError('EMPTY_FIELDS');
         return;
     }
+
+    // เก็บข้อมูลใน sessionStorage ถ้าต้องการจดจำผู้ใช้
+    sessionStorage.setItem('username', username);
+    sessionStorage.setItem('password', password);
+    sessionStorage.setItem('role', role);
 
     fetch('https://restapi.tu.ac.th/api/v1/auth/Ad/verify', {
         method: 'POST',
@@ -60,8 +65,12 @@ function submitLogin() {
         document.getElementById('faculty').innerText = data.faculty;
 
         if (data.status === true) {
-            // เก็บข้อมูลใน Local Storage
-            localStorage.setItem('form1', JSON.stringify(data));
+            const messageElement = document.getElementById('message');
+            messageElement.innerText = 'Login Success!'; // ข้อความแจ้งเตือน
+            messageElement.style.color = 'green'; // เปลี่ยนสีข้อความให้เป็นสีเขียว
+            messageElement.style.display = 'block'; // ทำให้ข้อความแสดงขึ้นมา
+            // เก็บข้อมูลใน sessionStorage
+            sessionStorage.setItem('form1', JSON.stringify(data));
             // นำไปยังหน้า userInfo.html
             window.location.href = 'userhome.html';
         } else {
@@ -74,34 +83,19 @@ function submitLogin() {
     });
 } 
 
-function call_REST_API_Hello() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+// ฟังก์ชันที่เรียกใช้ข้อมูลจาก sessionStorage เมื่อหน้าเว็บโหลด
+function loadSavedCredentials() {
+    const savedUsername = sessionStorage.getItem('username');
+    const savedPassword = sessionStorage.getItem('password');
+    const savedRole = sessionStorage.getItem('role');
 
-    // ตรวจสอบข้อมูลว่าง
-    if (!username || !password) {
-        showError('EMPTY_FIELDS');
-        return;
+    if (savedUsername && savedPassword && savedRole) {
+        // กรอกข้อมูล username และ password ที่เก็บไว้
+        document.getElementById('username').value = savedUsername;
+        document.getElementById('password').value = savedPassword;
+        document.getElementById('role').value = savedRole;
     }
-
-    const url = (
-        'http://localhost:8080/hello?' +
-        new URLSearchParams({ myName: username, lastName: password}).toString()
-    );
-    
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('INVALID_CREDENTIALS');
-            }
-            return response.text();
-        })
-        .then(text => {
-            document.getElementById('message').style.color = 'black';
-            document.getElementById('message').innerText = text;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            showError('INVALID_CREDENTIALS');
-        });
 }
+
+// เรียกใช้ฟังก์ชัน loadSavedCredentials เมื่อหน้าเว็บโหลด
+window.onload = loadSavedCredentials;

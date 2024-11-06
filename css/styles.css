@@ -90,3 +90,19 @@ select:focus {
     border-color: #ff4d4d; /* Change border color to red on focus */
     outline: none; /* Remove default outline */
 }
+#message {
+    display: none; /* ซ่อนข้อความเริ่มต้น */
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#message.success {
+    color: green; /* สีเขียวสำหรับข้อความสำเร็จ */
+}
+
+#message.error {
+    color: red; /* สีแดงสำหรับข้อความผิดพลาด */
+}
