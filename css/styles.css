@@ -56,11 +56,7 @@ button:hover, button:focus {
     background-color: #ffcc00; /* Light orange */
 }
 
-/* Style for message */
-#message {
-    margin-top: 20px;
-    text-align: center;
-}
+
 
 /* Style for the label */
 label {
@@ -90,8 +86,10 @@ select:focus {
     border-color: #ff4d4d; /* Change border color to red on focus */
     outline: none; /* Remove default outline */
 }
+/* Style for message */
+
 #message {
-    display: none; /* ซ่อนข้อความเริ่มต้น */
+    display: none;
     padding: 10px;
     margin-top: 10px;
     font-size: 16px;
@@ -99,10 +97,41 @@ select:focus {
     border-radius: 5px;
 }
 
-#message.success {
-    color: green; /* สีเขียวสำหรับข้อความสำเร็จ */
+/* ป้ายแจ้งเตือน */
+.notification {
+    display: none; /* ซ่อนป้ายแจ้งเตือนเริ่มต้น */
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* จัดให้อยู่ตรงกลาง */
+    background-color: #4CAF50; /* สีพื้นหลังของป้ายสำเร็จ */
+    color: white;
+    padding: 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 200px; /* กำหนดความกว้างขั้นต่ำ */
+    text-align: center; /* จัดข้อความให้อยู่กลาง */
 }
 
-#message.error {
-    color: red; /* สีแดงสำหรับข้อความผิดพลาด */
+/* ปุ่ม OK */
+.notification button {
+    background-color: #fff;
+    color: #624b03;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-left: 15px;
+    display: inline-block;
+    vertical-align: middle;
 }
+
+/* เพิ่มสีให้ปุ่มเมื่อ hover */
+.notification button:hover {
+    background-color: #f1f1f1;
+}
+

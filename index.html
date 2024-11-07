@@ -22,7 +22,11 @@
                  <option value="lecturer">Lecturer</option>
                </select>
             <button type="button" onclick="submitLogin()">Login</button>
-
+            <div id="notification" class="notification">
+                <span id="notification-message"></span>
+                <button id="notification-ok" onclick="closeNotification()">OK</button>
+            </div>
+            
         </form>
         <div id="additional-info">
             <div id="message"></div>

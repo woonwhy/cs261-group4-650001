@@ -1,4 +1,3 @@
-// กำหนด error messages
 const ERROR_MESSAGES = {
     INVALID_CREDENTIALS: { 
         th: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง', 
@@ -7,36 +6,57 @@ const ERROR_MESSAGES = {
     EMPTY_FIELDS: { 
         th: 'กรุณากรอกชื่อผู้ใช้และรหัสผ่าน', 
         en: 'Please enter both username and password.' 
+    },
+    SUCCESS: { 
+        th: 'เข้าสู่ระบบสำเร็จ', 
+        en: 'Login successful' 
     }
 };
 
-// function สำหรับแสดงข้อความ error ทั้งสองภาษา
-function showError(errorType) {
-    const errorElement = document.getElementById('message');
-    const thMessage = ERROR_MESSAGES[errorType].th;
-    const enMessage = ERROR_MESSAGES[errorType].en;
-    
-    // สร้าง error message ในรูปแบบ "ข้อความภาษาไทย (English message)"
-    errorElement.innerText = `${thMessage} (${enMessage})`;
-    errorElement.style.color = 'red';
-    errorElement.style.display = 'block';
+// ฟังก์ชันแสดงข้อความสำเร็จในป้ายแจ้งเตือน
+function showSuccess() {
+    const notificationElement = document.getElementById('notification');
+    const messageElement = document.getElementById('notification-message');
+    messageElement.innerText = `${ERROR_MESSAGES.SUCCESS.th} (${ERROR_MESSAGES.SUCCESS.en})`;
+    notificationElement.style.backgroundColor = '#4CAF50'; // สีเขียวสำหรับสำเร็จ
+    notificationElement.style.display = 'block'; // แสดงป้ายแจ้งเตือน
 }
 
+// ฟังก์ชันแสดงข้อความผิดพลาดในป้ายแจ้งเตือน
+function showError(errorType) {
+    const notificationElement = document.getElementById('notification');
+    const messageElement = document.getElementById('notification-message');
+    const thMessage = ERROR_MESSAGES[errorType].th;
+    const enMessage = ERROR_MESSAGES[errorType].en;
+    messageElement.innerText = `${thMessage} (${enMessage})`;
+    notificationElement.style.backgroundColor = '#f44336'; // สีแดงสำหรับข้อผิดพลาด
+    notificationElement.style.display = 'block'; // แสดงป้ายแจ้งเตือน
+}
+
+// ฟังก์ชันสำหรับปิดป้ายแจ้งเตือนเมื่อกด "OK"
+function closeNotification() {
+    const notificationElement = document.getElementById('notification');
+    notificationElement.style.display = 'none'; // ซ่อนป้ายแจ้งเตือน
+}
+
+// ฟังก์ชันสำหรับส่งข้อมูลเข้าสู่ระบบ
 function submitLogin() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-   const role = document.getElementById('role').value;
+    const role = document.getElementById('role').value;
+
     // ตรวจสอบข้อมูลว่าง
     if (!username || !password) {
         showError('EMPTY_FIELDS');
         return;
     }
 
-    // เก็บข้อมูลใน sessionStorage ถ้าต้องการจดจำผู้ใช้
+    // เก็บข้อมูลใน sessionStorage
     sessionStorage.setItem('username', username);
     sessionStorage.setItem('password', password);
     sessionStorage.setItem('role', role);
 
+    // เรียก API เพื่อตรวจสอบข้อมูลผู้ใช้
     fetch('https://restapi.tu.ac.th/api/v1/auth/Ad/verify', {
         method: 'POST',
         headers: {
@@ -52,36 +72,19 @@ function submitLogin() {
         return response.json();
     })
     .then(data => {
-        document.getElementById('message').innerText = data.message;
-        document.getElementById('status').innerText = data.status; 
-        document.getElementById('type').innerText = data.type;
-        document.getElementById('username').innerText = data.username;
-        document.getElementById('tu_status').innerText = data.tu_status;
-        document.getElementById('statusid').innerText = data.statusid;
-        document.getElementById('displayname_th').innerText = data.displayname_th;
-        document.getElementById('displayname_en').innerText = data.displayname_en;
-        document.getElementById('email').innerText = data.email;
-        document.getElementById('department').innerText = data.department;
-        document.getElementById('faculty').innerText = data.faculty;
-
         if (data.status === true) {
-            const messageElement = document.getElementById('message');
-            messageElement.innerText = 'Login Success!'; // ข้อความแจ้งเตือน
-            messageElement.style.color = 'green'; // เปลี่ยนสีข้อความให้เป็นสีเขียว
-            messageElement.style.display = 'block'; // ทำให้ข้อความแสดงขึ้นมา
-            // เก็บข้อมูลใน sessionStorage
-            sessionStorage.setItem('form1', JSON.stringify(data));
-            // นำไปยังหน้า userInfo.html
-            window.location.href = 'userhome.html';
+            showSuccess(); // แสดงข้อความสำเร็จ
+            sessionStorage.setItem('form1', JSON.stringify(data)); // เก็บข้อมูลใน sessionStorage
+            window.location.href = 'userhome.html'; // นำไปยังหน้า userhome.html
         } else {
-            showError('INVALID_CREDENTIALS');
+            showError('INVALID_CREDENTIALS'); // แสดงข้อความผิดพลาด
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        showError('INVALID_CREDENTIALS');
+        showError('INVALID_CREDENTIALS'); // แสดงข้อความผิดพลาดเมื่อเกิดข้อผิดพลาด
     });
-} 
+}
 
 // ฟังก์ชันที่เรียกใช้ข้อมูลจาก sessionStorage เมื่อหน้าเว็บโหลด
 function loadSavedCredentials() {
