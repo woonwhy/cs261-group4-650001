@@ -18,6 +18,11 @@ function submitLogin() {
         if (data.status === true) {
             document.getElementById('message').innerText = "Login successful!";
             displayUserData(data);
+              // เก็บข้อมูลใน Local Storage
+              localStorage.setItem('html/form1', JSON.stringify(data));
+              // นำไปยังหน้า userInfo.html
+              window.location.href = 'html/home.html';
+
         } else {
             document.getElementById('message').innerText = data.message;
         }
