@@ -1,0 +1,395 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* รีเซ็ตสไตล์เริ่มต้นของเบราว์เซอร์ */
+=======
+/* Reset some default browser styles */
+>>>>>>> 72735a1 (Template)
+=======
+>>>>>>> 0dc5df3 (Edit Css)
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* สไตล์ของ Body */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #FFDE59, #FF914D); /* สีพื้นหลังไล่เฉด */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* เพิ่มพื้นที่ให้สูงสุดในหน้าจอ */
+    margin: 0;
+    color: #333;
+}
+
+/* สไตล์ของกล่องล็อกอิน */
+.login-container {
+    background-color: #fff;
+    padding: 20px; /* เพิ่ม padding */
+    width: 500px; /* เพิ่มความกว้างให้ใหญ่ขึ้น */
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงาเพื่อความสวยงาม */
+    border-radius: 8px; /* เพิ่มขอบโค้ง */
+}
+
+/* ขอบด้านใน */
+.inner-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #F4F4F4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* สไตล์หัวเรื่อง */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* สไตล์โลโก้ */
+.logo {
+    width: 80px;
+    margin-right: 10px;
+}
+
+/* สไตล์ชื่อมหาวิทยาลัย */
+h1 {
+    font-size: 18px;
+    color: #000;
+    font-weight: bold;
+    text-align: left;
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* การจัดวางฟอร์ม */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+/* จัดสไตล์กล่องข้อความ */
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ECF8FF; /* สีพื้นหลังของช่องกรอกข้อมูล */
+    font-size: 14px;
+}
+
+/* การจัดวางกล่องรหัสผ่านที่มีไอคอน */
+=======
+/* Body styling */
+=======
+>>>>>>> 0dc5df3 (Edit Css)
+body {
+    background: linear-gradient(135deg, #ffd580, #ff9966);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+/* Logo styling */
+.login-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form elements */
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+
+input[type="text"], 
+input[type="password"], 
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+}
+
+<<<<<<< HEAD
+input[type="text"]:focus, input[type="password"]:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button styling */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:focus {
+    outline: none;
+    background-color: #0056b3;
+}
+
+/* Placeholder styling for accessibility */
+::placeholder {
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* Additional text or messages */
+p#message {
+    margin-top: 10px;
+    color: red;
+}
+
+/* Password visibility icon container */
+>>>>>>> 72735a1 (Template)
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+<<<<<<< HEAD
+    padding-right: 30px;
+=======
+    width: 100%;
+    padding-right: 40px;
+>>>>>>> 72735a1 (Template)
+=======
+/* Password container */
+.password-container {
+    position: relative;
+    margin-bottom: 20px;
+>>>>>>> 0dc5df3 (Edit Css)
+}
+
+.password-container i {
+    position: absolute;
+<<<<<<< HEAD
+    right: 10px;
+<<<<<<< HEAD
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    cursor: pointer;
+}
+
+/* สไตล์ของช่องจำรหัสผ่าน */
+.checkbox-container {
+    display: block;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-left: 10px; /* จัดให้อยู่ทางซ้ายของฟอร์ม */
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 5px;
+    transform: scale(1.2); /* ปรับขนาด checkbox */
+}
+
+/* สไตล์ปุ่มล็อกอิน */
+button {
+    background-color: #C31916; /* สีของปุ่มล็อกอิน */
+    color: rgb(10, 10, 10);
+    padding: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #A51714;
+}
+
+button:focus {
+    outline: none;
+}
+
+/* สไตล์ลิงก์ "Forgot" */
+.forgot-link {
+    display: block;
+    margin-top: 20px;
+    color: #C31916;
+    font-size: 12px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* สไตล์ข้อความแจ้งเตือน */
+p#message {
+    margin-top: 10px;
+    color: red;
+    font-size: 14px;
+=======
+    top: 35%;
+=======
+    right: 12px;
+    top: 50%;
+>>>>>>> 0dc5df3 (Edit Css)
+    transform: translateY(-50%);
+    color: #666;
+    cursor: pointer;
+}
+
+/* Login button */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #b31b1b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #8b1515;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Remember username checkbox */
+input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+form {
+    text-align: left;
+}
+
+/* Forgot password link */
+#message {
+    margin-top: 20px;
+    color: #b31b1b;
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Show data section */
+.showdata {
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    display: none;
+}
+
+.showdata h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.showdata p {
+    margin: 10px 0;
+    color: #666;
+}
+
+/* Role select removal since it's not in the image */
+#role, 
+label[for="role"] {
+    display: none;
+}
+
+/* Specific text styling */
+label[for="username"] {
+    content: "User ID:";
+}
+
+label[for="password"] {
+    content: "Password:";
+}
+
+/* Remove animations to match the simpler university style */
+.login-container {
+<<<<<<< HEAD
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Fade-in animation for the login form */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+>>>>>>> 72735a1 (Template)
+}
+=======
+    animation: none;
+}
+>>>>>>> 0dc5df3 (Edit Css)

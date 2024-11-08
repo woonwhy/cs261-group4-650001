@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เขียนคำร้อง</title>
+    </script>
+    <style>
+        /* สไตล์ของแถบเมนูด้านบน */
+        .navbar {
+            background-color: #f0a500;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar .left {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #000;
+            margin-left: 10px;
+        }
+        .navbar .menu {
+            display: flex;
+            gap: 20px;
+        }
+        .navbar .menu a {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .navbar .menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* สไตล์ของเมนูย่อย */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f0a500;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 10px 12px;
+            display: block;
+            text-decoration: none;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        /* สไตล์สำหรับเนื้อหาตรงกลาง */
+        .content {
+            display: flex;
+            margin-top: 20px;
+        }
+        .main-content {
+            width: 100%;
+            padding: 20px;
+        }
+        .main-content h1 {
+            font-size: 2em;
+            color: #f0a500;
+        }
+        .request-info {
+            background-color: #e0e0e0;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- แถบเมนูด้านบน -->
+    <div class="navbar">
+        <div class="left">มหาวิทยาลัยธรรมศาสตร์</div>
+        <div class="menu">
+            <a href="userhome.html">หน้าหลัก</a>
+            <div class="dropdown">
+                <a href="#">เขียนคำร้อง</a>
+                <div class="dropdown-content">
+                    <a href="form1.html">จดทะเบียนล่าช้า/เพิ่มล่าช้า</a>
+                    <a href="form2.html">ขอถอนรายวิชา(Drop W)</a>
+                    <a href="form3.html">จดทะเบียนศึกษารายวิชาข้ามโครงการ</a>
+                    <a href="form3.html">คำร้องขอลาออก</a>
+                </div>
+            </div>
+            <a href="../html/home.html">ภาพตัวอย่าง</a>
+            <a href="../html/status.html">สถานะคำร้อง</a>
+            <a href="../html/home.html">ติดต่อเพิ่มเติม</a>
+        </div>
+    </div>
+
+    <!-- เนื้อหาหลัก -->
+    <div class="content">
+        <div class="main-content">
+            <h1>เขียนคำร้อง</h1>
+            <div class="request-info">
+                <h2>วิธีเขียนคำร้อง</h2>
+                <ol>
+                    <li>เลือกหมวดหมู่เขียนคำร้องที่ต้องการ</li>
+                    <li>กรอกฟอร์มเขียนคำร้อง</li>
+                    <li>แนบไฟล์ (.pdf ขนาดไฟล์ X mb) *ถ้ามี</li>
+                    <li>ตรวจเช็คให้เรียบร้อยก่อนส่งคำร้อง</li>
+                    <li>รอการตอบกลับจากอีเมล</li>
+                </ol>
+                <p>ปล.หากรอเกิน 3 วันกรุณาเขียนคำร้องใหม่</p>
+            </div>
+            
+            <h2>คำร้องการลงทะเบียน</h2>
+            <p><a href="request888.html">มธ888 คำร้องขอเพิ่ม-ถอน</a></p>
+            <p><a href="request777.html">มธ777 คำร้องขอลาเรียน</a></p>
+
+            <h2>คำร้องขอโอนย้ายสาขา</h2>
+        </div>
+    </div>
+</body>
+</html>
