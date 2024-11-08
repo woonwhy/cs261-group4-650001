@@ -1,8 +1,8 @@
 // กำหนด error messages
 const ERROR_MESSAGES = {
     INVALID_CREDENTIALS: { 
-        th: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง', 
-        en: 'Invalid username or password.' 
+        th: 'กรุณาลองใหม่อีกครั้ง', 
+        en: 'Invalid login, please try again' 
     },
     EMPTY_FIELDS: { 
         th: 'กรุณากรอกชื่อผู้ใช้และรหัสผ่าน', 
@@ -10,31 +10,52 @@ const ERROR_MESSAGES = {
     }
 };
 
-// function สำหรับแสดงข้อความ error ทั้งสองภาษา
+// แสดง error popup
 function showError(errorType) {
-    const errorElement = document.getElementById('message');
-    const thMessage = ERROR_MESSAGES[errorType].th;
-    const enMessage = ERROR_MESSAGES[errorType].en;
-    
-    // สร้าง error message ในรูปแบบ "ข้อความภาษาไทย (English message)"
-    errorElement.innerText = `${thMessage} (${enMessage})`;
-    errorElement.style.color = 'red';
-    errorElement.style.display = 'block';
+    const overlay = document.createElement('div');
+    overlay.className = 'overlay';
+
+    const popup = document.createElement('div');
+    popup.className = 'popup';
+
+    const iconContainer = document.createElement('div');
+    iconContainer.className = 'icon-container';
+
+    const xIcon = document.createElement('span');
+    xIcon.textContent = '×';
+    xIcon.className = 'x-icon';
+    iconContainer.appendChild(xIcon);
+
+    const message = document.createElement('div');
+    message.textContent = ERROR_MESSAGES[errorType].en;
+    message.className = 'error-message';
+
+    const okButton = document.createElement('button');
+    okButton.textContent = 'OK';
+    okButton.className = 'ok-button';
+
+    okButton.onclick = () => document.body.removeChild(overlay);
+
+    popup.appendChild(iconContainer);
+    popup.appendChild(message);
+    popup.appendChild(okButton);
+    overlay.appendChild(popup);
+    document.body.appendChild(overlay);
 }
 
-function submitLogin() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+// ฟังก์ชันสำหรับ login
+function submitLogin(e) {
+    if (e && e.preventDefault) {
+        e.preventDefault();
+    }
+    
+    const username = document.getElementById('username')?.value;
+    const password = document.getElementById('password')?.value;
 
-    // ตรวจสอบข้อมูลว่าง
     if (!username || !password) {
         showError('EMPTY_FIELDS');
         return;
     }
-
-    // เก็บข้อมูลใน sessionStorage
-    //sessionStorage.setItem('username', username);
-    //sessionStorage.setItem('password', password);
 
     fetch('https://restapi.tu.ac.th/api/v1/auth/Ad/verify', {
         method: 'POST',
@@ -52,28 +73,21 @@ function submitLogin() {
     })
     .then(data => {
         if (data.status === true) {
-            // เก็บข้อมูลผู้ใช้ใน localStorage เพื่อใช้ในหน้า form1
             localStorage.setItem('html/form1', JSON.stringify(data));
-            
-            // นำทางไปยังหน้า form1
             window.location.href = 'html/home.html';
         } else {
             showError('INVALID_CREDENTIALS');
         }
     })
-    .catch(error => {
-        console.error('Error:', error);
-        showError('INVALID_CREDENTIALS');
-    });
+    .catch(() => showError('INVALID_CREDENTIALS'));
 }
 
-
-// Toggle password visibility
+// Event Listeners
 document.addEventListener('DOMContentLoaded', function() {
     const passwordInput = document.getElementById('password');
     const togglePassword = document.getElementById('togglePassword');
 
-    if (togglePassword) {
+    if (togglePassword && passwordInput) {
         togglePassword.addEventListener('click', function() {
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
@@ -82,20 +96,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add event listener to login button if it exists
+    // Login button event
     const loginButton = document.querySelector('button');
     if (loginButton) {
         loginButton.addEventListener('click', submitLogin);
     }
-});
 
-// Check if user is already logged in when loading form1.html
-if (window.location.href.includes('html/form1.html')) {
-    document.addEventListener('DOMContentLoaded', function() {
-        const userData = localStorage.getItem('userData');
-        if (!userData) {
-            // ถ้าไม่มีข้อมูลผู้ใช้ ให้กลับไปหน้า login
-            window.location.href = 'index.html';
-        }
+    // Enter key event
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                submitLogin();
+            }
+        });
     });
-}
+});
