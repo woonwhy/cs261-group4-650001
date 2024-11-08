@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* รีเซ็ตสไตล์เริ่มต้นของเบราว์เซอร์ */
 =======
 /* Reset some default browser styles */
@@ -393,3 +394,142 @@ label[for="password"] {
     animation: none;
 }
 >>>>>>> 0dc5df3 (Edit Css)
+=======
+
+body {
+    font-family: 'Kanit', 'Arial', sans-serif; /* Example modern Thai font */
+    background-color: #ffffff; /* White background */
+    background-image: url("https://cdn.discordapp.com/attachments/1181586547137597542/1296554757699141642/GPT_IM.webp?ex=6712b637&is=671164b7&hm=fc8712ede6f6c6c413ba04c3a11c1c350d8ea2716d9db1add37615bdabda6909&");
+
+}
+
+/* Style for the login container */
+.login-container {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff; /* White background */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Center the heading */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style for labels */
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+/* Style for input fields with floating shadow */
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Floating shadow effect */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+/* Style for buttons */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff4d4d; /* Red background */
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition */
+    font-size: 16px; /* Increased font size */
+    font-weight: bold; /* Bold font */
+}
+
+/* Change button color on hover or touch */
+button:hover, button:focus {
+    background-color: #ffcc00; /* Light orange */
+}
+
+
+
+/* Style for the label */
+label {
+    display: block; /* Make the label a block element */
+    margin: 10px 0 5px; /* Add margin for spacing */
+    font-size: 16px; /* Set font size */
+    font-weight: bold; /* Make the font bold */
+    color: #333; /* Dark gray color for the text */
+}
+
+/* Style for the select dropdown */
+select {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding for better spacing */
+    margin-bottom: 20px; /* Space below the select */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #fff; /* White background */
+    font-size: 16px; /* Font size */
+    color: #333; /* Dark gray text color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+/* Change border color on focus */
+select:focus {
+    border-color: #ff4d4d; /* Change border color to red on focus */
+    outline: none; /* Remove default outline */
+}
+/* Style for message */
+
+#message {
+    display: none;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* ป้ายแจ้งเตือน */
+.notification {
+    display: none; /* ซ่อนป้ายแจ้งเตือนเริ่มต้น */
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* จัดให้อยู่ตรงกลาง */
+    background-color: #4CAF50; /* สีพื้นหลังของป้ายสำเร็จ */
+    color: white;
+    padding: 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 200px; /* กำหนดความกว้างขั้นต่ำ */
+    text-align: center; /* จัดข้อความให้อยู่กลาง */
+}
+
+/* ปุ่ม OK */
+.notification button {
+    background-color: #fff;
+    color: #624b03;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-left: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* เพิ่มสีให้ปุ่มเมื่อ hover */
+.notification button:hover {
+    background-color: #f1f1f1;
+}
+
+>>>>>>> 09fcce269c1c87211a44e68b6ade8fed92de5fbc
