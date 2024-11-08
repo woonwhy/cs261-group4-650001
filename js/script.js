@@ -1,3 +1,4 @@
+// กำหนด error messages
 const ERROR_MESSAGES = {
     INVALID_CREDENTIALS: { 
         th: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง', 
@@ -6,44 +7,24 @@ const ERROR_MESSAGES = {
     EMPTY_FIELDS: { 
         th: 'กรุณากรอกชื่อผู้ใช้และรหัสผ่าน', 
         en: 'Please enter both username and password.' 
-    },
-    SUCCESS: { 
-        th: 'เข้าสู่ระบบสำเร็จ', 
-        en: 'Login successful' 
     }
 };
 
-// ฟังก์ชันแสดงข้อความสำเร็จในป้ายแจ้งเตือน
-function showSuccess() {
-    const notificationElement = document.getElementById('notification');
-    const messageElement = document.getElementById('notification-message');
-    messageElement.innerText = `${ERROR_MESSAGES.SUCCESS.th} (${ERROR_MESSAGES.SUCCESS.en})`;
-    notificationElement.style.backgroundColor = '#4CAF50'; // สีเขียวสำหรับสำเร็จ
-    notificationElement.style.display = 'block'; // แสดงป้ายแจ้งเตือน
-}
-
-// ฟังก์ชันแสดงข้อความผิดพลาดในป้ายแจ้งเตือน
+// function สำหรับแสดงข้อความ error ทั้งสองภาษา
 function showError(errorType) {
-    const notificationElement = document.getElementById('notification');
-    const messageElement = document.getElementById('notification-message');
+    const errorElement = document.getElementById('message');
     const thMessage = ERROR_MESSAGES[errorType].th;
     const enMessage = ERROR_MESSAGES[errorType].en;
-    messageElement.innerText = `${thMessage} (${enMessage})`;
-    notificationElement.style.backgroundColor = '#f44336'; // สีแดงสำหรับข้อผิดพลาด
-    notificationElement.style.display = 'block'; // แสดงป้ายแจ้งเตือน
+    
+    // สร้าง error message ในรูปแบบ "ข้อความภาษาไทย (English message)"
+    errorElement.innerText = `${thMessage} (${enMessage})`;
+    errorElement.style.color = 'red';
+    errorElement.style.display = 'block';
 }
 
-// ฟังก์ชันสำหรับปิดป้ายแจ้งเตือนเมื่อกด "OK"
-function closeNotification() {
-    const notificationElement = document.getElementById('notification');
-    notificationElement.style.display = 'none'; // ซ่อนป้ายแจ้งเตือน
-}
-
-// ฟังก์ชันสำหรับส่งข้อมูลเข้าสู่ระบบ
 function submitLogin() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    const role = document.getElementById('role').value;
 
     // ตรวจสอบข้อมูลว่าง
     if (!username || !password) {
@@ -52,11 +33,9 @@ function submitLogin() {
     }
 
     // เก็บข้อมูลใน sessionStorage
-    sessionStorage.setItem('username', username);
-    sessionStorage.setItem('password', password);
-    sessionStorage.setItem('role', role);
+    //sessionStorage.setItem('username', username);
+    //sessionStorage.setItem('password', password);
 
-    // เรียก API เพื่อตรวจสอบข้อมูลผู้ใช้
     fetch('https://restapi.tu.ac.th/api/v1/auth/Ad/verify', {
         method: 'POST',
         headers: {
@@ -73,32 +52,50 @@ function submitLogin() {
     })
     .then(data => {
         if (data.status === true) {
-            showSuccess(); // แสดงข้อความสำเร็จ
-            sessionStorage.setItem('form1', JSON.stringify(data)); // เก็บข้อมูลใน sessionStorage
-            window.location.href = 'userhome.html'; // นำไปยังหน้า userhome.html
+            // เก็บข้อมูลผู้ใช้ใน localStorage เพื่อใช้ในหน้า form1
+            localStorage.setItem('html/form1', JSON.stringify(data));
+            
+            // นำทางไปยังหน้า form1
+            window.location.href = 'html/home.html';
         } else {
-            showError('INVALID_CREDENTIALS'); // แสดงข้อความผิดพลาด
+            showError('INVALID_CREDENTIALS');
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        showError('INVALID_CREDENTIALS'); // แสดงข้อความผิดพลาดเมื่อเกิดข้อผิดพลาด
+        showError('INVALID_CREDENTIALS');
     });
 }
 
-// ฟังก์ชันที่เรียกใช้ข้อมูลจาก sessionStorage เมื่อหน้าเว็บโหลด
-function loadSavedCredentials() {
-    const savedUsername = sessionStorage.getItem('username');
-    const savedPassword = sessionStorage.getItem('password');
-    const savedRole = sessionStorage.getItem('role');
 
-    if (savedUsername && savedPassword && savedRole) {
-        // กรอกข้อมูล username และ password ที่เก็บไว้
-        document.getElementById('username').value = savedUsername;
-        document.getElementById('password').value = savedPassword;
-        document.getElementById('role').value = savedRole;
+// Toggle password visibility
+document.addEventListener('DOMContentLoaded', function() {
+    const passwordInput = document.getElementById('password');
+    const togglePassword = document.getElementById('togglePassword');
+
+    if (togglePassword) {
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
     }
-}
 
-// เรียกใช้ฟังก์ชัน loadSavedCredentials เมื่อหน้าเว็บโหลด
-window.onload = loadSavedCredentials;
+    // Add event listener to login button if it exists
+    const loginButton = document.querySelector('button');
+    if (loginButton) {
+        loginButton.addEventListener('click', submitLogin);
+    }
+});
+
+// Check if user is already logged in when loading form1.html
+if (window.location.href.includes('html/form1.html')) {
+    document.addEventListener('DOMContentLoaded', function() {
+        const userData = localStorage.getItem('userData');
+        if (!userData) {
+            // ถ้าไม่มีข้อมูลผู้ใช้ ให้กลับไปหน้า login
+            window.location.href = 'index.html';
+        }
+    });
+}

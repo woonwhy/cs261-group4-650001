@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="login-container">
-        <h1>Login</h1>
-        <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <label for="role">Role selection:</label>
-               <select name="role" id="role">
-                 <option value="">Select your role</option>
-                 <option value="student">Student</option>
-                 <option value="lecturer">Lecturer</option>
-               </select>
-            <button type="button" onclick="submitLogin()">Login</button>
-            <div id="notification" class="notification">
-                <span id="notification-message"></span>
-                <button id="notification-ok" onclick="closeNotification()">OK</button>
-            </div>
-            
-        </form>
-        <div id="additional-info">
-            <div id="message"></div>
-            <div id="status"></div>
-            <div id="type"></div>
-            <div id="username"></div>
-            <div id="tu_status"></div>
-            <div id="statusid"></div>
-            <div id="displayname_th"></div>
-            <div id="displayname_en"></div>
-            <div id="email"></div>
-            <div id="department"></div>
-            <div id="faculty"></div>
+        
+            <div class="header">
+                <img src="img\tu-logo.png" alt="University Logo" class="logo">
+                <h1>มหาวิทยาลัยธรรมศาสตร์<br>THAMMASAT UNIVERSITY</h1>
+                <!-- <form id="loginForm">  (ของทีม ในdesign ของ get ไม่มี Enter your username)
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
 
-        </div>
+                <label for="password">Password:</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <i class="far fa-eye" id="togglePassword" style="cursor: pointer;"></i> <!-- Eye Icon -->
+                <!-- </div> --> 
+            </div>
+            <div class="inner-container">    
+                <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">User ID:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" required>
+                        <i class="far fa-eye" id="togglePassword"></i>
+                    </div>
+                </div>
+                <!-- นี่เพิ่ม Remember username ตามที่ Design ไว้ -->
+                <!-- นี่ลบ Select role เพราะที่ design ไว้มันไม่มี -->
+                <div class="checkbox-container">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember username</label>
+                </div>
+                <button type="button" onclick="submitLogin()">Log in</button>
+                </form>
+            </div>
+
+            <a href="#" class="forgot-link">Forgotten your username or password?</a>
+    </div>
+    <div class="showdata" id="showdata">
     </div>
     <script src="js/script.js"></script>
 </body>
-</html> 
+</html>
