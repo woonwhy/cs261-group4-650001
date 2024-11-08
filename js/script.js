@@ -40,9 +40,12 @@ function submitLogin() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Application-Key': 'TU7a8369b69d9fe193235104bd66ad2091f212044bd3ad78226274784ab2c0bac00bc0d2e5e30ff74abfb456f8ef087695'
+            'Application-Key': 'TU5d9c2f64dba5a79b5703f16217099f581aa997f95cea8f85ee3303e96d2af4fa9389bf05fe88938703a7a4a10e198098'
         },
-        body: JSON.stringify({ UserName: username, PassWord: password })
+        body: JSON.stringify({
+            "UserName": username,
+            "PassWord": password
+        })
     })
     .then(response => {
         if (!response.ok) {
