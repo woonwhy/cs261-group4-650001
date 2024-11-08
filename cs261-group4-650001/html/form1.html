@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Info</title>
+    <link rel="stylesheet" href="C:\Users\Lenovo\Downloads\TEST261\cs261-group4-650001\css\styles.css">
+    <script>
+        window.onload = function() {
+            // ดึงข้อมูลผู้ใช้จาก Local Storage
+            const form1 = JSON.parse(localStorage.getItem('form1'));
+
+            if (form1) {
+                // กำหนดค่าต่าง ๆ ในฟอร์ม
+                document.getElementById('registrationDate').value = new Date().toLocaleDateString(); // วันที่จดทะเบียน (Auto fill)
+                document.getElementById('displayname_th').value = form1.displayname_th;
+                document.getElementById('username').value = form1.username;
+                document.getElementById('department').value = form1.department;
+            }
+        };
+
+        function cancel() {
+            // นำผู้ใช้กลับไปยังหน้าหลักหรือหน้าที่ต้องการ
+            window.location.href = 'home.html';
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h1>คำร้องจดทะเบียนล่าช้า/เพิ่มล่าช้า</h1>
+        <form id="requestForm">
+            <div class="personal-info">
+                <h2>ข้อมูลส่วนตัว</h2>
+                <label for="registrationDate">วันที่จดทะเบียน:</label>
+                <input type="text" id="registrationDate" value="" readonly>
+
+                <label for="displayname_th">ข้าพเจ้านาย/นางสาว:</label>
+                <input type="text" id="displayname_th" name="displayname_th" readonly>
+
+                <label for="username">เลขทะเบียน:</label>
+                <input type="text" id="username" name="username" readonly>
+
+                <label for="department">สาขาวิชา:</label>
+                <input type="text" id="department" name="department" readonly>
+            </div>
+
+            <h2>ที่อยู่ที่สามารถติดต่อได้</h2>
+            <label for="address">เลขที่:</label>
+            <input type="text" id="address" name="address" placeholder="เลขที่" required>
+            <label for="subdistrict">แขวง/ตำบล:</label>
+            <input type="text" id="subdistrict" name="subdistrict" placeholder="แขวง/ตำบล" required>
+            <label for="district">เขต/อำเภอ:</label>
+            <input type="text" id="district" name="district" placeholder="เขต/อำเภอ" required>
+            <label for="province">จังหวัด:</label>
+            <input type="text" id="province" name="province" placeholder="จังหวัด" required>
+            <label for="studentPhone">เบอร์โทรศัพท์ที่ติดต่อได้ของนักศึกษา:</label>
+            <input type="text" id="studentPhone" name="studentPhone" placeholder="เบอร์โทรศัพท์ที่ติดต่อได้ของนักศึกษา" required>
+            <label for="guardianPhone">เบอร์โทรศัพท์ที่ติดต่อได้ของผู้ปกครอง:</label>
+            <input type="text" id="guardianPhone" name="guardianPhone" placeholder="เบอร์โทรศัพท์ที่ติดต่อได้ของผู้ปกครอง" required>
+            <label for="advisor">อาจารย์ที่ปรึกษา:</label>
+            <input type="text" id="advisor" name="advisor" placeholder="อาจารย์ที่ปรึกษา" required>
+
+            <h2>ประสงค์ในการยื่นคำร้องเรื่อง</h2>
+            <label for="requestReason">จดทะเบียนล่าช้า/เพิ่มล่าช้า</label>
+            <label for="requestReason">ภาคเรียนที่</label>
+            <input type="text" id="courseCode" name="courseCode" placeholder="ภาคเรียนที่" required>
+            <label for="courseCode">รหัสวิชา:</label>
+            <input type="text" id="courseCode" name="courseCode" placeholder="รหัสวิชา" required>
+            <label for="courseName">ชื่อวิชา:</label>
+            <input type="text" id="courseName" name="courseName" placeholder="ชื่อวิชา" required>
+            <label for="section">Section:</label>
+            <input type="text" id="section" name="section" placeholder="Section" required>
+
+            <h2>เหตุผลในการยื่นคำร้อง</h2>
+            <label for="reasonDescription">กรอกคำอธิบาย:</label>
+            <textarea id="reasonDescription" name="reasonDescription" placeholder="คำอธิบาย" required></textarea>
+
+            <button type="submit">ตกลง(Save)</button>
+            <button type="button" onclick="cancel()">ยกเลิก(Cancel)</button>
+        </form>
+    </div>
+</body>
+</html>
