@@ -72,15 +72,20 @@ body {
 
 .menu {
     display: flex;
-    gap: 15px;
+    gap: 2rem;
     align-items: center;
 }
 
 .menu a {
-    color: #000;
     text-decoration: none;
-    padding: 5px 10px;
-    font-size: 18px;
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #ff6b6b;
 }
 
 /* Responsive adjustments */
