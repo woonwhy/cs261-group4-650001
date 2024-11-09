@@ -1,3 +1,4 @@
+/* styles.css */
 * {
     margin: 0;
     padding: 0;
@@ -46,7 +47,6 @@ body {
     height: 40px;
     width: auto;
 }
-
 
 .navbar .menu {
     display: flex;
@@ -105,6 +105,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 60px;
 }
 
 .main-content {
@@ -114,16 +115,16 @@ body {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 800px;
-    text-align: center;
 }
 
 /* Status Card Styling */
 .status-card {
-    background-color: #f8f9fa;
+    background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 2rem;
     margin: 2rem 0;
+    text-align: center;
 }
 
 .status-title {
@@ -156,32 +157,29 @@ body {
 /* Footer */
 .footer {
     background: rgba(129, 108, 91, 0.8);
-    padding: 40px 0;
     width: 100%;
-    height: auto;
-    margin-top: 50px;
-    display: block;
-    position: relative;
+    margin-top: auto;
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    color: #fff;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    padding: 40px 30px;
 }
 
 .box {
-    flex: 1;
-    min-width: 200px;
+    color: #fff;
+    line-height: 1.8;
 }
 
 .box p {
-    margin-bottom: 0.8rem;
-    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.8;
 }
 
 /* Responsive Design */
@@ -208,7 +206,12 @@ body {
     }
     
     .footer-content {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         text-align: center;
+        padding: 20px;
+    }
+    
+    .box {
+        padding: 10px 0;
     }
 }
