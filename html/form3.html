@@ -1,83 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Info</title>
-    <link rel="stylesheet" href="C:\Users\Lenovo\Downloads\TEST261\cs261-group4-650001\css\styles.css">
-    <script>
-        window.onload = function() {
-            // ดึงข้อมูลผู้ใช้จาก Local Storage
-            const form1 = JSON.parse(localStorage.getItem('form1'));
-
-            if (form1) {
-                // กำหนดค่าต่าง ๆ ในฟอร์ม
-                document.getElementById('registrationDate').value = new Date().toLocaleDateString(); // วันที่จดทะเบียน (Auto fill)
-                document.getElementById('displayname_th').value = form1.displayname_th;
-                document.getElementById('username').value = form1.username;
-                document.getElementById('department').value = form1.department;
-            }
-        };
-
-        function cancel() {
-            // นำผู้ใช้กลับไปยังหน้าหลักหรือหน้าที่ต้องการ
-            window.location.href = 'home.html';
-        }
-    </script>
+    <title>คำร้องขอจดทะเบียนศึกษารายวิชาข้ามโครงการ</title>
+    <link rel="stylesheet" href="../css/stylesform3.css">
 </head>
 <body>
-    <div class="form-container">
-        <h1>คำร้องขอจดทะเบียนศึกษารายวิชาข้ามโครงการ</h1>
-        <form id="requestForm">
-            <div class="personal-info">
-                <h2>ข้อมูลส่วนตัว</h2>
-                <label for="registrationDate">วันที่จดทะเบียน:</label>
-                <input type="text" id="registrationDate" value="" readonly>
-
-                <label for="displayname_th">ข้าพเจ้านาย/นางสาว:</label>
-                <input type="text" id="displayname_th" name="displayname_th" readonly>
-
-                <label for="username">เลขทะเบียน:</label>
-                <input type="text" id="username" name="username" readonly>
-
-                <label for="department">สาขาวิชา:</label>
-                <input type="text" id="department" name="department" readonly>
+    <div class="container">
+        <div class="main-box">
+            <!-- Navbar -->
+            <div class="navbar">
+                <div class="left">
+                    <img src="\cs261-group4-650001-CSS\img\tu-logo.png" alt="Logo" class="logo">
+                    <span>มหาวิทยาลัยธรรมศาสตร์</span>
+                </div>
+                
+                <div class="menu">
+                    <a href="home.html">หน้าหลัก</a>
+                    
+                    <div class="dropdown">
+                        <a href="#">เขียนคำร้อง</a>
+                        <div class="dropdown-content">
+                            <a href="form1.html">จดทะเบียนล่าช้า/เพิ่มล่าช้า</a>
+                            <a href="form2.html">ขอถอนรายวิชา(Drop W)</a>
+                            <a href="form3.html">จดทะเบียนศึกษารายวิชาข้ามโครงการ</a>
+                            <a href="form4.html">คำร้องขอลาออก</a>
+                        </div>
+                    </div>
+                    
+                    <a href="example.html">ภาพตัวอย่าง</a>
+                    <a href="status.html">สถานะคำร้อง</a>
+                </div>
             </div>
 
-            <h2>ที่อยู่ที่สามารถติดต่อได้</h2>
-            <label for="address">เลขที่:</label>
-            <input type="text" id="address" name="address" placeholder="เลขที่" required>
-            <label for="subdistrict">แขวง/ตำบล:</label>
-            <input type="text" id="subdistrict" name="subdistrict" placeholder="แขวง/ตำบล" required>
-            <label for="district">เขต/อำเภอ:</label>
-            <input type="text" id="district" name="district" placeholder="เขต/อำเภอ" required>
-            <label for="province">จังหวัด:</label>
-            <input type="text" id="province" name="province" placeholder="จังหวัด" required>
-            <label for="studentPhone">เบอร์โทรศัพท์ที่ติดต่อได้ของนักศึกษา:</label>
-            <input type="text" id="studentPhone" name="studentPhone" placeholder="เบอร์โทรศัพท์ที่ติดต่อได้ของนักศึกษา" required>
-            <label for="guardianPhone">เบอร์โทรศัพท์ที่ติดต่อได้ของผู้ปกครอง:</label>
-            <input type="text" id="guardianPhone" name="guardianPhone" placeholder="เบอร์โทรศัพท์ที่ติดต่อได้ของผู้ปกครอง" required>
-            <label for="advisor">อาจารย์ที่ปรึกษา:</label>
-            <input type="text" id="advisor" name="advisor" placeholder="อาจารย์ที่ปรึกษา" required>
+            <!-- Form Container -->
+            <div class="form-container">
+                <h1>คำร้องจดทะเบียนเพิ่ม-ถอนล่าช้า</h1>
 
-            <h2>ประสงค์ในการยื่นคำร้องเรื่อง</h2>
-            <label for="requestReason">จดทะเบียนศึกษารายวิชาข้ามโครงการ</label>
-            <label for="requestReason">ภาคเรียนที่</label>
-            <input type="text" id="courseCode" name="courseCode" placeholder="ภาคเรียนที่" required>
-            <label for="courseCode">รหัสวิชา:</label>
-            <input type="text" id="courseCode" name="courseCode" placeholder="รหัสวิชา" required>
-            <label for="courseName">ชื่อวิชา:</label>
-            <input type="text" id="courseName" name="courseName" placeholder="ชื่อวิชา" required>
-            <label for="section">Section:</label>
-            <input type="text" id="section" name="section" placeholder="Section" required>
+                <!-- Personal Information Section -->
+                <div class="form-section">
+                    <h2>ข้อมูลส่วนตัว</h2>
+                    
+                    <div class="form-row">
+                        <span>วันที่จดทะเบียน:</span>
+                        <input type="text" id="address" name="address">
+                    </div>
 
-            <h2>เหตุผลในการยื่นคำร้อง</h2>
-            <label for="reasonDescription">กรอกคำอธิบาย:</label>
-            <textarea id="reasonDescription" name="reasonDescription" placeholder="คำอธิบาย" required></textarea>
+                    <div class="form-row">
+                        <span>ชื่อ-นามสกุล:</span>
+                        
+                    </div>
 
-            <button type="submit">ตกลง(Save)</button>
-            <button type="button" onclick="cancel()">ยกเลิก(Cancel)</button>
-        </form>
+                    <div class="form-row">
+                        <span>เลขทะเบียน:</span>
+                        
+                    </div>
+
+                    <div class="form-row">
+                        <span>Email:</span>
+                        
+                    </div>
+
+                    <div class="form-row">
+                        <span>คณะ:</span>
+                        
+                    </div>
+
+                    <div class="form-row">
+                        <span>ระดับการศึกษา:</span>
+                        
+                    </div>
+
+                    <div class="form-row">
+                        <span>สาขาวิชา:</span>
+                        
+                    </div>
+
+                    <div class="form-row">
+                        <span>สถานภาพทางการศึกษา:</span>
+                        
+                    </div>
+
+                    <div class="form-row">
+                        <span>ที่อยู่ที่สามารถติดต่อได้:</span>
+                        <input type="text" id="address" name="address">
+                    </div>
+                </div>
+
+                <!-- Purpose Section -->
+                <div class="form-section">
+                    <h2>ประสงค์ในการยื่นคำร้องเรื่อง</h2>
+                    
+                    <div class="form-row">
+                        <span>ภาคเรียนที่:</span>
+                        <input type="text" id="semester" name="semester">
+                    </div>
+
+                    <div class="form-row">
+                        <span>รหัสวิชา:</span>
+                        <input type="text" id="courseCode" name="courseCode">
+                    </div>
+
+                    <div class="form-row">
+                        <span>ชื่อวิชา:</span>
+                        <input type="text" id="courseName" name="courseName">
+                    </div>
+
+                    <div class="form-row">
+                        <span>Section:</span>
+                        <input type="text" id="section" name="section">
+                    </div>
+                </div>
+
+                <!-- Reason Section -->
+                <div class="form-section">
+                    <h2>เหตุผลในการยื่นคำร้อง</h2>
+                    <textarea id="reason" name="reason"></textarea>
+                </div>
+
+                <!-- Button Group -->
+                <div class="button-group">
+                    <button type="submit">ตกลง</button>
+                    <button type="button">ยกเลิก</button>
+                </div>
+            </div>
+        </div>
     </div>
+            <footer class="footer">
+                <div class="footer-content">
+                    <div class="box">
+                        <a href="userhome.html">หน้าหลัก</a>
+                    </div>
+                    <div class="box">
+                        <a href="#">เขียนคำร้อง</a>
+                        <a href="form1.html">เขียนคำร้องเพิ่ม-ถอน</a>
+                        <a href="form2.html">เขียนคำร้องขอถอนรายวิชา</a>
+                        <a href="form3.html">เขียนคำร้องจดทะเบียนรายวิชาข้ามโครงการ</a>
+                        <a href="form4.html">เขียนคำร้องขอลาออก</a>
+                    </div>
+                    <div class="box">
+                        <a href="status.html">สถานะคำร้อง</a>
+                    </div>
+                    <div class="box">
+                        <a href="example.html">ภาพตัวอย่าง</a>
+                    </div>
+                    <div class="box">
+                        <p>ติดต่อ</p>
+                        <p>Tel : +(66)61-971-8337</p>
+                        <p>Line ID : getgetmung</p>
+                        <p>E-mail : chayanon.pur@dome.tu.ac.th</p>
+                    </div>
+                </div>
+        </footer>    
 </body>
 </html>
