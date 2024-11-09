@@ -337,6 +337,19 @@ button[type="button"]:hover {
         width: 100%;
         box-shadow: none;
     }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .dropdown-content a {
+        color: black;
+        padding: 10px 12px;
+        display: block;
+        text-decoration: none;
+    }
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
     
     .form-row {
         grid-template-columns: 1fr;
@@ -433,4 +446,35 @@ button[type="button"]:hover {
     .petition-links {
         grid-template-columns: 1fr;
     }
+
+    /* Existing CSS remains the same */
+
+/* Date Picker Styles */
+input[type="date"] {
+    background: #E8F0FE;
+    padding: 8px 15px;
+    border: 1px solid #B8D1F3;
+    border-radius: 4px;
+    min-height: 35px;
+    width: 300px;
+    font-size: 16px;
+    font-family: 'TH Sarabun New', sans-serif;
+    text-align: left;
+    cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    padding: 5px;
+    filter: invert(0.5);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    filter: invert(0.7);
+}
+
+/* The rest of the existing CSS remains the same */
+    
+
+    
 }

@@ -3,85 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เขียนคำร้องลาออก</title>
+    <title>คำร้องขอถอนรายวิชา(Drop W)</title>
     <link rel="stylesheet" href="../css/stylesform4.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="left">
-            <img src="\cs261-group4-650001-CSS\img\tu-logo.png" alt="Logo" class="logo">
-            <span>มหาวิทยาลัยธรรมศาสตร์</span>
-        </div>
-        
-        <div class="menu">
-            <a href="home.html">หน้าหลัก</a>
-            
-            <div class="dropdown">
-                <a href="#">เขียนคำร้อง</a>
-                <div class="dropdown-content">
-                    <a href="form1.html">จดทะเบียนล่าช้า/เพิ่มล่าช้า</a>
-                    <a href="form2.html">ขอถอนรายวิชา(Drop W)</a>
-                    <a href="form3.html">จดทะเบียนศึกษารายวิชาข้ามโครงการ</a>
-                    <a href="form4.html">คำร้องขอลาออก</a>
-                </div>
-            </div>
-            
-            <a href="example.html">ภาพตัวอย่าง</a>
-            <a href="status.html">สถานะคำร้อง</a>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
     <div class="container">
         <div class="main-box">
-            <h1 class="form-title">เขียนคำร้องลาออก</h1>
-            
-            <div class="form-content">
-                <!-- Personal Info Section -->
+            <!-- Navbar -->
+            <div class="navbar">
+                <div class="left">
+                    <img src="/img/tu-logo.png" alt="Logo" class="logo">
+                    <span>มหาวิทยาลัยธรรมศาสตร์</span>
+                </div>
+                
+                <div class="menu">
+                    <a href="home.html">หน้าหลัก</a>
+                    
+                    <div class="dropdown">
+                        <a href="#">เขียนคำร้อง</a>
+                        <div class="dropdown-content">
+                            <a href="form1.html">จดทะเบียนล่าช้า/เพิ่มล่าช้า</a>
+                            <a href="form2.html">ขอถอนรายวิชา(Drop W)</a>
+                            <a href="form3.html">จดทะเบียนศึกษารายวิชาข้ามโครงการ</a>
+                            <a href="form4.html">คำร้องขอลาออก</a>
+                        </div>
+                    </div>
+                    
+                    <a href="example.html">ภาพตัวอย่าง</a>
+                    <a href="status.html">สถานะคำร้อง</a>
+                </div>
+            </div>
+
+            <!-- Form Container -->
+            <div class="form-container">
+                <h1>เขียนคำร้องขอลาออก</h1>
+
+                <!-- Personal Information Section -->
                 <div class="form-section">
                     <h2>ข้อมูลส่วนตัว</h2>
                     
                     <div class="form-row">
-                        <label>วันที่จดทะเบียน:</label>
-                        <input type="text" readonly>
+                        <span>วันที่จดทะเบียน:</span>
+                        <input type="date" id="registrationDate" name="registrationDate" required>
                     </div>
-                    
+
                     <div class="form-row">
-                        <label>ชื่อ-นามสกุล:</label>
-                        
-                    </div>
-                    
-                    <div class="form-row">
-                        <label>เลขทะเบียน:</label>
-                        
-                    </div>
-                    
-                    <div class="form-row">
-                        <label>อีเมล:</label>
-                        
-                    </div>
-                    
-                    <div class="form-row">
-                        <label>คณะ:</label>
+                        <span>ชื่อ-นามสกุล:</span>
                         
                     </div>
 
                     <div class="form-row">
-                        <label>ระดับการศึกษา:</label>
+                        <span>เลขทะเบียน:</span>
                         
                     </div>
 
                     <div class="form-row">
-                        <label>สาขาวิชา:</label>
+                        <span>Email:</span>
                         
                     </div>
 
                     <div class="form-row">
-                        <label>สถานภาพการศึกษา:</label>
+                        <span>คณะ:</span>
                         
                     </div>
+
+                    <div class="form-row">
+                        <span>ระดับการศึกษา:</span>
+                        
+                    </div>
+
+                    <div class="form-row">
+                        <span>สาขาวิชา:</span>
+                        
+                    </div>
+
+                    <div class="form-row">
+                        <span>สถานภาพทางการศึกษา:</span>
+                        
+                    </div>
+
                 </div>
+                
 
                 <!-- Reason Section -->
                 <div class="form-section">
@@ -118,50 +120,44 @@
                         <div class="radio-option">
                             <input type="radio" name="debtStatus" id="hasDebt">
                             <label for="hasDebt">มีภาระหนี้สินคงค้างจำนวน</label>
-                            <input type="number" class="debt-amount" disabled>
+                            <input type="number" class="debt-amount" >
                         </div>
                     </div>
                 </div>
 
                 <!-- Button Group -->
                 <div class="button-group">
-                    <button type="submit" class="btn-submit">ตกลง</button>
-                    <button type="button" class="btn-cancel">ยกเลิก</button>
+                    <button type="submit">ตกลง</button>
+                    <button type="button">ยกเลิก</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="box">
-                <a href="userhome.html">หน้าหลัก</a>
-            </div>
-            
-            <div class="box">
-                <a href="#">เขียนคำร้อง</a>
-                <a href="form1.html">เขียนคำร้องเพิ่ม-ถอน</a>
-                <a href="form2.html">เขียนคำร้องขอถอนรายวิชา</a>
-                <a href="form3.html">เขียนคำร้องจดทะเบียนรายวิชาข้ามโครงการ</a>
-                <a href="form4.html">เขียนคำร้องขอลาออก</a>
-            </div>
-            
-            <div class="box">
-                <a href="status.html">สถานะคำร้อง</a>
-            </div>
-            
-            <div class="box">
-                <a href="example.html">ภาพตัวอย่าง</a>
-            </div>
-            
-            <div class="box">
-                <h3>ติดต่อ</h3>
-                <p>Tel : +(66)61-971-8337</p>
-                <p>Line ID : getgetmung</p>
-                <p>E-mail : chayanon.pur@dome.tu.ac.th</p>
-            </div>
-        </div>
-    </footer>
+            <footer class="footer">
+                <div class="footer-content">
+                    <div class="box">
+                        <a href="userhome.html">หน้าหลัก</a>
+                    </div>
+                    <div class="box">
+                        <a href="#">เขียนคำร้อง</a>
+                        <a href="form1.html">เขียนคำร้องเพิ่ม-ถอน</a>
+                        <a href="../form2.html">เขียนคำร้องขอถอนรายวิชา</a>
+                        <a href="form3.html">เขียนคำร้องจดทะเบียนรายวิชาข้ามโครงการ</a>
+                        <a href="form4.html">เขียนคำร้องขอลาออก</a>
+                    </div>
+                    <div class="box">
+                        <a href="status.html">สถานะคำร้อง</a>
+                    </div>
+                    <div class="box">
+                        <a href="example.html">ภาพตัวอย่าง</a>
+                    </div>
+                    <div class="box">
+                        <p>ติดต่อ</p>
+                        <p>Tel : +(66)61-971-8337</p>
+                        <p>Line ID : getgetmung</p>
+                        <p>E-mail : chayanon.pur@dome.tu.ac.th</p>
+                    </div>
+                </div>
+        </footer>    
 </body>
 </html>

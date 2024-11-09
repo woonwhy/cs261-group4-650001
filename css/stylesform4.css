@@ -1,15 +1,35 @@
-/* Reset and Base Styles */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body and Container */
 body {
     font-family: 'TH Sarabun New', sans-serif;
     min-height: 100vh;
     line-height: 1.5;
     font-size: 18px;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FFDE59 0%, #FF914D 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.main-box {
+    background: #fff;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 /* Navbar Styles */
@@ -19,7 +39,23 @@ body {
     align-items: center;
     padding: 10px 20px;
     border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust main-box to account for fixed navbar */
+.main-box {
     background: #fff;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 70px; /* Increased to account for fixed navbar */
 }
 
 .left {
@@ -47,6 +83,25 @@ body {
     font-size: 18px;
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        position: fixed;
+        width: 100%;
+    }
+    
+    .main-box {
+        margin-top: 120px; /* Increased for mobile to account for stacked navbar items */
+    }
+    
+    .menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+}
+
+
 /* Dropdown */
 .dropdown {
     position: relative;
@@ -73,44 +128,38 @@ body {
     padding: 8px 15px;
 }
 
-/* Container and Main Box */
-.container {
-    width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #FFDE59 0%, #FF914D 100%);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content a {
+    color: black;
+    padding: 10px 12px;
+    display: block;
+    text-decoration: none;
+}
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+
+/* Form Container */
+.form-container {
     padding: 20px;
 }
 
-.main-box {
-    background: #fff;
-    width: 90%;
-    max-width: 800px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-}
-
-/* Form Title */
-.form-title {
+/* Form Header */
+.form-container h1 {
     background: #C31916;
     color: white;
-    padding: 15px 20px;
+    padding: 10px 20px;
+    margin: -20px -20px 20px -20px;
     font-size: 24px;
-    margin: 0;
-    border-radius: 5px 5px 0 0;
-}
-
-/* Form Content */
-.form-content {
-    padding: 20px;
 }
 
 /* Form Sections */
 .form-section {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    padding: 15px;
 }
 
 .form-section h2 {
@@ -126,93 +175,72 @@ body {
     grid-template-columns: 200px 300px;
     gap: 15px;
     align-items: center;
-    margin-left: auto;
 }
 
-/* Form Labels */
+/* Special style for reason text area */
+.form-row.reason-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-row.reason-row textarea {
+    width: 100%;
+}
+
+/* Form Label */
 .form-row label {
+    text-align: right;
+}
+
+.form-row.reason-row label {
     text-align: left;
+    margin-bottom: 10px;
 }
 
 /* Form Inputs */
-input[type="text"],
-input[type="number"] {
+input[type="text"], 
+textarea {
     background: #E8F0FE;
     padding: 8px 15px;
     border: 1px solid #B8D1F3;
     border-radius: 4px;
     min-height: 35px;
-    width: 300px;
-    font-size: 16px;
-    font-family: 'TH Sarabun New', sans-serif;
-    text-align: left;
-}
-
-input[readonly] {
-    background: #f5f5f5;
-    border-color: #ddd;
-}
-
-/* Form Grid */
-.form-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 515px;
-    margin-left: auto;
-}
-
-/* Reason Section */
-.form-row.reason-row {
-    display: block;
-    grid-template-columns: none;
-}
-
-.form-row.reason-row label {
-    display: block;
-    text-align: left;
-    margin-bottom: 10px;
-}
-
-.form-row.reason-row textarea {
     width: 100%;
-    min-height: 100px;
-    background: #E8F0FE;
-    padding: 8px 15px;
-    border: 1px solid #B8D1F3;
-    border-radius: 4px;
-    font-family: 'TH Sarabun New', sans-serif;
     font-size: 16px;
+    font-family: 'TH Sarabun New', sans-serif;
+}
+
+/* Textarea specific */
+textarea {
+    min-height: 100px;
     resize: vertical;
 }
 
-/* Radio Group */
-.radio-group {
+/* Form Row Inline Styles */
+.form-row-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 15px;
+    align-items: flex-start;
+}
+
+.inline-field {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    width: 515px;
-    margin-left: auto;
+    align-items: flex-start;
+    gap: 5px;
 }
 
-.radio-option {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.inline-field input[type="text"] {
+    width: 200px;
 }
 
-.radio-option input[type="radio"] {
-    margin: 0;
-}
-
-.radio-option label {
-    min-width: unset;
-    margin: 0;
-}
-
-.debt-amount {
-    width: 150px;
-    margin-left: 10px;
+/* Form Data (API display) */
+.form-data {
+    color: #333;
+    padding: 5px 0;
 }
 
 /* Button Group */
@@ -223,8 +251,7 @@ input[readonly] {
     margin-top: 30px;
 }
 
-.btn-submit,
-.btn-cancel {
+.button-group button {
     padding: 8px 30px;
     border-radius: 4px;
     font-size: 16px;
@@ -233,21 +260,21 @@ input[readonly] {
     transition: background-color 0.3s;
 }
 
-.btn-submit {
+button[type="submit"] {
     background: #C31916;
     color: white;
 }
 
-.btn-cancel {
+button[type="button"] {
     background: #ccc;
     color: #333;
 }
 
-.btn-submit:hover {
+button[type="submit"]:hover {
     background: #a31410;
 }
 
-.btn-cancel:hover {
+button[type="button"]:hover {
     background: #bbb;
 }
 
@@ -256,7 +283,10 @@ input[readonly] {
     background: rgba(129, 108, 91, 0.8);
     padding: 40px 0;
     width: 100%;
+    height: auto;
     margin-top: 50px;
+    display: block;
+    position: relative;
 }
 
 .footer-content {
@@ -296,7 +326,15 @@ input[readonly] {
     padding-left: 5px;
 }
 
-/* Responsive Design */
+.box:last-child {
+    line-height: 1.8;
+}
+
+.box:last-child p {
+    margin-bottom: 8px;
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
@@ -316,7 +354,6 @@ input[readonly] {
     
     .form-row {
         grid-template-columns: 1fr;
-        margin-left: 0;
         gap: 5px;
     }
     
@@ -324,23 +361,34 @@ input[readonly] {
         text-align: left;
     }
     
-    .form-grid,
-    .radio-group {
+    input[type="text"],
+    textarea {
         width: 100%;
-        margin-left: 0;
     }
     
-    input[type="text"],
-    input[type="number"],
-    textarea {
+    .form-row-inline {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .inline-field {
+        width: 100%;
+    }
+    
+    .inline-field input[type="text"] {
         width: 100%;
     }
 }
 
+/* Footer Responsive */
 @media (max-width: 1024px) {
     .footer-content {
         grid-template-columns: repeat(3, 1fr);
         gap: 25px;
+    }
+    
+    .box {
+        text-align: left;
     }
     
     .box:last-child {
@@ -349,27 +397,82 @@ input[readonly] {
 }
 
 @media (max-width: 768px) {
+    .footer {
+        padding: 30px 0;
+    }
+    
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
+        padding: 0 20px;
+    }
+    
+    .box {
+        text-align: left;
     }
     
     .box:last-child {
         grid-column: span 2;
+        text-align: left;
     }
 }
 
 @media (max-width: 480px) {
+    .content {
+        padding: 15px;
+    }
+    
+    .footer {
+        padding: 25px 0;
+    }
+    
     .footer-content {
         grid-template-columns: 1fr;
         gap: 15px;
+    }
+    
+    .box {
+        text-align: left;
+        padding: 0 15px;
     }
     
     .box:last-child {
         grid-column: span 1;
     }
     
-    .box {
-        text-align: left;
+    .box a {
+        margin-bottom: 8px;
     }
+    
+    .petition-links {
+        grid-template-columns: 1fr;
+    }
+
+    /* Existing CSS remains the same */
+
+/* Date Picker Styles */
+input[type="date"] {
+    background: #E8F0FE;
+    padding: 8px 15px;
+    border: 1px solid #B8D1F3;
+    border-radius: 4px;
+    min-height: 35px;
+    width: 300px;
+    font-size: 16px;
+    font-family: 'TH Sarabun New', sans-serif;
+    text-align: left;
+    cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    padding: 5px;
+    filter: invert(0.5);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    filter: invert(0.7);
+}
+
+/* The rest of the existing CSS remains the same */
 }
