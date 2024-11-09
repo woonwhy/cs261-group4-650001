@@ -1,35 +1,71 @@
+<!-- status.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <!--style-->
-    <link rel="stylesheet" href="">
-    <!-- Include Font Awesome for the eye icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>สถานะคำร้อง</title>
+    <link rel="stylesheet" href="../css/stylesstatus.css">
 </head>
 <body>
     <div class="container">
         <nav class="navbar">
             <div class="left">
-                <img src="/img/tu-logo.png" alt="Logo" class="logo">
+                <img src="../img/tu-logo.png" alt="Logo" class="logo">
                 <span>มหาวิทยาลัยธรรมศาสตร์</span>
             </div>
 
-            <label for="role">Select your role:</label>
-            <select id="role" name="role" required>
-                <option value="" disabled selected>Select your role</option>
-                <option value="student">Student</option>
-                <option value="lecturer">Lecturer</option>
-            </select>
-            
-            <button type="button" onclick="submitLogin()">Login</button>
-        </form>
-        <p id="message"></p>
+            <div class="menu">
+                <a href="home.html">หน้าหลัก</a>
+                <div class="dropdown">
+                    <a href="#">เขียนคำร้อง</a>
+                    <div class="dropdown-content">
+                        <a href="form1.html">จดทะเบียนล่าช้า/เพิ่มล่าช้า</a>
+                        <a href="form2.html">ขอถอนรายวิชา(Drop W)</a>
+                        <a href="form3.html">จดทะเบียนศึกษารายวิชาข้ามโครงการ</a>
+                        <a href="form4.html">คำร้องขอลาออก</a>
+                    </div>
+                </div>
+                <a href="example.html">ภาพตัวอย่าง</a>
+                <a href="status.html">สถานะคำร้อง</a>
+            </div>
+        </nav>
+
+        <div class="content">
+            <div class="main-content">
+                <div class="status-card">
+                    <h2 class="status-title">คำร้องเรื่อง : </h2>
+                    <p class="status-info">สถานะคำร้อง : </p>
+                    <button class="status-button">แก้ไขคำร้อง</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="showdata" id="showdata">
-    </div>
-    <script src="js/script.js"></script>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="box">
+                    <p>หน้าหลัก</p>
+                </div>
+                <div class="box">
+                    <p>เขียนคำร้อง</p>
+                    <p>เขียนคำร้องทะเบียนล่าช้า/เพิ่มล่าช้า</p>
+                    <p>เขียนคำร้องขอถอนรายวิชา(Drop W)</p>
+                    <p>เขียนคำร้องจดทะเบียนศึกษารายวิชาข้ามโครงการ</p>
+                    <p>เขียนคำร้องขอลาออก</p>
+                </div>
+                <div class="box">
+                    <p>สถานะคำร้อง</p>
+                </div>
+                <div class="box">
+                    <p>ภาพตัวอย่าง</p>
+                </div>
+                <div class="box">
+                    <p>ติดต่อ</p>
+                    <p>Tel : +(66)61-971-8337</p>
+                    <p>Line ID : getgetmung</p>
+                    <p>E-mail : chayanon.pur@dome.tu.ac.th</p>
+                </div>
+            </div>
+        </footer>
 </body>
 </html>

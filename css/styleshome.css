@@ -74,10 +74,15 @@ body {
 }
 
 .menu a {
-    color: #000;
     text-decoration: none;
-    padding: 5px 10px;
-    font-size: 18px;
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #ff6b6b;
 }
 
 /* Responsive adjustments */
@@ -114,6 +119,29 @@ body {
     border-radius: 4px;
     margin-top: 5px;
 }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 8px 15px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content a {
+    color: black;
+    padding: 10px 12px;
+    display: block;
+    text-decoration: none;
+}
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
