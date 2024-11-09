@@ -1,4 +1,4 @@
-// กำหนด error messages
+// Define error messages
 const ERROR_MESSAGES = {
     INVALID_CREDENTIALS: { 
         th: 'กรุณาลองใหม่อีกครั้ง', 
@@ -10,7 +10,7 @@ const ERROR_MESSAGES = {
     }
 };
 
-// แสดง error popup
+// Show error popup
 function showError(errorType) {
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
@@ -43,7 +43,7 @@ function showError(errorType) {
     document.body.appendChild(overlay);
 }
 
-// ฟังก์ชันสำหรับ login
+// Login function with remember username and password
 function submitLogin(e) {
     if (e && e.preventDefault) {
         e.preventDefault();
@@ -51,10 +51,20 @@ function submitLogin(e) {
     
     const username = document.getElementById('username')?.value;
     const password = document.getElementById('password')?.value;
+    const remember = document.getElementById('remember')?.checked;
 
     if (!username || !password) {
         showError('EMPTY_FIELDS');
         return;
+    }
+
+    // Remember username and password if checked
+    if (remember) {
+        localStorage.setItem('rememberedUsername', username);
+        localStorage.setItem('rememberedPassword', password);
+    } else {
+        localStorage.removeItem('rememberedUsername');
+        localStorage.removeItem('rememberedPassword');
     }
 
     fetch('https://restapi.tu.ac.th/api/v1/auth/Ad/verify', {
@@ -82,10 +92,21 @@ function submitLogin(e) {
     .catch(() => showError('INVALID_CREDENTIALS'));
 }
 
-// Event Listeners
+// Load remembered username and password on page load
 document.addEventListener('DOMContentLoaded', function() {
     const passwordInput = document.getElementById('password');
     const togglePassword = document.getElementById('togglePassword');
+    const rememberedUsername = localStorage.getItem('rememberedUsername');
+    const rememberedPassword = localStorage.getItem('rememberedPassword');
+
+    if (rememberedUsername) {
+        document.getElementById('username').value = rememberedUsername;
+        document.getElementById('remember').checked = true;
+    }
+
+    if (rememberedPassword) {
+        document.getElementById('password').value = rememberedPassword;
+    }
 
     if (togglePassword && passwordInput) {
         togglePassword.addEventListener('click', function() {
