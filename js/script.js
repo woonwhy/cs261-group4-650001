@@ -12,6 +12,12 @@ const ERROR_MESSAGES = {
 
 // Show error popup
 function showError(errorType) {
+    // Remove any existing error popups first
+    const existingOverlay = document.querySelector('.overlay');
+    if (existingOverlay) {
+        document.body.removeChild(existingOverlay);
+    }
+
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
 
@@ -34,7 +40,30 @@ function showError(errorType) {
     okButton.textContent = 'OK';
     okButton.className = 'ok-button';
 
-    okButton.onclick = () => document.body.removeChild(overlay);
+    // Function to close the error popup
+    const closeErrorPopup = () => {
+        const overlayToRemove = document.querySelector('.overlay');
+        if (overlayToRemove) {
+            overlayToRemove.remove();
+        }
+    };
+
+    // Add click event to OK button
+    okButton.onclick = closeErrorPopup;
+
+    // Add click event to overlay for closing when clicking outside
+    overlay.onclick = (e) => {
+        if (e.target === overlay) {
+            closeErrorPopup();
+        }
+    };
+
+    // Add escape key event listener
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeErrorPopup();
+        }
+    });
 
     popup.appendChild(iconContainer);
     popup.appendChild(message);
