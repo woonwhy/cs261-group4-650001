@@ -83,7 +83,7 @@ function submitLogin(e) {
     })
     .then(data => {
         if (data.status === true) {
-            localStorage.setItem('html/form1', JSON.stringify(data));
+            localStorage.setItem('form1', JSON.stringify(data));
             window.location.href = 'html/home.html';
         } else {
             showError('INVALID_CREDENTIALS');
