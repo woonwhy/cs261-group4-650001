@@ -29,7 +29,7 @@ body {
     max-width: 800px;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 70px; /* Adjusted for fixed navbar */
+    margin-top: 20px;
 }
 
 /* Navbar Styles */
@@ -46,6 +46,16 @@ body {
     right: 0;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust main-box to account for fixed navbar */
+.main-box {
+    background: #fff;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 70px; /* Increased to account for fixed navbar */
 }
 
 .left {
@@ -72,6 +82,25 @@ body {
     padding: 5px 10px;
     font-size: 18px;
 }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        position: fixed;
+        width: 100%;
+    }
+    
+    .main-box {
+        margin-top: 120px; /* Increased for mobile to account for stacked navbar items */
+    }
+    
+    .menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+}
+
 
 /* Dropdown */
 .dropdown {
@@ -128,15 +157,50 @@ body {
 /* Form Rows */
 .form-row {
     margin-bottom: 15px;
+    display: grid;
+    grid-template-columns: 200px 300px;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Special style for reason text area */
+.form-row.reason-row {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 5px;
 }
 
-.form-row input[type="text"],
-.form-row textarea {
+.form-row.reason-row textarea {
     width: 100%;
+}
+
+/* Form Label */
+.form-row label {
+    text-align: right;
+}
+
+.form-row.reason-row label {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+/* Form Inputs */
+input[type="text"], 
+textarea {
+    background: #E8F0FE;
+    padding: 8px 15px;
+    border: 1px solid #B8D1F3;
+    border-radius: 4px;
+    min-height: 35px;
+    width: 100%;
+    font-size: 16px;
+    font-family: 'TH Sarabun New', sans-serif;
+}
+
+/* Textarea specific */
+textarea {
+    min-height: 100px;
+    resize: vertical;
 }
 
 /* Form Row Inline Styles */
@@ -163,25 +227,6 @@ body {
 .form-data {
     color: #333;
     padding: 5px 0;
-}
-
-/* Form Inputs */
-input[type="text"], 
-textarea {
-    background: #E8F0FE;
-    padding: 8px 15px;
-    border: 1px solid #B8D1F3;
-    border-radius: 4px;
-    min-height: 35px;
-    width: 100%;
-    font-size: 16px;
-    font-family: 'TH Sarabun New', sans-serif;
-}
-
-/* Textarea specific */
-textarea {
-    min-height: 100px;
-    resize: vertical;
 }
 
 /* Button Group */
@@ -219,7 +264,7 @@ button[type="button"]:hover {
     background: #bbb;
 }
 
-/* Updated Footer Styles */
+/* Footer Styles */
 .footer {
     background: rgba(129, 108, 91, 0.8);
     padding: 40px 0;
@@ -275,15 +320,10 @@ button[type="button"]:hover {
     margin-bottom: 8px;
 }
 
-/* General Mobile Responsive */
+/* Responsive Styles */
 @media (max-width: 768px) {
     .navbar {
-        position: fixed;
-        width: 100%;
-    }
-
-    .main-box {
-        margin-top: 120px; /* Increased for mobile */
+        flex-direction: column;
     }
     
     .menu {
@@ -296,6 +336,20 @@ button[type="button"]:hover {
         position: static;
         width: 100%;
         box-shadow: none;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+    
+    .form-row label {
+        text-align: left;
+    }
+    
+    input[type="text"],
+    textarea {
+        width: 100%;
     }
     
     .form-row-inline {
@@ -312,7 +366,7 @@ button[type="button"]:hover {
     }
 }
 
-/* Footer Responsive Styles */
+/* Footer Responsive */
 @media (max-width: 1024px) {
     .footer-content {
         grid-template-columns: repeat(3, 1fr);
