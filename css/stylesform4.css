@@ -165,14 +165,6 @@ body {
     align-items: center;
 }
 
-.form-row-input {
-    margin-bottom: 15px;
-    display: grid;
-    grid-template-columns: 200px 300px;
-    gap: 15px;
-    align-items: center;
-}
-
 /* Special style for reason text area */
 .form-row.reason-row {
     display: flex;
