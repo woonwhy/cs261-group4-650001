@@ -208,6 +208,7 @@ textarea {
 input[id="registrationDate"],
 input[id="address"],
 input[id="semester"],
+input[id="year"],
 input[id="courseCode"],
 input[id="courseName"],
 input[id="section"], 
