@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        window.onload = function() {
+            // ดึงข้อมูลผู้ใช้จาก Local Storage
+            const form1 = JSON.parse(localStorage.getItem('form1'));
+
+            if (form1) {
+                // กำหนดค่าต่าง ๆ ในฟอร์ม
+                document.getElementById('displayname_th').value = form1.displayname_th;
+                document.getElementById('username').value = form1.username;
+                document.getElementById('department').value = form1.department;
+            }
+        };
+
+        function cancel() {
+            // นำผู้ใช้กลับไปยังหน้าหลักหรือหน้าที่ต้องการ
+            window.location.href = 'index.html';
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h1>เเบบคำร้อง</h1>
+        <form id="loginForm">
+            <label for="displayname_th">ข้าพเจ้านาย/นางสาว:</label>
+            <input type="text" id="displayname_th" name="displayname_th" readonly>
+
+            <label for="username">เลขทะเบียน:</label>
+            <input type="text" id="username" name="username" readonly>
+
+            <label for="department">สาขาวิชา:</label>
+            <input type="text" id="department" name="department" readonly>
+                <a href="form1.html">
+                <button type="button">จดทะเบียนล่าช้า/เพิ่มล่าช้า</button>
+            </a>
+            <a href="form2.html">
+                <button type="button">ขอถอนรายวิชา(Drop W)</button>
+            </a>
+            <a href="form3.html">
+                <button type="button">จดทะเบียนศึกษารายวิชาข้ามโครงการ</button>
+            </a>
+            <a href="form4.html">
+                <button type="button">ขอลาอออก</button>
+            </a>
+        </form>
+
+    </div>
+    
+</html> 
