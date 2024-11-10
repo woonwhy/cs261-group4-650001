@@ -29,7 +29,7 @@ body {
     max-width: 800px;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    margin-top: 70px;
 }
 
 /* Navbar Styles */
@@ -46,16 +46,6 @@ body {
     right: 0;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Adjust main-box to account for fixed navbar */
-.main-box {
-    background: #fff;
-    width: 90%;
-    max-width: 800px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 70px; /* Increased to account for fixed navbar */
 }
 
 .left {
@@ -88,25 +78,6 @@ body {
     color: #ff6b6b;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .navbar {
-        position: fixed;
-        width: 100%;
-    }
-    
-    .main-box {
-        margin-top: 120px; /* Increased for mobile to account for stacked navbar items */
-    }
-    
-    .menu {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-    }
-}
-
-
 /* Dropdown */
 .dropdown {
     position: relative;
@@ -124,28 +95,21 @@ body {
     border-radius: 4px;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
 .dropdown-content a {
     display: block;
     padding: 8px 15px;
+    white-space: nowrap;
+    text-align: left;
+    line-height: 1.5;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-.dropdown-content a {
-    color: black;
-    padding: 10px 12px;
-    display: block;
-    text-decoration: none;
-}
 .dropdown-content a:hover {
     background-color: #ddd;
 }
 
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 /* Form Container */
 .form-container {
@@ -165,17 +129,49 @@ body {
 .form-section {
     margin-bottom: 20px;
     padding: 15px;
+    background: #fff;
 }
 
 .form-section h2 {
     color: #333;
     font-size: 20px;
     margin-bottom: 15px;
+    text-align: left;
 }
 
 /* Form Rows */
 .form-row {
     margin-bottom: 15px;
+    display: grid;
+    grid-template-columns: 200px 500px;
+    gap: 15px;
+    align-items: center;
+}
+
+.form-row-input {
+    margin-bottom: 15px;
+    display: grid;
+    grid-template-columns: 200px 300px;
+    gap: 15px;
+    align-items: center;
+}
+
+.form-row span,
+.form-row-input span,
+.form-row label {
+    text-align: left;
+}
+
+/* Form Grid */
+.form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.form-grid .form-row {
+    margin-bottom: 0;
     display: grid;
     grid-template-columns: 200px 300px;
     gap: 15px;
@@ -189,23 +185,46 @@ body {
     align-items: flex-start;
 }
 
-.form-row.reason-row textarea {
-    width: 100%;
-}
-
-/* Form Label */
-.form-row label {
-    text-align: right;
-}
-
 .form-row.reason-row label {
     text-align: left;
     margin-bottom: 10px;
 }
 
+.form-row.reason-row textarea {
+    width: 100%;
+}
+
 /* Form Inputs */
-input[type="text"], 
+input,
 textarea {
+    padding: 8px 15px;
+    min-height: 35px;
+    width: 100%;
+    font-size: 16px;
+    font-family: 'TH Sarabun New', sans-serif;
+    box-sizing: border-box;
+    border: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Modified registration date input */
+input[id="registrationDate"] {
+    background: #E8F0FE;
+    padding: 8px 15px;
+    border: 1px solid #B8D1F3;
+    border-radius: 4px;
+    min-height: 35px;
+    width: 300px;
+    font-size: 16px;
+    font-family: 'TH Sarabun New', sans-serif;
+}
+
+input[id="address"],
+input[id="semester"],
+input[id="courseCode"],
+input[id="courseName"],
+input[id="section"],
+input[id="year"] {
     background: #E8F0FE;
     padding: 8px 15px;
     border: 1px solid #B8D1F3;
@@ -216,36 +235,73 @@ textarea {
     font-family: 'TH Sarabun New', sans-serif;
 }
 
-/* Textarea specific */
 textarea {
     min-height: 100px;
     resize: vertical;
+    background: #E8F0FE;
+    border: 1px solid #B8D1F3;
+    border-radius: 4px;
 }
 
-/* Form Row Inline Styles */
-.form-row-inline {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 15px;
-    align-items: flex-start;
-}
-
-.inline-field {
+/* Radio Group Styling */
+.radio-group {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
+    gap: 15px;
+    margin-left: 15px;
 }
 
-.inline-field input[type="text"] {
-    width: 200px;
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* Form Data (API display) */
-.form-data {
-    color: #333;
-    padding: 5px 0;
+/* Modified radio button style */
+.radio-option input[type="radio"] {
+    width: 35px;
+    height: 35px;
+    min-height: 35px;
+    cursor: pointer;
+    margin-right: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #E8F0FE;
+    border: 1px solid #B8D1F3;
+    border-radius: 50%;
+    position: relative;
+}
+
+.radio-option input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #C31916;
+    border-radius: 50%;
+}
+
+.radio-option input[type="radio"]:hover {
+    background-color: #f0f7ff;
+}
+
+.radio-option label {
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+    padding: 8px 0;
+}
+
+/* Modified debt amount input */
+.debt-amount {
+    width: 150px !important;
+    background: #E8F0FE !important;
+    border: 1px solid #B8D1F3 !important;
+    border-radius: 4px;
+    margin-left: 10px;
 }
 
 /* Button Group */
@@ -280,33 +336,33 @@ button[type="submit"]:hover {
 }
 
 button[type="button"]:hover {
-    background: #bbb;
+    background: #838080;
 }
 
 /* Footer Styles */
 .footer {
-    background: rgba(129, 108, 91, 0.8);
-    padding: 40px 0;
+    background: linear-gradient(to left, #865e39, #9e835f);
+    padding: 15px 0;
+    padding-bottom: 0%;
     width: 100%;
-    height: auto;
-    margin-top: 50px;
+    height: 150px;
     display: block;
     position: relative;
 }
 
 .footer-content {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: auto;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 30px;
+    gap: 5px;
     padding: 0 30px;
 }
 
 .box {
     font-size: 16px;
     color: #fff;
-    line-height: 1.8;
+    line-height: 0.7;
 }
 
 .box h3 {
@@ -332,7 +388,7 @@ button[type="button"]:hover {
 }
 
 .box:last-child {
-    line-height: 1.8;
+    line-height: 1.5;
 }
 
 .box:last-child p {
@@ -343,6 +399,12 @@ button[type="button"]:hover {
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
+        position: fixed;
+        width: 100%;
+    }
+    
+    .main-box {
+        margin-top: 120px;
     }
     
     .menu {
@@ -357,53 +419,31 @@ button[type="button"]:hover {
         box-shadow: none;
     }
     
-    .form-row {
+    .form-row,
+    .form-row-input,
+    .form-row.reason-row,
+    .form-grid .form-row {
         grid-template-columns: 1fr;
         gap: 5px;
     }
     
-    .form-row label {
+    .form-row span,
+    .form-row-input span {
         text-align: left;
     }
     
-    input[type="text"],
-    textarea {
-        width: 100%;
+    .radio-group {
+        margin-left: 0;
     }
     
-    .form-row-inline {
-        flex-direction: column;
-        gap: 15px;
+    .radio-option {
+        grid-template-columns: auto 1fr;
     }
     
-    .inline-field {
-        width: 100%;
-    }
-    
-    .inline-field input[type="text"] {
-        width: 100%;
-    }
-}
-
-/* Footer Responsive */
-@media (max-width: 1024px) {
-    .footer-content {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 25px;
-    }
-    
-    .box {
-        text-align: left;
-    }
-    
-    .box:last-child {
-        grid-column: span 3;
-    }
-}
-
-@media (max-width: 768px) {
-    .footer {
-        padding: 30px 0;
+    .debt-amount {
+        width: 100% !important;
+        margin-left: 0;
+        grid-column: 1 / -1;
     }
     
     .footer-content {
@@ -412,25 +452,12 @@ button[type="button"]:hover {
         padding: 0 20px;
     }
     
-    .box {
-        text-align: left;
-    }
-    
     .box:last-child {
         grid-column: span 2;
-        text-align: left;
     }
 }
 
 @media (max-width: 480px) {
-    .content {
-        padding: 15px;
-    }
-    
-    .footer {
-        padding: 25px 0;
-    }
-    
     .footer-content {
         grid-template-columns: 1fr;
         gap: 15px;
@@ -444,40 +471,4 @@ button[type="button"]:hover {
     .box:last-child {
         grid-column: span 1;
     }
-    
-    .box a {
-        margin-bottom: 8px;
-    }
-    
-    .petition-links {
-        grid-template-columns: 1fr;
-    }
-
-    /* Existing CSS remains the same */
-
-/* Date Picker Styles */
-input[type="date"] {
-    background: #E8F0FE;
-    padding: 8px 15px;
-    border: 1px solid #B8D1F3;
-    border-radius: 4px;
-    min-height: 35px;
-    width: 300px;
-    font-size: 16px;
-    font-family: 'TH Sarabun New', sans-serif;
-    text-align: left;
-    cursor: pointer;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-    cursor: pointer;
-    padding: 5px;
-    filter: invert(0.5);
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator:hover {
-    filter: invert(0.7);
-}
-
-/* The rest of the existing CSS remains the same */
 }

@@ -72,7 +72,7 @@ body {
 
 .menu {
     display: flex;
-    gap: 2rem;
+    gap: 15px;
     align-items: center;
 }
 
@@ -124,6 +124,14 @@ body {
     border-radius: 4px;
 }
 
+.dropdown-content a {
+    display: block;
+    padding: 8px 15px;
+    white-space: nowrap; /* Prevent text wrapping */
+    text-align: left; /* Ensure consistent text alignment */
+    line-height: 1.5; /* Consistent line height */
+}
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -131,6 +139,10 @@ body {
 .dropdown-content a {
     display: block;
     padding: 8px 15px;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
 }
 
 /* Form Container */
@@ -163,6 +175,14 @@ body {
 .form-row {
     margin-bottom: 15px;
     display: grid;
+    grid-template-columns: 200px 500px;
+    gap: 15px;
+    align-items: center;
+}
+
+.form-row-input {
+    margin-bottom: 15px;
+    display: grid;
     grid-template-columns: 200px 300px;
     gap: 15px;
     align-items: center;
@@ -189,8 +209,25 @@ body {
     margin-bottom: 10px;
 }
 
+input,
+textarea {
+    padding: 8px 15px;
+    min-height: 35px;
+    width: 100%;
+    font-size: 16px;
+    font-family: 'TH Sarabun New', sans-serif;
+    box-sizing: border-box;
+    border: none; /* ลบเส้นขอบ */
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
 /* Form Inputs */
-input[type="text"], 
+input[id="registrationDate"],
+input[id="address"],
+input[id="semester"],
+input[id="courseCode"],
+input[id="courseName"],
+input[id="section"], 
 textarea {
     background: #E8F0FE;
     padding: 8px 15px;
@@ -266,33 +303,33 @@ button[type="submit"]:hover {
 }
 
 button[type="button"]:hover {
-    background: #bbb;
+    background: #838080;
 }
 
 /* Footer Styles */
 .footer {
-    background: rgba(129, 108, 91, 0.8);
-    padding: 40px 0;
+    background: linear-gradient(to left, #865e39, #9e835f);
+    padding: 15px 0;
+    padding-bottom: 0%;
     width: 100%;
-    height: auto;
-    margin-top: 50px;
+    height: 150px;
     display: block;
     position: relative;
 }
 
 .footer-content {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: auto;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 30px;
+    gap: 5px;
     padding: 0 30px;
 }
 
 .box {
     font-size: 16px;
     color: #fff;
-    line-height: 1.8;
+    line-height: 0.7;
 }
 
 .box h3 {
@@ -318,7 +355,7 @@ button[type="button"]:hover {
 }
 
 .box:last-child {
-    line-height: 1.8;
+    line-height: 1.5;
 }
 
 .box:last-child p {
@@ -341,19 +378,6 @@ button[type="button"]:hover {
         position: static;
         width: 100%;
         box-shadow: none;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-    .dropdown-content a {
-        color: black;
-        padding: 10px 12px;
-        display: block;
-        text-decoration: none;
-    }
-    .dropdown-content a:hover {
-        background-color: #ddd;
     }
     
     .form-row {
@@ -451,35 +475,4 @@ button[type="button"]:hover {
     .petition-links {
         grid-template-columns: 1fr;
     }
-
-    /* Existing CSS remains the same */
-
-/* Date Picker Styles */
-input[type="date"] {
-    background: #E8F0FE;
-    padding: 8px 15px;
-    border: 1px solid #B8D1F3;
-    border-radius: 4px;
-    min-height: 35px;
-    width: 300px;
-    font-size: 16px;
-    font-family: 'TH Sarabun New', sans-serif;
-    text-align: left;
-    cursor: pointer;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-    cursor: pointer;
-    padding: 5px;
-    filter: invert(0.5);
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator:hover {
-    filter: invert(0.7);
-}
-
-/* The rest of the existing CSS remains the same */
-    
-
-    
 }

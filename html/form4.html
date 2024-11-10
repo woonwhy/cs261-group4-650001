@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>คำร้องขอถอนรายวิชา(Drop W)</title>
     <link rel="stylesheet" href="../css/stylesform4.css">
+    <script src="../js/form1.js"></script>
 </head>
 <body>
     <div class="container">
@@ -12,7 +13,7 @@
             <!-- Navbar -->
             <div class="navbar">
                 <div class="left">
-                    <img src="/img/tu-logo.png" alt="Logo" class="logo">
+                    <img src="../img/tu-logo.png" alt="Logo" class="logo">
                     <span>มหาวิทยาลัยธรรมศาสตร์</span>
                 </div>
                 
@@ -36,50 +37,53 @@
 
             <!-- Form Container -->
             <div class="form-container">
-                <h1>เขียนคำร้องขอลาออก</h1>
+                <h1>คำร้องขอลาออก</h1>
 
                 <!-- Personal Information Section -->
                 <div class="form-section">
                     <h2>ข้อมูลส่วนตัว</h2>
                     
                     <div class="form-row">
-                        <span>วันที่จดทะเบียน:</span>
+                        <span for="registrationDate">วันที่จดทะเบียน:</span>
                         <input type="date" id="registrationDate" name="registrationDate" required>
                     </div>
 
                     <div class="form-row">
-                        <span>ชื่อ-นามสกุล:</span>
-                        
+                        <span for="displayname_th">ชื่อ-นามสกุล: </span>
+                        <input type="text" id="displayname_th" name="displayname_th" readonly></input>
                     </div>
 
                     <div class="form-row">
-                        <span>เลขทะเบียน:</span>
-                        
+                        <span for="username">เลขทะเบียน:</span>
+                        <input type="text" id="username" name="username" readonly>
                     </div>
 
                     <div class="form-row">
-                        <span>Email:</span>
-                        
+                        <span for="email">Email:</span>
+                        <input type="text" id="email" name="email" readonly>
                     </div>
 
                     <div class="form-row">
-                        <span>คณะ:</span>
-                        
+                        <span for="faculty">คณะ:</span>
+                        <input type="text" id="faculty" name="faculty" readonly>
                     </div>
 
+                    <!--
                     <div class="form-row">
                         <span>ระดับการศึกษา:</span>
+                        <input type="text" id="username" name="username" readonly>
                         
+                    </div>
+                    -->
+                    
+                    <div class="form-row">
+                        <span for="department">สาขาวิชา:</span>
+                        <input type="text" id="department" name="department" readonly>
                     </div>
 
                     <div class="form-row">
-                        <span>สาขาวิชา:</span>
-                        
-                    </div>
-
-                    <div class="form-row">
-                        <span>สถานภาพทางการศึกษา:</span>
-                        
+                        <span for="tu_status">สถานภาพทางการศึกษา:</span>
+                        <input type="text" id="tu_status" name="tu_status" readonly>
                     </div>
 
                 </div>
@@ -100,11 +104,11 @@
                     <div class="form-grid">
                         <div class="form-row">
                             <label>ภาคการศึกษา:</label>
-                            <input type="text">
+                            <input type="text" id="semester">
                         </div>
                         <div class="form-row">
                             <label>ปีการศึกษา:</label>
-                            <input type="text">
+                            <input type="text" id="year">
                         </div>
                     </div>
                 </div>
@@ -128,7 +132,7 @@
                 <!-- Button Group -->
                 <div class="button-group">
                     <button type="submit">ตกลง</button>
-                    <button type="button">ยกเลิก</button>
+                    <button type="button" onclick="cancel()">ยกเลิก</button>
                 </div>
             </div>
         </div>
