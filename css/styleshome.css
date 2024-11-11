@@ -43,6 +43,7 @@ body {
     right: 0;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 /* Adjust main-box to account for fixed navbar */
@@ -79,10 +80,14 @@ body {
     font-weight: 500;
     padding: 0.5rem 1rem;
     transition: color 0.3s;
+    display: block;
 }
 
 .menu a:hover {
     color: #ff6b6b;
+    background-color: #ddd;
+    border-radius: 5px;
+    
 }
 
 /* Responsive adjustments */

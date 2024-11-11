@@ -60,10 +60,13 @@ body {
     font-weight: 500;
     padding: 0.5rem 1rem;
     transition: all 0.3s ease;
+    display: block;
 }
 
 .navbar .menu a:hover {
     color: #C50000;
+    background-color: #ddd;
+    border-radius: 5px;
 }
 
 /* Dropdown Menu */
