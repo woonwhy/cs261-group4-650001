@@ -7,7 +7,7 @@
 
 /* สไตล์ของ Body */
 body {
-    font-family: Arial, sans-serif;
+    font-family: sans-serif;
     background: linear-gradient(135deg, #FFDE59, #FF914D); /* สีพื้นหลังไล่เฉด */
     display: flex;
     justify-content: center;
