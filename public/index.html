@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        
+            <div class="header">
+                <img src="img\tu-logo.png" alt="University Logo" class="logo">
+                <h1>มหาวิทยาลัยธรรมศาสตร์<br>THAMMASAT UNIVERSITY</h1>
+            </div>
+            <div class="inner-container">    
+                <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">User ID:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" required>
+                        <i class="far fa-eye" id="togglePassword"></i>
+                    </div>
+                </div>
+                <!-- นี่เพิ่ม Remember username ตามที่ Design ไว้ -->
+                <!-- นี่ลบ Select role เพราะที่ design ไว้มันไม่มี -->
+                <div class="checkbox-container">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember username</label>
+                </div>
+                <button type="button" onclick="submitLogin()">Log in</button>
+                </form>
+            </div>
+
+            <a href="#" class="forgot-link">Forgotten your username or password?</a>
+    </div>
+    <div class="showdata" id="showdata">
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
