@@ -45,7 +45,7 @@
                     
                     <div class="form-row-input">
                         <span for="registrationDate">วันที่จดทะเบียน:</span>
-                        <input type="date" id="registrationDate" name="registrationDate" required>
+                        <input type="text" id="registrationDate" value="" readonly>
                     </div>
 
                     <div class="form-row">
@@ -125,8 +125,9 @@
 
                 <!-- Button Group -->
                 <div class="button-group">
-                    <button type="submit" onclick="saveStudentData()">ตกลง</button>
+                    <button type="submit"onclick="submitForm()">ตกลง</button>
                     <button type="button" onclick="cancel()">ยกเลิก</button>
+                    
                 </div>
             </div>
         </div>
@@ -134,7 +135,7 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="box">
-                <a href="home.html">หน้าหลัก</a>
+                <a href="userhome.html">หน้าหลัก</a>
             </div>
             <div class="box">
                 <a href="#">เขียนคำร้อง</a>
@@ -157,5 +158,33 @@
             </div>
         </div>
     </footer>    
+    <script>
+        function submitForm() {
+            const requestData = {
+                registrationDate: new Date().toLocaleDateString("th-TH"),  // เพิ่มฟิลด์ registrationDate
+                displayName: document.getElementById("displayname_th").value,
+                username: document.getElementById("username").value,
+                email: document.getElementById("email").value,
+                faculty: document.getElementById("faculty").value,
+                department: document.getElementById("department").value,
+                tu_status: document.getElementById("tu_status").value,
+                address: document.getElementById("address").value,
+                semester: document.getElementById("semester").value,
+                courseCode: document.getElementById("courseCode").value,
+                courseName: document.getElementById("courseName").value,
+                section: document.getElementById("section").value,
+                reason: document.getElementById("reason").value,
+                title: document.title,
+                status: "บันทึกข้อมูลแล้ว"
+            };
+    
+            let requests = JSON.parse(localStorage.getItem("requests")) || [];
+            requests.push(requestData);
+            localStorage.setItem("requests", JSON.stringify(requests));
+    
+            window.location.href = 'status.html';
+        }
+    </script>
+    
 </body>
 </html>
