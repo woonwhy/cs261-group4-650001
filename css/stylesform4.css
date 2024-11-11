@@ -7,7 +7,7 @@
 
 /* Body and Container */
 body {
-    font-family: sans-serif;
+    font-family: 'TH Sarabun New';
     min-height: 100vh;
     line-height: 1.5;
     font-size: 18px;
@@ -204,7 +204,7 @@ textarea {
     min-height: 35px;
     width: 100%;
     font-size: 16px;
-    font-family: sans-serif;
+    font-family: 'TH Sarabun New';
     box-sizing: border-box;
     border: none;
     transition: background-color 0.3s, box-shadow 0.3s;
@@ -219,7 +219,7 @@ input[id="registrationDate"] {
     min-height: 35px;
     width: 300px;
     font-size: 16px;
-    font-family: sans-serif;
+    font-family: 'TH Sarabun New';
 }
 
 input[id="address"],
@@ -235,7 +235,7 @@ input[id="year"] {
     min-height: 35px;
     width: 100%;
     font-size: 16px;
-    font-family: sans-serif;
+    font-family: 'TH Sarabun New';
 }
 
 textarea {
