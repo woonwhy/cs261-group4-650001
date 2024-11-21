@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'TH Sarabun New';
+    font-family: 'TH Sarabun New', sans-serif;
     min-height: 100vh;
     line-height: 1.5;
     font-size: 18px;
@@ -60,13 +60,10 @@ body {
     font-weight: 500;
     padding: 0.5rem 1rem;
     transition: all 0.3s ease;
-    display: block;
 }
 
 .navbar .menu a:hover {
     color: #C50000;
-    background-color: #ddd;
-    border-radius: 5px;
 }
 
 /* Dropdown Menu */

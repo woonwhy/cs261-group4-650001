@@ -49,3 +49,40 @@ window.onload = function() {
 function cancel() {
     window.location.href = 'home.html';
 }
+
+function saveStudentData(data) {
+    fetch('http://localhost:8080/api/students/add', { // URL ต้องตรงกับ Spring Boot endpoint
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            reason: data.reason,
+            section: data.section,
+            courseName: data.courseName,
+            courseCode: data.courseCode,
+            semester: data.semester,
+            address: data.address,
+            status: data.tu_status,
+            department: data.department,
+            faculty: data.faculty,
+            email: data.email,
+            userName: data.username,
+            Name: data.displayname_th,
+            date: data.registrationDate
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to save data');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data saved successfully:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+}

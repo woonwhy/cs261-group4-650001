@@ -3,159 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>คำร้องขอถอนรายวิชา(Drop W)</title>
+    <title>คำร้องจดทะเบียนเพิ่ม-ถอนล่าช้า</title>
     <link rel="stylesheet" href="../css/stylesform2.css">
-    <script src="../js/form1.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="main-box">
-            <!-- Navbar -->
-            <div class="navbar">
-                <div class="left">
-                    <img src="../img/tu-logo.png" alt="Logo" class="logo">
-                    <span>มหาวิทยาลัยธรรมศาสตร์</span>
-                </div>
-                
-                <div class="menu">
-                    <a href="home.html">หน้าหลัก</a>
-                    
-                    <div class="dropdown">
-                        <a href="#">เขียนคำร้อง</a>
-                        <div class="dropdown-content">
-                            <a href="form1.html">จดทะเบียนล่าช้า/เพิ่มล่าช้า</a>
-                            <a href="form2.html">ขอถอนรายวิชา(Drop W)</a>
-                            <a href="form3.html">จดทะเบียนศึกษารายวิชาข้ามโครงการ</a>
-                            <a href="form4.html">คำร้องขอลาออก</a>
-                        </div>
-                    </div>
-                    
-                    <a href="example.html">ภาพตัวอย่าง</a>
-                    <a href="status.html">สถานะคำร้อง</a>
-                </div>
-            </div>
-
-            <!-- Form Container -->
-            <div class="form-container">
-                <h1>คำร้องขอถอนรายวิชา(Drop W)</h1>
-
-                <!-- Personal Information Section -->
-                <div class="form-section">
-                    <h2>ข้อมูลส่วนตัว</h2>
-                    
-                    <div class="form-row-input">
-                        <span for="registrationDate">วันที่จดทะเบียน:</span>
-                        <input type="date" id="registrationDate" name="registrationDate" required>
-                    </div>
-
-                    <div class="form-row">
-                        <span for="displayname_th">ชื่อ-นามสกุล: </span>
-                        <input type="text" id="displayname_th" name="displayname_th" readonly></input>
-                    </div>
-
-                    <div class="form-row">
-                        <span for="username">เลขทะเบียน:</span>
-                        <input type="text" id="username" name="username" readonly>
-                    </div>
-
-                    <div class="form-row">
-                        <span for="email">Email:</span>
-                        <input type="text" id="email" name="email" readonly>
-                    </div>
-
-                    <div class="form-row">
-                        <span for="faculty">คณะ:</span>
-                        <input type="text" id="faculty" name="faculty" readonly>
-                    </div>
-
-                    <!--
-                    <div class="form-row">
-                        <span>ระดับการศึกษา:</span>
-                        <input type="text" id="username" name="username" readonly>
-                        
-                    </div>
-                    -->
-                    
-                    <div class="form-row">
-                        <span for="department">สาขาวิชา:</span>
-                        <input type="text" id="department" name="department" readonly>
-                    </div>
-
-                    <div class="form-row">
-                        <span for="tu_status">สถานภาพทางการศึกษา:</span>
-                        <input type="text" id="tu_status" name="tu_status" readonly>
-                    </div>
-
-                    <div class="form-row">
-                        <span>ที่อยู่ที่สามารถติดต่อได้:</span>
-                        <input type="text" id="address" name="address">
-                    </div>
-                </div>
-
-                <!-- Purpose Section -->
-                <div class="form-section">
-                    <h2>ประสงค์ในการยื่นคำร้องเรื่อง</h2>
-                    <h2>คำร้องขอถอนรายวิชา(Drop W)</h2>
-                    <div class="form-row-input">
-                        <span>ภาคเรียนที่:</span>
-                        <input type="text" id="semester" name="semester">
-                    </div>
-
-                    <div class="form-row-input">
-                        <span>รหัสวิชา:</span>
-                        <input type="text" id="courseCode" name="courseCode">
-                    </div>
-
-                    <div class="form-row-input">
-                        <span>ชื่อวิชา:</span>
-                        <input type="text" id="courseName" name="courseName">
-                    </div>
-
-                    <div class="form-row-input">
-                        <span>Section:</span>
-                        <input type="text" id="section" name="section">
-                    </div>
-                </div>
-
-                <!-- Reason Section -->
-                <div class="form-section">
-                    <h2>เหตุผลในการยื่นคำร้อง</h2>
-                    <textarea id="reason" name="reason"></textarea>
-                </div>
-
-                <!-- Button Group -->
-                <div class="button-group">
-                    <button type="submit">ตกลง</button>
-                    <button type="button" onclick="cancel()">ยกเลิก</button>
-                </div>
-            </div>
+    <nav class="navbar">
+        <div class="left">
+            <img src="../img/tu-logo.png" alt="Logo" class="logo">
+            <span>มหาวิทยาลัยธรรมศาสตร์</span>
         </div>
-    </div>
-            <footer class="footer">
-        <div class="footer-content">
-            <div class="box">
-                <a href="home.html">หน้าหลัก</a>
-            </div>
-            <div class="box">
+        <div class="menu">
+            <a href="home.html">หน้าหลัก</a>
+            <div class="dropdown">
                 <a href="#">เขียนคำร้อง</a>
-                <a href="form1.html">เขียนคำร้องเพิ่ม-ถอน</a>
-                <a href="form2.html">เขียนคำร้องขอถอนรายวิชา</a>
-                <a href="form3.html">เขียนคำร้องจดทะเบียนรายวิชาข้ามโครงการ</a>
-                <a href="form4.html">เขียนคำร้องขอลาออก</a>
+                <div class="dropdown-content">
+                    <a href="form1.html">จดทะเบียนล่าช้า/เพิ่มล่าช้า</a>
+                    <a href="form2.html">ขอถอนรายวิชา(Drop W)</a>
+                    <a href="form3.html">จดทะเบียนศึกษารายวิชาข้ามโครงการ</a>
+                    <a href="form4.html">คำร้องขอลาออก</a>
+                </div>
             </div>
-            <div class="box">
-                <a href="status.html">สถานะคำร้อง</a>
+            <a href="example.html">ภาพตัวอย่าง</a>
+            <a href="status.html">สถานะคำร้อง</a>
+        </div>
+    </nav>
+
+    <main class="main-box">
+        <h1>คำร้องขอถอนรายวิชา(Drop W)</h1>
+
+        <form>
+            <section class="form-section">
+                <h2>ข้อมูลส่วนตัว</h2>
+                <div class="form-row">
+                    <label>วันที่จดทะเบียน:</label>
+                    <input type="date">
+                </div>
+                <div class="form-row">
+                    <label>ชื่อ-สกุล:</label>
+                    <input type="text">
+                </div>
+                <div class="form-row">
+                    <label>เลขทะเบียน:</label>
+                    <input type="text">
+                </div>
+                <div class="form-row">
+                    <label>Email:</label>
+                    <input type="email">
+                </div>
+                <div class="form-row">
+                    <label>คณะ:</label>
+                    <input type="text">
+                </div>
+                <div class="form-row">
+                    <label>ระดับการศึกษา:</label>
+                    <input type="text">
+                </div>
+                <div class="form-row">
+                    <label>สาขาวิชา:</label>
+                    <input type="text">
+                </div>
+                <div class="form-row">
+                    <label>สถานภาพนักศึกษา:</label>
+                    <input type="text">
+                </div>
+            </section>
+
+            <section class="form-section">
+                <h2>ที่อยู่</h2>
+                <div class="form-row">
+                    <label>บ้านเลขที่/ซอย:</label>
+                    <input type="text">
+                </div>
+                <div class="form-row">
+                    <label>หมู่บ้าน:</label>
+                    <input type="text">
+                </div>
+                <div class="form-row">
+                    <label>จังหวัด:</label>
+                    <input type="text">
+                </div>
+                <div class="form-row">
+                    <label>ตำบล/อำเภอ/แขวง/เขต:</label>
+                    <input type="text">
+                </div>
+                <div class="form-row">
+                    <label>รหัสไปรษณีย์:</label>
+                    <input type="text">
+                </div>
+            </section>
+
+            <section class="form-section">
+                <h2>รายละเอียดคำร้อง</h2>
+                <div class="form-row">
+                    <label>ประสงค์ในการยื่นคำร้องเรื่อง:</label>
+                    <input type="text">
+                </div>
+                <div class="form-row">
+                    <label>ภาคเรียนที่:</label>
+                    <input type="text">
+                </div>
+                <div class="form-row">
+                    <label>รหัสวิชา:</label>
+                    <input type="text">
+                </div>
+                <div class="form-row">
+                    <label>ชื่อวิชา:</label>
+                    <input type="text">
+                </div>
+                <div class="form-row">
+                    <label>Section:</label>
+                    <input type="text">
+                </div>
+                <div class="form-row">
+                    <label>เหตุผล:</label>
+                    <textarea></textarea>
+                </div>
+            </section>
+
+            <div class="file-upload">
+                <label>แบบไฟล์หลักฐานเพิ่มเติม :</label>
+                <label class="file-label">
+                    Choose file
+                    <input type="file" style="display: none;">
+                </label>
+                <span class="file-info">(pdf,jpg มีขนาดไม่เกิน 100kB จำนวนไม่เกิน 5 ไฟล์)</span>
             </div>
-            <div class="box">
-                <a href="example.html">ภาพตัวอย่าง</a>
+
+            <div class="button-group">
+                <button type="button" class="btn btn-cancel">ยกเลิก</button>
+                <button type="submit" class="btn btn-submit">ตกลง</button>
             </div>
-            <div class="box">
-                <p>ติดต่อ</p>
-                <p>Tel : +(66)61-971-8337</p>
-                <p>Line ID : getgetmung</p>
-                <p>E-mail : chayanon.pur@dome.tu.ac.th</p>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="copyright">
+                Copyright © 2024
+            </div>
+            <div class="social-links">
+                <div class="social-links-title">Connect</div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/chiaa.nedchaina.56/"><img src="img/facebook.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com/yourr.g/mieth"><img src="img/instagram.png" alt="Instagram"></a>
+                    <a href="https://mail.google.com/mail/u/2/#inbox?compose=GTVVIcSKgLGfFZrTtGBNHSStSrfgOchNPJPUffSccvcDpSXHkvtjmRSDMwNpPSVCzjKiDviIMCJNs"><img src="img/gmail.png" alt="Gmail"></a>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div>ติดต่อเพิ่มเติม</div>
+                <div>Tel : +(66)61-971-8337</div>
+                <div>Line ID : getgetmung</div>
+                <div>E-mail : chayanon.pur@dome.tu.ac.th</div>
             </div>
         </div>
-    </footer>    
+    </footer>
 </body>
 </html>

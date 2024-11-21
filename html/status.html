@@ -6,9 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>สถานะคำร้อง</title>
     <link rel="stylesheet" href="../css/stylesstatus.css">
-</head>
 <body>
     <div class="container">
+        <nav class="navbar">
+            <!-- Navbar Content -->
+        </nav>
+
+        <div class="content">
+            <div class="main-content">
+                <h2>คำร้องจากนักศึกษาคณะวิทยาศาสตร์</h2>
+                <div id="requests-container"></div>
+            </div>
+        </div>
+    </div>    <div class="container">
         <nav class="navbar">
             <div class="left">
                 <img src="../img/tu-logo.png" alt="Logo" class="logo">
@@ -31,15 +41,7 @@
             </div>
         </nav>
 
-        <div class="content">
-            <div class="main-content">
-                <div class="status-card">
-                    <h2 class="status-title">คำร้องเรื่อง : </h2>
-                    <p class="status-info">สถานะคำร้อง : </p>
-                    <button class="status-button">แก้ไขคำร้อง</button>
-                </div>
-            </div>
-        </div>
+     
     </div>
     <footer class="footer">
         <div class="footer-content">
@@ -66,6 +68,51 @@
                 <p>E-mail : chayanon.pur@dome.tu.ac.th</p>
             </div>
         </div>
-    </footer>       
+    </footer>    
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        loadRequests();
+    });
+
+    function loadRequests() {
+        const requestsContainer = document.getElementById("requests-container");
+        requestsContainer.innerHTML = ""; // เคลียร์ข้อมูลเก่าก่อน
+
+        const requests = JSON.parse(localStorage.getItem("requests")) || [];
+
+        requests.forEach((request, index) => {
+            const requestCard = document.createElement("div");
+            requestCard.className = "status-card";
+            requestCard.innerHTML = `
+                <p>วันที่จดทะเบียน: ${request.registrationDate} | เรื่อง: "${request.title}" |สถานะคำร้อง: "${request.status}"</p>
+                 <p>Email ผู้ใช้: ${request.email}</p>
+                <button onclick="submitRequest(${index})">Submit</button>
+            `;
+            requestsContainer.appendChild(requestCard);
+        });
+    }
+
+    function submitRequest(index) {
+    const requests = JSON.parse(localStorage.getItem("requests"));
+    const formData = requests[index];
+
+    // อัปเดตสถานะคำร้อง
+    requests[index].status = "กำลังดำเนินการ";
+    localStorage.setItem("requests", JSON.stringify(requests));
+
+    // เตรียมข้อมูลฟอร์มเพื่อส่งไปยัง PHP
+    fetch('send_email.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+    })
+    .then(response => response.text())
+    .then(result => {
+        alert(result); // แสดงข้อความตอบกลับจาก PHP
+        location.reload();
+    })
+    .catch(error => console.error('Error:', error));
+}
+</script>
 </body>
-</html>
