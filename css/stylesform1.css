@@ -1,61 +1,31 @@
-/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-/* Body and Container */
-body {
     font-family: 'TH Sarabun New', sans-serif;
-    min-height: 100vh;
-    line-height: 1.5;
-    font-size: 18px;
 }
 
-.container {
-    width: 100%;
+body {
+    background-image: url('../img/backgroundform1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     min-height: 100vh;
-    background: linear-gradient(135deg, #FFDE59 0%, #FF914D 100%);
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px;
+    flex-direction: column;
 }
 
-.main-box {
-    background: #fff;
-    width: 90%;
-    max-width: 800px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-}
-
-/* Navbar Styles */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    border-bottom: 1px solid #ddd;
     background-color: #fff;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Adjust main-box to account for fixed navbar */
-.main-box {
-    background: #fff;
-    width: 90%;
-    max-width: 800px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 70px; /* Increased to account for fixed navbar */
 }
 
 .left {
@@ -72,51 +42,30 @@ body {
 
 .menu {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     align-items: center;
 }
 
 .menu a {
-    color: #000;
     text-decoration: none;
-    padding: 5px 10px;
-    font-size: 18px;
+    color: #333;
+    font-weight: normal;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .navbar {
-        position: fixed;
-        width: 100%;
-    }
-    
-    .main-box {
-        margin-top: 120px; /* Increased for mobile to account for stacked navbar items */
-    }
-    
-    .menu {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-    }
-}
-
-
-/* Dropdown */
 .dropdown {
     position: relative;
+    display: inline-block;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 100%;
-    left: 0;
-    background: #fff;
+    background-color: #fff;
     min-width: 250px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     z-index: 1;
-    border-radius: 4px;
 }
 
 .dropdown:hover .dropdown-content {
@@ -125,343 +74,199 @@ body {
 
 .dropdown-content a {
     display: block;
-    padding: 8px 15px;
+    padding: 12px 16px;
 }
 
-/* Form Container */
-.form-container {
+.main-box {
+    background: white;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 20px;
     padding: 20px;
-}
-.inline-text {
-    display: inline-block;
-    margin-right: 20px; /* ปรับค่าตามต้องการเพื่อระยะห่าง */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 70px auto 20px;
 }
 
-/* Form Header */
-.form-container h1 {
-    background: #C31916;
-    color: white;
-    padding: 10px 20px;
-    margin: -20px -20px 20px -20px;
-    font-size: 24px;
+h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    font-weight: bold;
 }
 
-/* Form Sections */
+h1:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    margin-top: 10px;
+}
+
+h2 {
+    font-size: 18px;
+    margin: 15px 0;
+    color: #333;
+}
+
 .form-section {
     margin-bottom: 20px;
-    padding: 15px;
+    padding: 0 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
 }
 
-.form-section h2 {
-    color: #333;
-    font-size: 20px;
-    margin-bottom: 15px;
-    display: inline-block;
-    margin-right: 120px;
+.form-section:last-child {
+    border-bottom: none;
 }
 
-/* Form Rows */
 .form-row {
-    margin-bottom: 15px;
     display: grid;
-    grid-template-columns: 200px 500px;
-    gap: 15px;
+    grid-template-columns: 200px 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
     align-items: center;
 }
 
-.form-row-input {
-    margin-bottom: 15px;
-    display: grid;
-    grid-template-columns: 200px 300px;
-    gap: 15px;
-    align-items: center;
-}
-
-/* Special style for reason text area */
-.form-row.reason-row {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.form-row.reason-row textarea {
-    width: 100%;
-}
-
-/* Form Label */
 .form-row label {
     text-align: right;
-}
-
-.form-row.reason-row label {
-    text-align: left;
-    margin-bottom: 10px;
-}
-
-input,
-textarea {
-    padding: 8px 15px;
-    min-height: 35px;
-    width: 100%;
     font-size: 16px;
-    font-family: 'TH Sarabun New', sans-serif;
-    box-sizing: border-box;
-    border: none; /* ลบเส้นขอบ */
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-/* Form Inputs */
-input[id="registrationDate"],
-input[id="address"],
-input[id="semester"],
-input[id="courseCode"],
-input[id="courseName"],
-input[id="section"], 
-textarea {
-    background: #E8F0FE;
-    padding: 8px 15px;
-    border: 1px solid #B8D1F3;
-    border-radius: 4px;
-    min-height: 35px;
-    width: 100%;
-    font-size: 16px;
-    font-family: 'TH Sarabun New', sans-serif;
-}
-
-/* Textarea specific */
-textarea {
-    min-height: 100px;
-    resize: vertical;
-}
-
-/* Form Row Inline Styles */
-.form-row-inline {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 15px;
-    align-items: flex-start;
-}
-
-.inline-field {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
-}
-
-.inline-field input[type="text"] {
-    width: 200px;
-}
-
-/* Form Data (API display) */
-.form-data {
     color: #333;
-    padding: 5px 0;
+    padding-right: 10px;
 }
 
-/* Button Group */
+.form-row input,
+.form-row textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.file-upload {
+    margin: 20px 0;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-upload label {
+    color: #333;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.file-info {
+    color: #f52c2c;
+}
+
 .button-group {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 0 10px;
 }
 
-.button-group button {
-    padding: 8px 30px;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
+.btn {
+    padding: 8px 20px;
     border: none;
-    transition: background-color 0.3s;
-}
-
-button[type="submit"] {
-    background: #C31916;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
     color: white;
+    min-width: 100px;
 }
 
-button[type="button"] {
-    background: #ccc;
-    color: #333;
+.btn-submit {
+    background: #007bff;
 }
 
-button[type="submit"]:hover {
-    background: #a31410;
+.btn-cancel {
+    background: #6c757d;
 }
 
-button[type="button"]:hover {
-    background: #838080;
-}
-
-/* Footer Styles */
 .footer {
-    background: linear-gradient(to left, #865e39, #9e835f);
-    padding: 15px 0;
-    padding-bottom: 0%;
+    background: rgba(0, 0, 0, 0.6);
     width: 100%;
-    height: 150px;
-    display: block;
+    margin-top: auto;
+    padding: 20px 0;
+    color: white;
     position: relative;
 }
 
 .footer-content {
     max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 20px;
+}
+
+.copyright {
+    display: flex;
+    align-items: center;
     gap: 5px;
-    padding: 0 30px;
 }
 
-.box {
-    font-size: 16px;
-    color: #fff;
-    line-height: 0.7;
+.social-links {
+    text-align: center;
 }
 
-.box h3 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #fff;
-}
-
-.box a {
-    color: #fff;
-    text-decoration: none;
-    display: block;
+.social-links-title {
     margin-bottom: 10px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    padding: 2px 0;
 }
 
-.box a:hover {
-    text-decoration: underline;
-    padding-left: 5px;
+.social-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
 }
 
-.box:last-child {
+.social-icons img {
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.contact-info {
+    text-align: right;
     line-height: 1.5;
 }
 
-.box:last-child p {
-    margin-bottom: 8px;
-}
-
-/* Responsive Styles */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
+    .main-box {
+        width: 95%;
+        padding: 15px;
     }
-    
-    .menu {
-        flex-direction: column;
-        width: 100%;
-        margin-top: 10px;
-    }
-    
-    .dropdown-content {
-        position: static;
-        width: 100%;
-        box-shadow: none;
-    }
-    
+
     .form-row {
         grid-template-columns: 1fr;
-        gap: 5px;
     }
-    
+
     .form-row label {
         text-align: left;
     }
-    
-    input[type="text"],
-    textarea {
-        width: 100%;
-    }
-    
-    .form-row-inline {
+
+    .footer-content {
         flex-direction: column;
-        gap: 15px;
-    }
-    
-    .inline-field {
-        width: 100%;
-    }
-    
-    .inline-field input[type="text"] {
-        width: 100%;
-    }
-}
-
-/* Footer Responsive */
-@media (max-width: 1024px) {
-    .footer-content {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 25px;
-    }
-    
-    .box {
-        text-align: left;
-    }
-    
-    .box:last-child {
-        grid-column: span 3;
-    }
-}
-
-@media (max-width: 768px) {
-    .footer {
-        padding: 30px 0;
-    }
-    
-    .footer-content {
-        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
         gap: 20px;
-        padding: 0 20px;
+        text-align: center;
     }
-    
-    .box {
-        text-align: left;
-    }
-    
-    .box:last-child {
-        grid-column: span 2;
-        text-align: left;
-    }
-}
 
-@media (max-width: 480px) {
-    .content {
-        padding: 15px;
-    }
-    
-    .footer {
-        padding: 25px 0;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .box {
-        text-align: left;
-        padding: 0 15px;
-    }
-    
-    .box:last-child {
-        grid-column: span 1;
-    }
-    
-    .box a {
-        margin-bottom: 8px;
-    }
-    
-    .petition-links {
-        grid-template-columns: 1fr;
+    .contact-info {
+        text-align: center;
     }
 }
