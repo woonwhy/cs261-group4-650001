@@ -207,11 +207,12 @@
 .social-icons img {
     width: 24px;
     height: 24px;
-    transition: opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
 }
 
 .social-icons img:hover {
     opacity: 0.8;
+    transform: scale(1.5);
 }
 
 .contact-info {
