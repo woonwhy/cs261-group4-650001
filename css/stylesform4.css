@@ -278,14 +278,19 @@ h2 {
 .social-icons img {
     width: 24px;
     height: 24px;
-    opacity: 0.8;
     transition: opacity 0.3s;
+}
+
+.social-icons img:hover {
+    opacity: 0.8;
 }
 
 .contact-info {
     text-align: right;
     line-height: 1.5;
 }
+
+
 
 @media (max-width: 768px) {
     .main-box {
