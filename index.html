@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js"></script>
     <title>Login</title> 
 </head>
 <body>
@@ -15,14 +16,14 @@
             </div>
             <div class="input_box">
                 <i class="bx bx-user icon"></i>
-                <input type="text" id="user" class="input-field" required>
+                <input type="text" id="username" class="input-field" required>
                 <label for="user" class="label">Username</label>
             </div>
             <div class="input_box">
                 <i class="bx bx-lock-alt icon"></i>
-                <input type="password" id="pass" class="input-field" required>
+                <input type="password" id="password" class="input-field" required>
                 <label for="pass" class="label">Password</label>
-                <i class="bx bx-hide toggle-password" onclick="togglePassword()"></i>
+                <i class="bx bx-hide toggle-password" id="togglePassword"></i>
             </div>
             <div class="remember-forgot">
                 <div class="remember-me">
@@ -31,23 +32,9 @@
                 </div>
             </div>
             <div class="input_box">
-                <input type="submit" class="input-submit" value="Login">
+                <button type="button" onclick="submitLogin()" class="input-submit">Login</button>
             </div>
         </div>
     </div>
-    <script>
-        function togglePassword() {
-            const passwordField = document.getElementById('pass');
-            const toggleIcon = document.querySelector('.toggle-password');
-            
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-                toggleIcon.classList.replace('bx-hide', 'bx-show');
-            } else {
-                passwordField.type = 'password';
-                toggleIcon.classList.replace('bx-show', 'bx-hide');
-            }
-        }
-    </script>
 </body>
 </html>
