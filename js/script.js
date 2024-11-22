@@ -163,3 +163,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+function saveStudentData(data) {
+    fetch('http://localhost:8080/api/students/add', { // URL ต้องตรงกับ Spring Boot endpoint
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            engName: data.displayname_en,
+            email: data.email,
+            faculty: data.faculty,
+            type: data.type,
+            userName: data.username
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to save data');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data saved successfully:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+}
