@@ -1,8 +1,8 @@
-// กำหนด error messages
+// Define error messages
 const ERROR_MESSAGES = {
     INVALID_CREDENTIALS: { 
-        th: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง', 
-        en: 'Invalid username or password.' 
+        th: 'กรุณาลองใหม่อีกครั้ง', 
+        en: 'Invalid login, please try again' 
     },
     EMPTY_FIELDS: { 
         th: 'กรุณากรอกชื่อผู้ใช้และรหัสผ่าน', 
@@ -10,21 +10,91 @@ const ERROR_MESSAGES = {
     }
 };
 
-// function สำหรับแสดงข้อความ error ทั้งสองภาษา
+// Show error popup
 function showError(errorType) {
-    const errorElement = document.getElementById('message');
-    const thMessage = ERROR_MESSAGES[errorType].th;
-    const enMessage = ERROR_MESSAGES[errorType].en;
-    
-    // สร้าง error message ในรูปแบบ "ข้อความภาษาไทย (English message)"
-    errorElement.innerText = `${thMessage} (${enMessage})`;
-    errorElement.style.color = 'red';
-    errorElement.style.display = 'block';
+    // Remove any existing error popups first
+    const existingOverlay = document.querySelector('.overlay');
+    if (existingOverlay) {
+        document.body.removeChild(existingOverlay);
+    }
+
+    const overlay = document.createElement('div');
+    overlay.className = 'overlay';
+
+    const popup = document.createElement('div');
+    popup.className = 'popup';
+
+    const iconContainer = document.createElement('div');
+    iconContainer.className = 'icon-container';
+
+    const xIcon = document.createElement('span');
+    xIcon.textContent = '×';
+    xIcon.className = 'x-icon';
+    iconContainer.appendChild(xIcon);
+
+    const message = document.createElement('div');
+    message.textContent = ERROR_MESSAGES[errorType].en;
+    message.className = 'error-message';
+
+    const okButton = document.createElement('button');
+    okButton.textContent = 'OK';
+    okButton.className = 'ok-button';
+
+    // Function to close the error popup
+    const closeErrorPopup = () => {
+        const overlayToRemove = document.querySelector('.overlay');
+        if (overlayToRemove) {
+            overlayToRemove.remove();
+        }
+    };
+
+    // Add click event to OK button
+    okButton.onclick = closeErrorPopup;
+
+    // Add click event to overlay for closing when clicking outside
+    overlay.onclick = (e) => {
+        if (e.target === overlay) {
+            closeErrorPopup();
+        }
+    };
+
+    // Add escape key event listener
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeErrorPopup();
+        }
+    });
+
+    popup.appendChild(iconContainer);
+    popup.appendChild(message);
+    popup.appendChild(okButton);
+    overlay.appendChild(popup);
+    document.body.appendChild(overlay);
 }
 
-function submitLogin() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+// Login function with remember username and password
+function submitLogin(e) {
+    if (e && e.preventDefault) {
+        e.preventDefault();
+    }
+    
+    const username = document.getElementById('username')?.value;
+    const password = document.getElementById('password')?.value;
+    const remember = document.getElementById('remember')?.checked;
+
+    if (!username || !password) {
+        showError('EMPTY_FIELDS');
+        return;
+    }
+
+    // Remember username and password if checked
+    if (remember) {
+        localStorage.setItem('rememberedUsername', username);
+        localStorage.setItem('rememberedPassword', password);
+    } else {
+        localStorage.removeItem('rememberedUsername');
+        localStorage.removeItem('rememberedPassword');
+    }
 
     // ตรวจสอบข้อมูลว่าง
     if (!username || !password) {
@@ -40,12 +110,9 @@ function submitLogin() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Application-Key': 'TU5d9c2f64dba5a79b5703f16217099f581aa997f95cea8f85ee3303e96d2af4fa9389bf05fe88938703a7a4a10e198098'
+            'Application-Key': 'TU7a8369b69d9fe193235104bd66ad2091f212044bd3ad78226274784ab2c0bac00bc0d2e5e30ff74abfb456f8ef087695'
         },
-        body: JSON.stringify({
-            "UserName": username,
-            "PassWord": password
-        })
+        body: JSON.stringify({ UserName: username, PassWord: password })
     })
     .then(response => {
         if (!response.ok) {
@@ -55,28 +122,32 @@ function submitLogin() {
     })
     .then(data => {
         if (data.status === true) {
-            // เก็บข้อมูลผู้ใช้ใน localStorage เพื่อใช้ในหน้า form1
-            localStorage.setItem('html/form1', JSON.stringify(data));
-            
-            // นำทางไปยังหน้า form1
+            localStorage.setItem('form1', JSON.stringify(data));
             window.location.href = 'html/home.html';
         } else {
             showError('INVALID_CREDENTIALS');
         }
     })
-    .catch(error => {
-        console.error('Error:', error);
-        showError('INVALID_CREDENTIALS');
-    });
+    .catch(() => showError('INVALID_CREDENTIALS'));
 }
 
-
-// Toggle password visibility
+// Load remembered username and password on page load
 document.addEventListener('DOMContentLoaded', function() {
     const passwordInput = document.getElementById('password');
     const togglePassword = document.getElementById('togglePassword');
+    const rememberedUsername = localStorage.getItem('rememberedUsername');
+    const rememberedPassword = localStorage.getItem('rememberedPassword');
 
-    if (togglePassword) {
+    if (rememberedUsername) {
+        document.getElementById('username').value = rememberedUsername;
+        document.getElementById('remember').checked = true;
+    }
+
+    if (rememberedPassword) {
+        document.getElementById('password').value = rememberedPassword;
+    }
+
+    if (togglePassword && passwordInput) {
         togglePassword.addEventListener('click', function() {
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
@@ -85,20 +156,49 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add event listener to login button if it exists
+    // Login button event
     const loginButton = document.querySelector('button');
     if (loginButton) {
         loginButton.addEventListener('click', submitLogin);
     }
+
+    // Enter key event
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                submitLogin();
+            }
+        });
+    });
 });
 
-// Check if user is already logged in when loading form1.html
-if (window.location.href.includes('html/form1.html')) {
-    document.addEventListener('DOMContentLoaded', function() {
-        const userData = localStorage.getItem('userData');
-        if (!userData) {
-            // ถ้าไม่มีข้อมูลผู้ใช้ ให้กลับไปหน้า login
-            window.location.href = 'index.html';
+function saveStudentData(data) {
+    fetch('http://localhost:8080/api/students/add', { // URL ต้องตรงกับ Spring Boot endpoint
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            engName: data.displayname_en,
+            email: data.email,
+            faculty: data.faculty,
+            type: data.type,
+            userName: data.username
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to save data');
         }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data saved successfully:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
     });
+
 }

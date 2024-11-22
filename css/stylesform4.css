@@ -1,0 +1,372 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'TH Sarabun New', sans-serif;
+}
+
+body {
+    background-image: url('../img/backgroundform1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    color: #444;
+  }
+  
+  .navbar .logo {
+    width: 40px;
+    height: auto;
+  }
+  
+  .navbar .menu {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .navbar .menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .navbar .menu a:hover {
+    background-color: #f7f7f7;
+    color: #ff6b6b;
+  }
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+}
+
+.logo {
+    width: 40px;
+    height: auto;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: normal;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 250px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 12px 16px;
+}
+
+.main-box {
+    background: white;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 70px auto 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+h1:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    margin-top: 10px;
+}
+
+h2 {
+    font-size: 18px;
+    margin: 15px 0;
+    color: #333;
+}
+
+.form-section {
+    margin-bottom: 30px;
+    padding: 0 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.form-row label {
+    text-align: right;
+    font-size: 16px;
+    color: #333;
+    padding-right: 10px;
+}
+
+.form-row input,
+.form-row textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.form-row textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.radio-group {
+    padding: 10px 0;
+    margin-left: 20px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.radio-option input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding: 8px;
+}
+
+.debt-amount {
+    width: 200px !important;
+    margin-left: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.file-upload {
+    margin: 20px 0;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-upload label {
+    color: #333;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.file-info {
+    color: #f52c2c;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 0 10px;
+}
+
+.btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    min-width: 100px;
+}
+
+.btn-submit {
+    background: #007bff;
+}
+
+.btn-cancel {
+    background: #6c757d;
+}
+
+
+.footer {
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    margin-top: auto;
+    padding: 20px 0;
+    color: white;
+    position: relative;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 20px;
+}
+
+.copyright {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.social-links {
+    text-align: center;
+}
+
+.social-links-title {
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.social-icons img:hover {
+    opacity: 0.8;
+    transform: scale(1.5);
+}
+
+.contact-info {
+    text-align: right;
+    line-height: 1.5;
+}
+
+
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+    
+    .main-box {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row label {
+        text-align: left;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+
+    .radio-option {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .debt-amount {
+        width: 100% !important;
+        margin-left: 0;
+        margin-top: 5px;
+    }
+}
