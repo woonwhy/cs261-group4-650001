@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>คำร้องขอลาออก</title>
     <link rel="stylesheet" href="../css/stylesform4.css">
-    <script src="../js/form1.js"></script>
+    <script src="../js/form4.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -107,20 +107,20 @@
             <h2>ข้าพเจ้าขอรับรองว่าไม่มีภาระหนี้ผูกพันกับมหาวิทยาลัย</h2>
             <div class="radio-group">
                 <div class="radio-option">
-                    <input type="radio" name="debt" id="debt">
+                    <input type="radio" name="debt" id="no-debt" value="no-debt">
                     <label for="no-debt">ไม่มีภาระหนี้สินคงค้าง</label>
                 </div>
                 <div class="radio-option">
-                    <input type="radio" name="debt" id="debt">
+                    <input type="radio" name="debt" id="has-debt" value="has-debt">
                     <label for="has-debt">มีภาระหนี้สินคงค้างจำนวน</label>
-                    <input type="text" class="debt-amount" id="debt-amount">
+                    <input type="text" class="debt-amount" id="debt-amount" disabled>
                 </div>
             </div>
         </div>
 
         <div class="button-group">
-            <button class="btn btn-cancel">ยกเลิก</button>
-            <button class="btn btn-submit">ตกลง</button>
+            <button type="button" class="btn btn-cancel">ยกเลิก</button>
+            <button type="submit" class="btn btn-submit">ตกลง</button>
         </div>
     </main>
 
