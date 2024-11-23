@@ -13,20 +13,57 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-size: 18px;
+    line-height: 1.5;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 15px 20px;
     background-color: #fff;
+    border-bottom: 1px solid #ddd;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-}
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    color: #444;
+  }
+  
+  .navbar .logo {
+    width: 40px;
+    height: auto;
+  }
+  
+  .navbar .menu {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .navbar .menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .navbar .menu a:hover {
+    background-color: #f7f7f7;
+    color: #ff6b6b;
+  }
 
 .left {
     display: flex;
@@ -84,7 +121,7 @@ body {
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 70px auto 20px;
+    margin: 100px auto 20px;
 }
 
 h1 {
@@ -163,64 +200,10 @@ h2 {
     border: 1px solid #ddd;
     border-radius: 20px;
     cursor: pointer;
-    font-size: 14px;
-}
-
-.file-label:hover {
-    background-color: #e9ecef;
 }
 
 .file-info {
     color: #f52c2c;
-    font-size: 14px;
-    margin-left: 10px;
-}
-
-/* File list container */
-#fileList {
-    margin-top: 10px;
-}
-
-/* Individual file item */
-.file-item {
-    display: flex;
-    align-items: center;
-    padding: 5px 0;
-    border-bottom: 1px solid #dee2e6;
-}
-
-/* File icon */
-.file-item::before {
-    content: '';
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M320 464c8.8 0 16-7.2 16-16V160H256c-17.7 0-32-14.3-32-32V48H64c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320zM0 64C0 28.7 28.7 0 64 0H229.5c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
-/* File name text */
-.file-item span {
-    flex-grow: 1;
-    color: #212529;
-    font-size: 14px;
-}
-
-/* Remove button */
-.file-item button {
-    background: none;
-    border: none;
-    color: #dc3545;
-    cursor: pointer;
-    padding: 2px 8px;
-    font-size: 14px;
-}
-
-.file-item button:hover {
-    color: #c82333;
 }
 
 .button-group {
@@ -290,8 +273,12 @@ h2 {
 .social-icons img {
     width: 24px;
     height: 24px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.social-icons img:hover {
     opacity: 0.8;
-    transition: opacity 0.3s;
+    transform: scale(1.5);
 }
 
 .contact-info {
@@ -300,6 +287,10 @@ h2 {
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+
     .main-box {
         width: 95%;
         padding: 15px;
@@ -324,4 +315,3 @@ h2 {
         text-align: center;
     }
 }
-
