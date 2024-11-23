@@ -74,19 +74,19 @@
             <h2>รายละเอียดคำร้อง</h2>
             <div class="form-row">
                 <label>เหตุผล :</label>
-                <textarea rows="5"></textarea>
+                <textarea rows="5" id="reason"></textarea>
             </div>
         </div>
 
         <div class="form-section">
             <h2>ข้อมูลเพิ่มเติมสำหรับการลาออก</h2>
             <div class="form-row">
-                <label>ภาคเรียนที่ภาค :</label>
-                <input type="text">
+                <label>ภาคเรียนที่ :</label>
+                <input type="text" id="semester">
             </div>
             <div class="form-row">
                 <label>ปีการศึกษา :</label>
-                <input type="text">
+                <input type="text" id="year">
             </div>
         </div>
 
@@ -107,11 +107,11 @@
             <h2>ข้าพเจ้าขอรับรองว่าไม่มีภาระหนี้ผูกพันกับมหาวิทยาลัย</h2>
             <div class="radio-group">
                 <div class="radio-option">
-                    <input type="radio" name="debt" id="no-debt">
+                    <input type="radio" name="debt" id="debt">
                     <label for="no-debt">ไม่มีภาระหนี้สินคงค้าง</label>
                 </div>
                 <div class="radio-option">
-                    <input type="radio" name="debt" id="has-debt">
+                    <input type="radio" name="debt" id="debt">
                     <label for="has-debt">มีภาระหนี้สินคงค้างจำนวน</label>
                     <input type="text" class="debt-amount" id="debt-amount">
                 </div>
