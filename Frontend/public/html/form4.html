@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำร้องขอลาออก</title>
+    <link rel="stylesheet" href="../css/stylesform4.css">
+    <script src="../js/form4.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="left">
+            <img src="../img/tu-logo.png" alt="Logo" class="logo">
+            <span>มหาวิทยาลัยธรรมศาสตร์</span>
+        </div>
+        <div class="menu">
+            <a href="home.html">หน้าหลัก</a>
+            <div class="dropdown">
+                <a href="#">เขียนคำร้อง</a>
+                <div class="dropdown-content">
+                    <a href="form1.html">จดทะเบียนล่าช้า/เพิ่มล่าช้า</a>
+                    <a href="form2.html">ขอถอนรายวิชา(Drop W)</a>
+                    <a href="form3.html">จดทะเบียนศึกษารายวิชาข้ามโครงการ</a>
+                    <a href="form4.html">คำร้องขอลาออก</a>
+                </div>
+            </div>
+            <a href="example.html">ภาพตัวอย่าง</a>
+            <a href="status.html">สถานะคำร้อง</a>
+        </div>
+    </nav>
+
+    <main class="main-box">
+        <h1>คำร้องขอลาออก</h1>
+
+        <section class="form-section">
+            <h2>ข้อมูลส่วนตัว</h2>
+            <div class="form-row">
+                <label>วันที่จดทะเบียน:</label>
+                <input type="date" id="registrationDate">
+            </div>
+            <div class="form-row">
+                <label>ชื่อ-สกุล:</label>
+                <input type="text" id="displayname_th" readonly>
+            </div>
+            <div class="form-row">
+                <label>เลขทะเบียน:</label>
+                <input type="text" id="username" readonly>
+            </div>
+            <div class="form-row">
+                <label>Email:</label>
+                <input type="email" id="email" readonly>
+            </div>
+            <div class="form-row">
+                <label>คณะ:</label>
+                <input type="text" id="faculty" readonly>
+            </div>
+            <!--
+            <div class="form-row">
+                <label>ระดับการศึกษา:</label>
+                <input type="text" id="department">
+            </div>
+            -->
+            <div class="form-row">
+                <label>สาขาวิชา:</label>
+                <input type="text" id="department" readonly>
+            </div>
+            <div class="form-row">
+                <label>สถานภาพนักศึกษา:</label>
+                <input type="text" id="tu_status" readonly>
+            </div>
+        </section>
+
+        <div class="form-section">
+            <h2>รายละเอียดคำร้อง</h2>
+            <div class="form-row">
+                <label>เหตุผล :</label>
+                <textarea rows="5" id="reason"></textarea>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>ข้อมูลเพิ่มเติมสำหรับการลาออก</h2>
+            <div class="form-row">
+                <label>ภาคเรียนที่ :</label>
+                <input type="text" id="semester">
+            </div>
+            <div class="form-row">
+                <label>ปีการศึกษา :</label>
+                <input type="text" id="year">
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>แนบไฟล์หลักฐานเพิ่มเติม :</h2>
+            <div class="file-upload">
+                <label>แบบไฟล์หลักฐานเพิ่มเติม :</label>
+                <label class="file-label">
+                    Choose file
+                    <input type="file" id="file" style="display: none;">
+                </label>
+                <span class="file-info">(pdf,jpg มีขนาดไม่เกิน 100kB จำนวนไม่เกิน 5 ไฟล์)</span>
+            </div>
+            <div id="fileList"></div>
+        </div>
+
+        <div class="form-section">
+            <h2>ข้าพเจ้าขอรับรองว่าไม่มีภาระหนี้ผูกพันกับมหาวิทยาลัย</h2>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" name="debt" id="no-debt" value="no-debt">
+                    <label for="no-debt">ไม่มีภาระหนี้สินคงค้าง</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="debt" id="has-debt" value="has-debt">
+                    <label for="has-debt">มีภาระหนี้สินคงค้างจำนวน</label>
+                    <input type="text" class="debt-amount" id="debt-amount" disabled>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button type="button" class="btn btn-cancel">ยกเลิก</button>
+            <button type="submit" class="btn btn-submit">ตกลง</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="copyright">Copyright © 2024</div>
+            <div class="social-links">
+                <div class="social-links-title">Connect</div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/chala.hedchala.56/"><img src="../img/facebook.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com/yoxxa.g/?hl=th"><img src="../img/instagram.png" alt="Instagram"></a>
+                    <a href="https://mail.google.com/mail/u/2/#inbox?compose=GTvVlcSKjgLCffZrTtcBNHSStSrtgQnhNFjPtJfSccvcDpSXHkvtjmRSDMwNpPSVCjzKlDvHMCJNs"><img src="../img/gmail.png" alt="Gmail"></a>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div>ติดต่อเพิ่มเติม</div>
+                <div>Tel : +(66)61-971-8337</div>
+                <div>Line ID : getgetmung</div>
+                <div>E-mail : chayanon.pur@dome.tu.ac.th</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
