@@ -26,17 +26,25 @@ window.onload = function() {
             faculty: document.getElementById('faculty').value,
             department: document.getElementById('department').value,
             tu_status: document.getElementById('tu_status').value,
-            address: document.getElementById('address').value,
-            address: document.getElementById('address').value,
+            Hnum: document.getElementById('Hnum').value,
+            village: document.getElementById('village').value,
+            province: document.getElementById('province').value,
+            district: document.getElementById('district').value,
+            postal: document.getElementById('postal').value,
+            name_require: document.getElementById('name_require').value,
             semester: document.getElementById('semester').value,
-            courseCode: document.getElementById('courseCode').value,
-            courseName: document.getElementById('courseName').value,
+            course: document.getElementById('course').value,
+            subject: document.getElementById('subject').value,
             section: document.getElementById('section').value,
-            reason: document.getElementById('reason').value
+            reason: document.getElementById('reason').value,
+            file: document.getElementById('file').value,
+            year: document.getElementById('yaer').value,
+            debt: document.getElementById('debt').value
         };
 
         // บันทึกข้อมูลลง localStorage (ถ้าต้องการ)
-        localStorage.setItem('submittedForm', JSON.stringify(formData));
+        //localStorage.setItem('submittedForm', JSON.stringify(formData));
+        saveStudentData(formData)
         
         // แสดง alert
         alert('บันทึกข้อมูลเรียบร้อย โปรดตรวจสอบสถานะได้ที่ สถานะคำร้อง');
@@ -58,18 +66,26 @@ function saveStudentData(data) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
+            debt: data.debt,
+            yaer: data.yaer,
+            file: data.file,
             reason: data.reason,
             section: data.section,
-            courseName: data.courseName,
-            courseCode: data.courseCode,
+            subject: data.subject,
+            course: data.course,
             semester: data.semester,
-            address: data.address,
+            require: data.name_require,
+            postal: data.postal,
+            district: data.district,
+            province: data.province,
+            village: data.village,
+            housenumber: data.Hnum,
             status: data.tu_status,
             department: data.department,
             faculty: data.faculty,
             email: data.email,
             userName: data.username,
-            Name: data.displayname_th,
+            displayname_th: data.displayname_th,
             date: data.registrationDate
         })
     })

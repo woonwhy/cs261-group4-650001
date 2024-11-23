@@ -133,8 +133,7 @@ p#message {
     color: red;
     font-size: 14px;
 }
-<<<<<<< HEAD
-=======
+
 /* สไตล์สำหรับ overlay */
 .overlay {
     position: fixed;
@@ -213,4 +212,4 @@ p#message {
         transform: scale(1);
     }
 }
->>>>>>> e814d3edc028d6d08243061e4e13456d0bd8e7a8
+
