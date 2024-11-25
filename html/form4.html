@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>คำร้องขอลาออก</title>
     <link rel="stylesheet" href="../css/stylesform4.css">
-    <script src="../js/form1.js"></script>
+    <script src="../js/form4.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -26,6 +26,9 @@
             </div>
             <a href="example.html">ภาพตัวอย่าง</a>
             <a href="status.html">สถานะคำร้อง</a>
+            <a href="../index.html" class="user-icon">
+                <img src="../img/iconlogout.png" alt="User" class="user-icon-img">
+              </a>
         </div>
     </nav>
 
@@ -40,19 +43,19 @@
             </div>
             <div class="form-row">
                 <label>ชื่อ-สกุล:</label>
-                <input type="text" id="displayname_th">
+                <input type="text" id="displayname_th" readonly>
             </div>
             <div class="form-row">
                 <label>เลขทะเบียน:</label>
-                <input type="text" id="username">
+                <input type="text" id="username" readonly>
             </div>
             <div class="form-row">
                 <label>Email:</label>
-                <input type="email" id="email">
+                <input type="email" id="email" readonly>
             </div>
             <div class="form-row">
                 <label>คณะ:</label>
-                <input type="text" id="faculty">
+                <input type="text" id="faculty" readonly>
             </div>
             <!--
             <div class="form-row">
@@ -62,11 +65,11 @@
             -->
             <div class="form-row">
                 <label>สาขาวิชา:</label>
-                <input type="text" id="department">
+                <input type="text" id="department" readonly>
             </div>
             <div class="form-row">
                 <label>สถานภาพนักศึกษา:</label>
-                <input type="text" id="tu_status">
+                <input type="text" id="tu_status" readonly>
             </div>
         </section>
 
@@ -74,19 +77,19 @@
             <h2>รายละเอียดคำร้อง</h2>
             <div class="form-row">
                 <label>เหตุผล :</label>
-                <textarea rows="5"></textarea>
+                <textarea rows="5" id="reason"></textarea>
             </div>
         </div>
 
         <div class="form-section">
             <h2>ข้อมูลเพิ่มเติมสำหรับการลาออก</h2>
             <div class="form-row">
-                <label>ภาคเรียนที่ภาค :</label>
-                <input type="text">
+                <label>ภาคเรียนที่ :</label>
+                <input type="text" id="semester">
             </div>
             <div class="form-row">
                 <label>ปีการศึกษา :</label>
-                <input type="text">
+                <input type="text" id="year">
             </div>
         </div>
 
@@ -107,20 +110,20 @@
             <h2>ข้าพเจ้าขอรับรองว่าไม่มีภาระหนี้ผูกพันกับมหาวิทยาลัย</h2>
             <div class="radio-group">
                 <div class="radio-option">
-                    <input type="radio" name="debt" id="no-debt">
+                    <input type="radio" name="debt" id="no-debt" value="no-debt">
                     <label for="no-debt">ไม่มีภาระหนี้สินคงค้าง</label>
                 </div>
                 <div class="radio-option">
-                    <input type="radio" name="debt" id="has-debt">
+                    <input type="radio" name="debt" id="has-debt" value="has-debt">
                     <label for="has-debt">มีภาระหนี้สินคงค้างจำนวน</label>
-                    <input type="text" class="debt-amount" id="debt-amount">
+                    <input type="text" class="debt-amount" id="debt-amount" disabled>
                 </div>
             </div>
         </div>
 
         <div class="button-group">
-            <button class="btn btn-cancel">ยกเลิก</button>
-            <button class="btn btn-submit">ตกลง</button>
+            <button type="button" class="btn btn-cancel">ยกเลิก</button>
+            <button type="submit" class="btn btn-submit">ตกลง</button>
         </div>
     </main>
 

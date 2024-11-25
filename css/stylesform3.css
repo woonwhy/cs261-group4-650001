@@ -6,16 +6,17 @@
 }
 
 body {
-    background-image: url('../img/backgroundform1.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    font-family: 'TH Sarabun New', sans-serif;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
     font-size: 18px;
     line-height: 1.5;
-}
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/homeBG .png');
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
 
 .navbar {
     display: flex;
@@ -113,6 +114,11 @@ body {
     display: block;
     padding: 12px 16px;
 }
+.user-icon-img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+  }
 
 .main-box {
     background: white;

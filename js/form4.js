@@ -11,7 +11,18 @@ window.onload = function() {
         document.getElementById('faculty').value = form1.faculty;
         document.getElementById('department').value = form1.department;
         document.getElementById('tu_status').value = form1.tu_status;
+        // เพิ่มการตั้งค่าสำหรับ debt
+        if (form1.debt) {
+            document.getElementById('has-debt').checked = true;
+            document.getElementById('debt-amount').value = form1.debt;
+            document.getElementById('debt-amount').disabled = false;
+        } else {
+            document.getElementById('no-debt').checked = true;
+            document.getElementById('debt-amount').disabled = true;
+        }
     }
+
+    handleDebtSelection();
 
     // เพิ่ม Event Listener สำหรับการ submit form
     document.querySelector('button[type="submit"]').addEventListener('click', function(e) {
@@ -26,19 +37,18 @@ window.onload = function() {
             faculty: document.getElementById('faculty').value,
             department: document.getElementById('department').value,
             tu_status: document.getElementById('tu_status').value,
-            Hnum: document.getElementById('Hnum').value,
-            village: document.getElementById('village').value,
-            province: document.getElementById('province').value,
-            district: document.getElementById('district').value,
-            postal: document.getElementById('postal').value,
-            name_require: document.getElementById('name_require').value,
-            semester: document.getElementById('semester').value,
-            course: document.getElementById('course').value,
-            subject: document.getElementById('subject').value,
-            section: document.getElementById('section').value,
             reason: document.getElementById('reason').value,
+            semester: document.getElementById('semester').value,
+            year: document.getElementById('year').value,
             file: document.getElementById('file').value,
+            debt: document.getElementById('has-debt').checked ? 
+                  parseFloat(document.getElementById('debt-amount').value) || 0 : 0
         };
+
+        if (document.getElementById('has-debt').checked && !formData.debt) {
+            alert('กรุณาระบุจำนวนหนี้สินให้ถูกต้อง');
+            return;
+        }
 
         // บันทึกข้อมูลลง localStorage (ถ้าต้องการ)
         //localStorage.setItem('submittedForm', JSON.stringify(formData));
@@ -64,18 +74,11 @@ function saveStudentData(data) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
+            debt: data.debt,
             file_path: data.file,
-            reason: data.reason,
-            section: data.section,
-            subject: data.subject,
-            course: data.course,
+            year: data.year,
             semester: data.semester,
-            name_require: data.name_require,
-            postal: data.postal,
-            district: data.district,
-            province: data.province,
-            village: data.village,
-            housenumber: data.Hnum,
+            reason: data.reason,
             status: data.tu_status,
             department: data.department,
             faculty: data.faculty,
@@ -181,3 +184,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const fileInput = document.getElementById('file');
     fileInput.addEventListener('change', handleFileUpload);
 });
+
+// เพิ่มฟังก์ชันสำหรับจัดการ radio buttons debt
+function handleDebtSelection() {
+    const noDebtRadio = document.getElementById('no-debt');
+    const hasDebtRadio = document.getElementById('has-debt');
+    const debtAmountInput = document.getElementById('debt-amount');
+
+    // Event listener สำหรับ radio button ไม่มีหนี้
+    noDebtRadio.addEventListener('change', function() {
+        if (this.checked) {
+            debtAmountInput.disabled = true;
+            debtAmountInput.value = '';
+            formData.debt = 0; // เก็บค่าหนี้เป็น 0
+        }
+    });
+
+    // Event listener สำหรับ radio button มีหนี้
+    hasDebtRadio.addEventListener('change', function() {
+        if (this.checked) {
+            debtAmountInput.disabled = false;
+            debtAmountInput.focus();
+        }
+    });
+
+    // Event listener สำหรับ input จำนวนหนี้
+    debtAmountInput.addEventListener('input', function() {
+        if (hasDebtRadio.checked) {
+            formData.debt = parseFloat(this.value) || 0;
+        }
+    });
+}
