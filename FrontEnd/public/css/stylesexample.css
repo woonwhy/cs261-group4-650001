@@ -133,6 +133,12 @@ body {
     background-color: #f9f9f9;
 }
 
+.user-icon-img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+  }
+
 /* Main Content */
 .content {
     flex: 1;

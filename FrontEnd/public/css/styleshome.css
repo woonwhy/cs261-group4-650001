@@ -109,6 +109,11 @@ body {
 .dropdown-content a:hover {
   background-color: #f7f7f7;
 }
+.user-icon-img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
 
 /* Content */
 .content {

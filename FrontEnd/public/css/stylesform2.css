@@ -115,6 +115,12 @@ body {
     padding: 12px 16px;
 }
 
+.user-icon-img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+  }
+  
 .main-box {
     background: white;
     width: 90%;
