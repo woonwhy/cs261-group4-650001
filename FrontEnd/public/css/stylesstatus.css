@@ -92,6 +92,10 @@ body {
     font-weight: normal;
     padding: 0.5rem 1rem;
     transition: color 0.3s;
+    display: flex;
+    align-items: center ;
+    justify-content: center ;
+    height: 100%;
 }
 
 /* Dropdown Menu */
@@ -460,7 +464,11 @@ h2 {
     line-height: 1.6;
 }
 
-
+.logout-icon {
+    width: 24px;
+    height: 35px;
+    cursor: pointer;
+}
 
 @media (max-width: 768px) {
     .navbar {
