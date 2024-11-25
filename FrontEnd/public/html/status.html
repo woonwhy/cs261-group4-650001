@@ -6,34 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>สถานะคำร้อง</title>
     <link rel="stylesheet" href="../css/stylesstatus.css">
+</head>
 <body>
     <div class="container">
         <nav class="navbar">
             <!-- Navbar Content -->
         </nav>
 
-<<<<<<< HEAD:html/status.html
-        <div class="content2">
-            <h1>คำร้องจากนักศึกษาคณะวิทยาศาสตร์</h1>    
-            <div class="status-box">
-                <p><strong>วันที่จดทะเบียน:</strong> 14/11/2567</p>
-            <p><strong>เรื่อง:</strong> "คำร้องขอจดทะเบียนเพิ่ม-ถอนล่าช้า"</p>
-            <p><strong>สถานะคำร้อง:</strong> <span class="status-text">กำลังดำเนินการ</span></p>
-            <div class="buttons">
-                <button class="view-btn">view</button>
-                <button class="cancel-btn">cancel</button>
-            </div>
-              </div>
-            </div>
-          </div>    
-=======
         <div class="content">
             <div class="main-content">
                 <h2>คำร้องจากนักศึกษาคณะวิทยาศาสตร์</h2>
                 <div id="requests-container"></div>
             </div>
         </div>
->>>>>>> 9ec79daf615d7d4ef0ff3f9aa7ec08db053dc3e4:FrontEnd/public/html/status.html
     </div>    <div class="container">
         <nav class="navbar">
             <div class="left">
@@ -54,6 +39,7 @@
                 </div>
                 <a href="example.html">ภาพตัวอย่าง</a>
                 <a href="status.html">สถานะคำร้อง</a>
+                <button class="logout-btn" onclick="logout()">Logout</button>
             </div>
         </nav>
 
@@ -61,13 +47,8 @@
     </div>
     <footer class="footer">
         <div class="footer-content">
-<<<<<<< HEAD:html/status.html
-            <div class="copyright">
-                Copyright © 2024
-=======
             <div class="box">
                 <a href="home.html">หน้าหลัก</a>
->>>>>>> 9ec79daf615d7d4ef0ff3f9aa7ec08db053dc3e4:FrontEnd/public/html/status.html
             </div>
             <div class="social-links">
                 <div class="social-links-title">Connect</div>
@@ -84,11 +65,7 @@
                 <div>E-mail : chayanon.pur@dome.tu.ac.th</div>
             </div>
         </div>
-<<<<<<< HEAD:html/status.html
-    </footer> 
-=======
     </footer>    
->>>>>>> 9ec79daf615d7d4ef0ff3f9aa7ec08db053dc3e4:FrontEnd/public/html/status.html
 
     <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -134,5 +111,19 @@
     })
     .catch(error => console.error('Error:', error));
 }
+
+
+</script>
+
+<script>
+    // ฟังก์ชันสำหรับออกจากระบบ
+    function logout() {
+
+        sessionStorage.removeItem("isLoggedIn"); //เราใช้ sessionStorage ใช่มะ
+
+        // รีไดเร็กต์ไปที่หน้า login
+        window.location.href = "../index.html";  // เปลี่ยนไปหน้า login หรือหน้าอื่นๆ ที่ต้องการ
+    }
 </script>
 </body>
+</html>
