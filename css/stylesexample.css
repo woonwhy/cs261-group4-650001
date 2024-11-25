@@ -98,6 +98,10 @@ body {
     font-weight: normal;
     padding: 0.5rem 1rem;
     transition: color 0.3s;
+    display: flex;
+    align-items: center ;
+    justify-content: center ;
+    height: 100%;
 }
 
 
@@ -393,6 +397,12 @@ h1 {
 .contact-info {
     text-align: right;
     line-height: 1.6;
+}
+
+.logout-icon {
+    width: 24px;
+    height: 35px;
+    cursor: pointer;
 }
 
 

@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>สถานะคำร้อง</title>
     <link rel="stylesheet" href="../css/stylesstatus.css">
+</head>
 <body>
     <div class="container">
-        <nav class="navbar">
-            <!-- Navbar Content -->
-        </nav>
+    <div class="navbar">
+        <div class="left">
+            <img src="../img/tu-logo.png" alt="Logo" class="logo">
+            <span>มหาวิทยาลัยธรรมศาสตร์</span>
+        </div>
+            <div class="menu">
+                <a href="home.html">หน้าหลัก</a>
+                <div class="dropdown">
+                <a href="#">เขียนคำร้อง</a>
+                        <div class="dropdown-content">
+                            <a href="form1.html">จดทะเบียนล่าช้า/เพิ่มล่าช้า</a>
+                            <a href="form2.html">ขอถอนรายวิชา (Drop W)</a>
+                            <a href="form3.html">จดทะเบียนศึกษารายวิชาข้ามโครงการ</a>
+                            <a href="form4.html">คำร้องขอลาออก</a>
+                        </div>
+                </div>
+                <a href="example.html">ภาพตัวอย่าง</a>
+                <a href="status.html">สถานะคำร้อง</a>
+                <a onclick="logout()">
+                    <img src="../img/iconlogout.png" alt="Logout" class="user-icon-img">
+                  </a>
+            </div>
+    </div>
 
         <div class="content2">
             <h1>คำร้องจากนักศึกษาคณะวิทยาศาสตร์</h1>    
@@ -17,30 +38,9 @@
                 <p><strong>วันที่จดทะเบียน:</strong> 14/11/2567</p>
             <p><strong>เรื่อง:</strong> "คำร้องขอจดทะเบียนเพิ่ม-ถอนล่าช้า"</p>
             <p><strong>สถานะคำร้อง:</strong> <span class="status-text">กำลังดำเนินการ</span></p>
-            <div class="buttons">
-                <button class="view-btn">view</button>
-                <button class="cancel-btn">cancel</button>
-            </div>
-              </div>
-            </div>
-          </div>    
-    </div>    <div class="container">
-        <nav class="navbar">
-            <div class="left">
-                <img src="../img/tu-logo.png" alt="Logo" class="logo">
-                <span>มหาวิทยาลัยธรรมศาสตร์</span>
-            </div>
-
-            <div class="menu">
-                <a href="home.html">หน้าหลัก</a>
-                <div class="dropdown">
-                    <a href="#">เขียนคำร้อง</a>
-                    <div class="dropdown-content">
-                        <a href="form1.html">จดทะเบียนล่าช้า/เพิ่มล่าช้า</a>
-                        <a href="form2.html">ขอถอนรายวิชา(Drop W)</a>
-                        <a href="form3.html">จดทะเบียนศึกษารายวิชาข้ามโครงการ</a>
-                        <a href="form4.html">คำร้องขอลาออก</a>
-                    </div>
+                <div class="buttons">
+                    <button class="view-btn">view</button>
+                    <button class="cancel-btn">cancel</button>
                 </div>
                 <a href="example.html">ภาพตัวอย่าง</a>
                 <a href="status.html">สถานะคำร้อง</a>
@@ -48,10 +48,9 @@
                     <img src="../img/iconlogout.png" alt="User" class="user-icon-img">
                   </a>
             </div>
-        </nav>
+        </div>   
+    </div>   
 
-     
-    </div>
     <footer class="footer">
         <div class="footer-content">
             <div class="copyright">
@@ -72,7 +71,7 @@
                 <div>E-mail : chayanon.pur@dome.tu.ac.th</div>
             </div>
         </div>
-    </footer> 
+    </footer>    
 
     <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -119,4 +118,13 @@
     .catch(error => console.error('Error:', error));
 }
 </script>
+<script>
+    // ฟังก์ชันสำหรับออกจากระบบ
+    function logout() {
+        sessionStorage.removeItem("isLoggedIn"); //เราใช้ sessionStorage ใช่มะ
+        // รีไดเร็กต์ไปที่หน้า login
+        window.location.href = "../index.html";  // เปลี่ยนไปหน้า login หรือหน้าอื่นๆ ที่ต้องการ
+    }
+</script>
 </body>
+</html>
