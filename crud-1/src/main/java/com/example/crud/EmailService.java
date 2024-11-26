@@ -13,7 +13,7 @@ public class EmailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    /*public void sendEmails(List<String> emailAddresses, String subject, String body) {
+    public void sendEmails(List<String> emailAddresses, String subject, String body) {
         for (String email : emailAddresses) {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(email);
@@ -21,29 +21,7 @@ public class EmailService {
             message.setText(body);
             mailSender.send(message);
         }
-    }*/
-
-    public void sendEmail(String emailAddress, String subject, String body) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(emailAddress);
-        message.setSubject(subject);
-        message.setText(body);
-        mailSender.send(message);
     }
-
-    // สร้างข้อความอีเมลจากข้อมูลแบบฟอร์ม
-    public String generateEmailContent(Form1 form1) {
-        return "เรียน " + form1.getNameTh() + ",\n\n" +
-                "รายละเอียดคำร้องของคุณ:\n" +
-                "วันที่ลงทะเบียน: " + form1.getRegistrationDate() + "\n" +
-                "คณะ: " + form1.getFaculty() + "\n" +
-                "ภาควิชา: " + form1.getDepartment() + "\n" +
-                "รหัสวิชา: " + form1.getSubject() + "\n" +
-                "เหตุผล: " + form1.getReason() + "\n\n" +
-                "คำร้องของคุณได้ถูกส่งไปยังอาจารย์ที่ปรึกษาแล้ว กรุณารอการอนุมัติ\n\n" +
-                "ขอแสดงความนับถือ,\nทีมงาน";
-    }
-
 }
 
 
