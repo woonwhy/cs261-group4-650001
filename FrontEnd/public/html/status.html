@@ -178,6 +178,13 @@
                 alert("ไม่สามารถแสดงข้อมูลได้");
             }
         }
+        function logout() {
+
+            sessionStorage.removeItem("isLoggedIn"); //เราใช้ sessionStorage ใช่มะ
+
+            // รีไดเร็กต์ไปที่หน้า login
+            window.location.href = "../index.html";  // เปลี่ยนไปหน้า login หรือหน้าอื่นๆ ที่ต้องการ
+        }
     </script>
 </body>
 </html>
