@@ -57,26 +57,28 @@ window.onload = function() {
         // เรียกใช้ฟังก์ชันแสดง popup
         showSuccessPopup();
     });
+
+    // เพิ่ม Event Listener สำหรับปุ่ม OK ใน popup
+    const okButton = document.getElementById('okButton');
+    if (okButton) {
+        okButton.addEventListener('click', function () {
+            hidePopup();
+            window.location.href = 'status.html'; // ไปยังหน้า status หลังจากคลิก OK
+        });
+    }
+
+    // เพิ่ม Event Listener สำหรับปุ่มกากบาท (X) เพื่อปิด popup และอยู่หน้าเดิม
+    const closeButton = document.querySelector('.close-btn');
+    if (closeButton) {
+        closeButton.addEventListener('click', function () {
+            hidePopup(); // ปิด popup โดยไม่เปลี่ยนหน้า
+        });
+    }
+
 };
-
-// เพิ่ม Event Listener สำหรับปุ่ม OK ใน popup
-const okButton = document.getElementById('okButton');
-if (okButton) {
-    okButton.addEventListener('click', function () {
-        hidePopup();
-        window.location.href = 'status.html'; // ไปยังหน้า status หลังจากคลิก OK
-    });
-}
-
-// เพิ่ม Event Listener สำหรับปุ่มกากบาท (X) เพื่อปิด popup
-const closeButton = document.querySelector('.close-btn');
-if (closeButton) {
-    closeButton.addEventListener('click', function () {
-        hidePopup();
-        window.location.href = 'status.html'; // ไปยังหน้า status หลังจากคลิก X
-    });
-}
-
+function cancel() {
+    window.location.href = "home.html";
+    }
 // ฟังก์ชันแสดง popup
 function showSuccessPopup() {
     const popup = document.getElementById('successPopup');

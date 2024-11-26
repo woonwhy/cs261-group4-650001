@@ -136,7 +136,7 @@
             <div id="fileList"></div>
 
             <div class="button-group">
-                <button type="button" class="btn btn-cancel">ยกเลิก</button>
+                <button type="button" class="btn btn-cancel" onclick="cancel()">ยกเลิก</button>
                 <button type="submit" class="btn btn-submit">ตกลง</button>
             </div>
         </form>
@@ -176,6 +176,9 @@
     </footer>
 
     <script>
+        function cancel() {
+    window.location.href = "home.html";
+    }
         // ฟังก์ชันสำหรับออกจากระบบ
         function logout() {
 
