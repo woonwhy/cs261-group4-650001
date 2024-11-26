@@ -1,4 +1,4 @@
-window.onload = function() {
+/*window.onload = function() {
     // ดึงข้อมูลผู้ใช้จาก Local Storage
     const form1 = JSON.parse(localStorage.getItem('form1'));
 
@@ -75,9 +75,9 @@ function saveStudentData(data) {
              'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            registrationDate:data.registrationDate,
-            name_th:data.name_th,
             username:data.username,
+           registrationDate:data.registrationDate,
+            name_th:data.name_th,
             email:data.email,
             faculty:data.faculty,
             department:data.department,
@@ -191,3 +191,117 @@ document.addEventListener('DOMContentLoaded', function() {
     const fileInput = document.getElementById('file');
     fileInput.addEventListener('change', handleFileUpload);
 });
+*/
+window.onload = function() {
+    // ดึงข้อมูลผู้ใช้จาก Local Storage
+    const form1 = JSON.parse(localStorage.getItem('form1'));
+
+    if (form1) {
+         // สร้างวันที่ในรูปแบบที่เหมาะสม
+         const today = new Date();
+         const formattedDate = today.getFullYear() + '-' +
+                               String(today.getMonth() + 1).padStart(2, '0') + '-' +
+                               String(today.getDate()).padStart(2, '0');
+     
+         // กำหนดค่าวันที่จดทะเบียน
+         const registrationDateField = document.getElementById('registrationDate');
+         if (registrationDateField) {
+             registrationDateField.value = formattedDate; // Autofill
+         }
+       
+        // กำหนดค่าต่าง ๆ ในฟอร์ม
+        document.getElementById('displayname_th').value = form1.displayname_th;
+        document.getElementById('username').value = form1.username;
+        document.getElementById('email').value = form1.email;
+        document.getElementById('faculty').value = form1.faculty;
+        document.getElementById('department').value = form1.department;
+        document.getElementById('tu_status').value = form1.tu_status;
+    }
+
+    // เพิ่ม Event Listener สำหรับการ submit form
+    document.querySelector('button[type="submit"]').addEventListener('click', function(e) {
+        e.preventDefault(); // ป้องกันการ submit form แบบปกติ
+        
+        // เก็บข้อมูลจาก form
+        const formData = {
+            registrationDate: document.getElementById('registrationDate').value,
+            displayname_th: document.getElementById('displayname_th').value,
+            username: document.getElementById('username').value,
+            email: document.getElementById('email').value,
+            faculty: document.getElementById('faculty').value,
+            department: document.getElementById('department').value,
+            tu_status: document.getElementById('tu_status').value,
+           home: document.getElementById('home').value,
+            village: document.getElementById('village').value,
+            province: document.getElementById('province').value,
+            district: document.getElementById('district').value,
+            postal: document.getElementById('postal').value,
+          nameRequire: document.getElementById('nameRequire').value,
+            semester: document.getElementById('semester').value,
+            course: document.getElementById('course').value,
+            subject: document.getElementById('subject').value,
+            section: document.getElementById('section').value,
+            reason: document.getElementById('reason').value
+
+        };
+
+        console.log('Form Data:', formData);
+
+        // บันทึกข้อมูลลง localStorage (ถ้าต้องการ)
+        //localStorage.setItem('submittedForm', JSON.stringify(formData));
+         saveStudentData(formData)
+        
+        // แสดง alert
+        alert('บันทึกข้อมูลเรียบร้อย โปรดตรวจสอบสถานะได้ที่ สถานะคำร้อง');
+        
+        // redirect ไปยังหน้าหลักหลังจากกด OK ที่ alert
+        //window.location.href = 'home.html';
+    });
+};
+
+// ฟังก์ชันยกเลิกและกลับไปหน้าหลัก
+function cancel() {
+    window.location.href = 'home.html';
+}
+
+function saveStudentData(data) {
+    fetch('http://localhost:8080/api/form1/add', { // URL ต้องตรงกับ Spring Boot endpoint
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            tu_status: data.tu_status,
+            department: data.department,
+            faculty: data.faculty,
+            email: data.email,
+            username: data.username,
+            name_th: data.displayname_th,
+            registrationDate: data.registrationDate,
+           home: data.home,
+            village: data.village,
+            province: data.province,
+            district: data.district,
+            postal: data.postal,
+          nameRequire: data.nameRequire,
+            semester: data.semester,
+            course: data.course,
+            section: data.section,
+            subject: data.subject,
+            reason:data.reason
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to save data');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data saved successfully:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+}
