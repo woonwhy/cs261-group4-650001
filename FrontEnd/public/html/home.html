@@ -27,6 +27,9 @@
         </div>
         <a href="example.html">ภาพตัวอย่าง</a>
         <a href="status.html">สถานะคำร้อง</a>
+        <a onclick="logout()">
+          <img src="../img/iconlogout.png" alt="Logout" class="user-icon-img">
+        </a>
       </div>
     </div>
 
@@ -65,5 +68,16 @@
         </div>
     </div>
 </footer>
+
+<script>
+  // ฟังก์ชันสำหรับออกจากระบบ
+  function logout() {
+
+      sessionStorage.removeItem("isLoggedIn"); //เราใช้ sessionStorage ใช่มะ
+
+      // รีไดเร็กต์ไปที่หน้า login
+      window.location.href = "../index.html";  // เปลี่ยนไปหน้า login หรือหน้าอื่นๆ ที่ต้องการ
+  }
+</script>
 </body>
 </html>

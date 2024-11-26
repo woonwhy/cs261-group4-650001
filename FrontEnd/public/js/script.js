@@ -96,6 +96,16 @@ function submitLogin(e) {
         localStorage.removeItem('rememberedPassword');
     }
 
+    // ตรวจสอบข้อมูลว่าง
+    if (!username || !password) {
+        showError('EMPTY_FIELDS');
+        return;
+    }
+
+    // เก็บข้อมูลใน sessionStorage
+    //sessionStorage.setItem('username', username);
+    //sessionStorage.setItem('password', password);
+
     fetch('https://restapi.tu.ac.th/api/v1/auth/Ad/verify', {
         method: 'POST',
         headers: {

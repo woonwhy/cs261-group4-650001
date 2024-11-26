@@ -26,12 +26,15 @@
             </div>
             <a href="example.html">ภาพตัวอย่าง</a>
             <a href="status.html">สถานะคำร้อง</a>
+            <a onclick="logout()">
+                <img src="../img/iconlogout.png" alt="Logout" class="user-icon-img">
+              </a>
         </div>
     </nav>
 
     <main class="main-box">
         <h1>คำร้องขอลาออก</h1>
-
+        <form>
         <section class="form-section">
             <h2>ข้อมูลส่วนตัว</h2>
             <div class="form-row">
@@ -86,7 +89,7 @@
             </div>
             <div class="form-row">
                 <label>ปีการศึกษา :</label>
-                <input type="text" id="year">
+                <input type="text" id="academicYear">
             </div>
         </div>
 
@@ -119,9 +122,21 @@
         </div>
 
         <div class="button-group">
-            <button type="button" class="btn btn-cancel">ยกเลิก</button>
+            <button type="button" class="btn btn-cancel" onclick="cancel()">ยกเลิก</button>
             <button type="submit" class="btn btn-submit">ตกลง</button>
         </div>
+        </form>
+
+        <!-- Popup สำหรับแสดงผลสำเร็จ -->
+<div id="successPopup" class="popup-container" style="display: none;">
+    <div class="popup-content">
+        <span class="close-btn">X</span> <!-- ปุ่มกากบาทปิด popup -->
+        <h3 style="color: green;">สำเร็จ</h3>
+        <p>คำร้องถูกส่งแล้วสามารถติดตามสถานะการส่งคำร้องได้</p>
+        <button id="okButton" class="popup-btn">ดูสถานะการส่งคำร้อง</button>
+    </div>
+</div>
+
     </main>
 
     <footer class="footer">
@@ -143,5 +158,16 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // ฟังก์ชันสำหรับออกจากระบบ
+        function logout() {
+
+            sessionStorage.removeItem("isLoggedIn"); //เราใช้ sessionStorage ใช่มะ
+
+            // รีไดเร็กต์ไปที่หน้า login
+            window.location.href = "../index.html";  // เปลี่ยนไปหน้า login หรือหน้าอื่นๆ ที่ต้องการ
+        }
+    </script>
 </body>
 </html>
