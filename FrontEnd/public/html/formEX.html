@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำร้องจดทะเบียนเพิ่ม-ถอนล่าช้า</title>
+    <link rel="stylesheet" href="../css/stylesform1.css">
+    <script src="../js/form1.js"></script>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="left">
+            <img src="../img/tu-logo.png" alt="Logo" class="logo">
+            <span>มหาวิทยาลัยธรรมศาสตร์</span>
+        </div>
+        <div class="menu">
+            <a href="home.html">หน้าหลัก</a>
+            <div class="dropdown">
+                <a href="#">เขียนคำร้อง</a>
+                <div class="dropdown-content">
+                    <a href="form1.html">จดทะเบียนล่าช้า/เพิ่มล่าช้า</a>
+                    <a href="form2.html">ขอถอนรายวิชา(Drop W)</a>
+                    <a href="form3.html">จดทะเบียนศึกษารายวิชาข้ามโครงการ</a>
+                    <a href="form4.html">คำร้องขอลาออก</a>
+                </div>
+            </div>
+            <a href="example.html">ภาพตัวอย่าง</a>
+            <a href="status.html">สถานะคำร้อง</a>
+        </div>
+    </nav>
+    <form id="form1">
+    <main class="main-box">
+        <h1>คำร้องจดทะเบียนเพิ่ม-ถอนล่าช้า</h1>
+
+        <form id="form1">
+            <section class="form-section">
+                <h2>ข้อมูลส่วนตัว</h2>
+                <div class="form-row">
+                    <label>วันที่จดทะเบียน:</label>
+                    <input type="text" id="registrationDate" name="registrationDate" disabled>
+                </div>
+                <div class="form-row">
+                    <label>ชื่อ-สกุล:</label>
+                    <input type="text" id="name_th" name="name_th" disabled>
+                </div>
+                <div class="form-row">
+                    <label>เลขทะเบียน:</label>
+                    <input type="text" id="username" name="username" disabled>
+                </div>
+                <div class="form-row">
+                    <label>Email:</label>
+                    <input type="email" id="email" name="email" disabled>
+                </div>
+                <div class="form-row">
+                    <label>คณะ:</label>
+                    <input type="text" id="faculty" name="faculty" disabled>
+                </div>
+                <div class="form-row">
+                    <label>สาขาวิชา:</label>
+                    <input type="text" id="department" name="department" disabled>
+                </div>
+                <div class="form-row">
+                    <label>สถานภาพนักศึกษา:</label>
+                    <input type="text" id="tu_status" name="tu_status" disabled>
+                </div>
+            </section>
+            <section class="form-section">
+                <h2>ที่อยู่</h2>
+                <div class="form-row">
+                    <label>บ้านเลขที่/ซอย:</label>
+                    <input type="text" id="home" name="home" disabled>
+                </div>
+                <div class="form-row">
+                    <label>หมู่บ้าน:</label>
+                    <input type="text" id="village" name="village" disabled>
+                </div>
+                <div class="form-row">
+                    <label>จังหวัด:</label>
+                    <input type="text" id="province" name="province" disabled>
+                </div>
+                <div class="form-row">
+                    <label>ตำบล/อำเภอ/แขวง/เขต:</label>
+                    <input type="text" id="district" name="district" disabled>
+                </div>
+                <div class="form-row">
+                    <label>รหัสไปรษณีย์:</label>
+                    <input type="text" id="postal" name="postal" disabled>
+                </div>
+            </section>
+            <section class="form-section">
+                <h2>รายละเอียดคำร้อง</h2>
+                <div class="form-row">
+                    <label>ประสงค์ในการยื่นคำร้องเรื่อง:</label>
+                    <input type="text" id="nameRequire" name="nameRequire" disabled>
+                </div>
+                <div class="form-row">
+                    <label>ภาคเรียนที่:</label>
+                    <input type="text" id="semester" name="semester" disabled>
+                </div>
+                <div class="form-row">
+                    <label>รหัสวิชา:</label>
+                    <input type="text" id="course" name="course" disabled>
+                </div>
+                <div class="form-row">
+                    <label>ชื่อวิชา:</label>
+                    <input type="text" id="subject" name="subject" disabled>
+                </div>
+                <div class="form-row">
+                    <label>Section:</label>
+                    <input type="text" id="section" name="section" disabled>
+                </div>
+                <div class="form-row">
+                    <label>เหตุผล:</label>
+                    <input type="text" id="reason" name="reason" disabled>
+                </div>
+            </section>
+        </form>
+
+            <div class="button-group">
+                <a href="status.html">  <button type="button" class="btn btn-submit" >กลับ</button></a>
+            </div>
+        </form>
+    </main>
+</form>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="copyright">
+                Copyright © 2024
+            </div>
+            <div class="social-links">
+                <div class="social-links-title">Connect</div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/chiaa.nedchaina.56/"><img src="../img/Facebook.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com/yoxxa.g/?hl=th"><img src="../img/Instagram.png" alt="Instagram"></a>
+                    <a href="https://mail.google.com/mail/u/2/#inbox?compose=GTvVlcSKjgLCffZrTtcBNHSStSrtgQnhNFjPtJfSccvcDpSXHkvtjmRSDMwNpPSVCjzKlDvHMCJNs"><img src="../img/gmail.png" alt="Gmail"></a>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div>ติดต่อเพิ่มเติม</div>
+                <div>Tel : +(66)61-971-8337</div>
+                <div>Line ID : getgetmung</div>
+                <div>E-mail : chayanon.pur@dome.tu.ac.th</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            // ดึงข้อมูลจาก sessionStorage และใส่ในฟอร์ม
+            document.getElementById("tu_status").value = sessionStorage.getItem("tu_status");
+            document.getElementById("department").value = sessionStorage.getItem("department");
+            document.getElementById("faculty").value = sessionStorage.getItem("faculty");
+            document.getElementById("email").value = sessionStorage.getItem("email");
+            document.getElementById("username").value = sessionStorage.getItem("username");
+            document.getElementById("name_th").value = sessionStorage.getItem("name_th");
+            document.getElementById("registrationDate").value = sessionStorage.getItem("registrationDate");
+            document.getElementById("home").value = sessionStorage.getItem("home");
+            document.getElementById("village").value = sessionStorage.getItem("village");
+            document.getElementById("province").value = sessionStorage.getItem("province");
+            document.getElementById("district").value = sessionStorage.getItem("district");
+            document.getElementById("postal").value = sessionStorage.getItem("postal");
+            document.getElementById("nameRequire").value = sessionStorage.getItem("nameRequire");
+            document.getElementById("semester").value = sessionStorage.getItem("semester");
+            document.getElementById("course").value = sessionStorage.getItem("course");
+            document.getElementById("section").value = sessionStorage.getItem("section");
+            document.getElementById("subject").value = sessionStorage.getItem("subject");
+            document.getElementById("reason").value = sessionStorage.getItem("reason");
+        };
+    </script>
+</body>
+</html>

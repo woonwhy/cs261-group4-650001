@@ -71,48 +71,106 @@
     </footer>    
 
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        loadRequests();
-    });
+        document.addEventListener("DOMContentLoaded", function () {
+    loadRequests(); // เรียกฟังก์ชันเมื่อหน้าเว็บโหลดเสร็จ
+});
 
-    function loadRequests() {
-        const requestsContainer = document.getElementById("requests-container");
-        requestsContainer.innerHTML = ""; // เคลียร์ข้อมูลเก่าก่อน
+async function loadRequests() {
+    const requestsContainer = document.getElementById("requests-container");
+    requestsContainer.innerHTML = ""; // เคลียร์ข้อมูลเก่าก่อน
 
-        const requests = JSON.parse(localStorage.getItem("requests")) || [];
+    try {
+        // ดึงข้อมูลจาก API
+        const response = await fetch("http://localhost:8080/api/form1");
+        if (!response.ok) throw new Error("Failed to fetch data from server");
 
-        requests.forEach((request, index) => {
+        const requests = await response.json(); // แปลงข้อมูล JSON
+
+        // แสดงข้อมูลใน HTML
+        requests.forEach((request) => {
             const requestCard = document.createElement("div");
             requestCard.className = "status-card";
             requestCard.innerHTML = `
-                <p>วันที่จดทะเบียน: ${request.registrationDate} | เรื่อง: "${request.title}" |สถานะคำร้อง: "${request.status}"</p>
-                 <p>Email ผู้ใช้: ${request.email}</p>
-                <button onclick="submitRequest(${index})">Submit</button>
+                <p><strong>วันที่จดทะเบียน:</strong> ${request.registrationDate}</p>
+                <p><strong>ประสงค์ในการยื่นคำร้องเรื่อง:</strong> ${request.nameRequire}</p>
+                <p><strong>รหัสวิชา:</strong> ${request.course}</p>
+                <p><strong>ชื่อ-นามสกุล:</strong> ${request.name_th}</p>
+                <p><strong>อีเมล:</strong> ${request.email}</p>
+                <button class="delete-btn" data-id="${request.id}">DELETE</button> <!-- เปลี่ยนเป็น DELETE -->
+                <button class="view-btn" data-id="${request.id}">VIEW</button> <!-- เปลี่ยนเป็น VIEW -->
             `;
             requestsContainer.appendChild(requestCard);
         });
+    } catch (error) {
+        console.error("Error loading requests:", error);
+        requestsContainer.innerHTML = `<p>ไม่สามารถโหลดข้อมูลได้ โปรดลองอีกครั้งภายหลัง</p>`;
+    }
+}
+
+document.addEventListener("click", async function (e) {
+    if (e.target.classList.contains("delete-btn")) {
+        const id = e.target.getAttribute("data-id");
+        if (confirm("คุณต้องการลบคำร้องนี้หรือไม่?")) {
+            await deleteRequest(id);
+        }
     }
 
-    function submitRequest(index) {
-    const requests = JSON.parse(localStorage.getItem("requests"));
-    const formData = requests[index];
+    if (e.target.classList.contains("view-btn")) {
+        const id = e.target.getAttribute("data-id");
+        viewRequest(id); // เรียกฟังก์ชันดูข้อมูล
+    }
+});
 
-    // อัปเดตสถานะคำร้อง
-    requests[index].status = "กำลังดำเนินการ";
-    localStorage.setItem("requests", JSON.stringify(requests));
-
-    // เตรียมข้อมูลฟอร์มเพื่อส่งไปยัง PHP
-    fetch('send_email.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-    })
-    .then(response => response.text())
-    .then(result => {
-        alert(result); // แสดงข้อความตอบกลับจาก PHP
-        location.reload();
-    })
-    .catch(error => console.error('Error:', error));
+// ฟังก์ชันลบข้อมูล
+async function deleteRequest(id) {
+    try {
+        const response = await fetch(`http://localhost:8080/api/form1/${id}`, {
+            method: "DELETE",
+        });
+        if (!response.ok) throw new Error("Failed to delete request");
+        alert("ลบคำร้องเรียบร้อยแล้ว");
+        loadRequests(); // โหลดข้อมูลใหม่
+    } catch (error) {
+        console.error("Error deleting request:", error);
+        alert("ไม่สามารถลบคำร้องได้");
+    }
 }
-</script>
+
+// ฟังก์ชันดูข้อมูล
+async function viewRequest(id) {
+    try {
+        const response = await fetch(`http://localhost:8080/api/form1/${id}`);
+        if (!response.ok) throw new Error("Failed to fetch request details");
+
+        const request = await response.json(); // แปลงข้อมูล JSON
+
+        // เก็บข้อมูลใน sessionStorage หรือ localStorage
+        sessionStorage.setItem('tu_status', request.tu_status);
+        sessionStorage.setItem('department', request.department);
+        sessionStorage.setItem('faculty', request.faculty);
+        sessionStorage.setItem('email', request.email);
+        sessionStorage.setItem('username', request.username);
+        sessionStorage.setItem('name_th', request.name_th);
+        sessionStorage.setItem('registrationDate', request.registrationDate);
+        sessionStorage.setItem('home', request.home);
+        sessionStorage.setItem('village', request.village);
+        sessionStorage.setItem('province', request.province);
+        sessionStorage.setItem('district', request.district);
+        sessionStorage.setItem('postal', request.postal);
+        sessionStorage.setItem('nameRequire', request.nameRequire);
+        sessionStorage.setItem('semester', request.semester);
+        sessionStorage.setItem('course', request.course);
+        sessionStorage.setItem('section', request.section);
+        sessionStorage.setItem('subject', request.subject);
+        sessionStorage.setItem('reason', request.reason);
+
+        // นำทางไปยังหน้า form1.html
+        window.location.href = 'formEX.html'; // ไปที่หน้า form1.html
+    } catch (error) {
+        console.error("Error viewing request:", error);
+        alert("ไม่สามารถแสดงข้อมูลได้");
+    }
+}
+
+    </script>
 </body>
