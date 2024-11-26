@@ -11,6 +11,7 @@ window.onload = function() {
         document.getElementById('faculty').value = form1.faculty;
         document.getElementById('department').value = form1.department;
         document.getElementById('tu_status').value = form1.tu_status;
+
         // เพิ่มการตั้งค่าสำหรับ debt
         if (form1.debt) {
             document.getElementById('has-debt').checked = true;
@@ -50,21 +51,50 @@ window.onload = function() {
             return;
         }
 
-        // บันทึกข้อมูลลง localStorage (ถ้าต้องการ)
-        //localStorage.setItem('submittedForm', JSON.stringify(formData));
-        saveStudentData(formData)
-        
-        // แสดง alert
-        alert('บันทึกข้อมูลเรียบร้อย โปรดตรวจสอบสถานะได้ที่ สถานะคำร้อง');
-        
-        // redirect ไปยังหน้าหลักหลังจากกด OK ที่ alert
-        //window.location.href = 'home.html';
+        // บันทึกข้อมูล (ใช้คำสั่งนี้ในส่วน saveStudentData)
+        saveStudentData(formData);
+
+        // เรียกใช้ฟังก์ชันแสดง popup
+        showSuccessPopup();
     });
 };
 
-// ฟังก์ชันยกเลิกและกลับไปหน้าหลัก
-function cancel() {
-    window.location.href = 'home.html';
+// เพิ่ม Event Listener สำหรับปุ่ม OK ใน popup
+const okButton = document.getElementById('okButton');
+if (okButton) {
+    okButton.addEventListener('click', function () {
+        hidePopup();
+        window.location.href = 'status.html'; // ไปยังหน้า status หลังจากคลิก OK
+    });
+}
+
+// เพิ่ม Event Listener สำหรับปุ่มกากบาท (X) เพื่อปิด popup
+const closeButton = document.querySelector('.close-btn');
+if (closeButton) {
+    closeButton.addEventListener('click', function () {
+        hidePopup();
+        window.location.href = 'status.html'; // ไปยังหน้า status หลังจากคลิก X
+    });
+}
+
+// ฟังก์ชันแสดง popup
+function showSuccessPopup() {
+    const popup = document.getElementById('successPopup');
+    if (popup) {
+        popup.style.display = 'flex'; // แสดง popup
+    } else {
+        console.error('ไม่พบ Element successPopup');
+    }
+}
+
+// ฟังก์ชันซ่อน popup
+function hidePopup() {
+    const popup = document.getElementById('successPopup');
+    if (popup) {
+        popup.style.display = 'none'; // ซ่อน popup
+    } else {
+        console.error('ไม่พบ Element successPopup');
+    }
 }
 
 function saveStudentData(data) {

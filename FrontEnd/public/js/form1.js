@@ -59,7 +59,10 @@ window.onload = function () {
     // เพิ่ม Event Listener สำหรับปุ่มกากบาท (X) เพื่อปิด popup
     const closeButton = document.querySelector('.close-btn');
     if (closeButton) {
-        closeButton.addEventListener('click', hidePopup);
+        closeButton.addEventListener('click', function () {
+            hidePopup();
+            window.location.href = 'status.html'; // ไปยังหน้า status หลังจากคลิก X
+        });
     }
 };
 
@@ -82,12 +85,12 @@ function hidePopup() {
         console.error('ไม่พบ Element successPopup');
     }
 }
-
 // เพิ่ม Event Listener สำหรับปุ่มกากบาท (X) เพื่อปิด popup
 const closeButton = document.querySelector('.close-btn');
 if (closeButton) {
-    closeButton.addEventListener('click', hidePopup);
+    closeButton.addEventListener('click', hidePopup);  // ปิด popup เท่านั้น โดยไม่ไปหน้าอื่น
 }
+
 
 
 // ฟังก์ชันสำหรับบันทึกข้อมูล (ปรับเป็นใช้ Promise เพื่อให้รองรับ .then/.catch)
