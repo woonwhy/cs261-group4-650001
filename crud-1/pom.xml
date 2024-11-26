@@ -68,13 +68,6 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
-<<<<<<< Updated upstream
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-=======
 
 		<dependency>
     		<groupId>org.projectlombok</groupId>
@@ -82,22 +75,17 @@
    			 <!-- ใช้เวอร์ชันล่าสุด -->
     		<scope>provided</scope>
 		</dependency>
-
->>>>>>> Stashed changes
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< Updated upstream
-	</dependencies>
-=======
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 		</dependencies>
->>>>>>> Stashed changes
+\
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -125,8 +113,5 @@
 			</plugin>
 		</plugins>
 	</build>
-<<<<<<< Updated upstream
 </project>
-=======
-</project>
->>>>>>> Stashed changes
+
