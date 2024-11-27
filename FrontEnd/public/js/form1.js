@@ -277,19 +277,51 @@ window.onload = function() {
         // บันทึกข้อมูลลง localStorage (ถ้าต้องการ)
         //localStorage.setItem('submittedForm', JSON.stringify(formData));
          saveStudentData(formData)
-        
-        // แสดง alert
-        alert('บันทึกข้อมูลเรียบร้อย โปรดตรวจสอบสถานะได้ที่ สถานะคำร้อง');
+         showSuccessPopup();
         
         // redirect ไปยังหน้าหลักหลังจากกด OK ที่ alert
-        //window.location.href = 'home.html';
+        //window.location.href = 'home.html';    
     });
+    const okButton = document.getElementById('okButton');
+    if (okButton) {
+        okButton.addEventListener('click', function () {
+            hidePopup();
+            window.location.href = 'status.html'; // ไปยังหน้า status หลังจากคลิก OK
+        });
+    }
+
+    // เพิ่ม Event Listener สำหรับปุ่มกากบาท (X) เพื่อปิด popup และอยู่หน้าเดิม
+    const closeButton = document.querySelector('.close-btn');
+    if (closeButton) {
+        closeButton.addEventListener('click', function () {
+            hidePopup(); // ปิด popup โดยไม่เปลี่ยนหน้า
+        });
+    }
+};
+function cancel() {
+    window.location.href = "home.html";
+}
+// ฟังก์ชันแสดง popup
+function showSuccessPopup() {
+    const popup = document.getElementById('successPopup');
+    if (popup) {
+        popup.style.display = 'flex'; // แสดง popup
+    } else {
+        console.error('ไม่พบ Element successPopup');
+    }
+}
+
+// ฟังก์ชันซ่อน popup
+function hidePopup() {
+    const popup = document.getElementById('successPopup');
+    if (popup) {
+        popup.style.display = 'none'; // ซ่อน popup
+    } else {
+        console.error('ไม่พบ Element successPopup');
+    }
 };
 
-// ฟังก์ชันยกเลิกและกลับไปหน้าหลัก
-function cancel() {
-    window.location.href = 'home.html';
-}
+
 
 function saveStudentData(data) {
     fetch('http://localhost:8080/api/form1/add', { // URL ต้องตรงกับ Spring Boot endpoint
@@ -332,3 +364,73 @@ function saveStudentData(data) {
     });
 
 }
+
+document.getElementById('file').addEventListener('change', handleFileSelect);
+
+function handleFileSelect(event) {
+    console.log('File selected');
+    const files = event.target.files;
+    const fileListContainer = document.getElementById('fileList');
+    fileListContainer.innerHTML = '';  // เคลียร์รายการไฟล์เก่า
+
+    let validFiles = [];
+    let invalidFiles = [];
+
+    // ตรวจสอบไฟล์แต่ละไฟล์
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const fileName = file.name;
+        const fileSize = file.size;
+        const fileType = file.type;
+
+        console.log('Checking file: ', fileName, fileSize, fileType); // Debugging
+
+        // ตรวจสอบขนาดไฟล์
+        if (fileSize > 100 * 1024) {
+            invalidFiles.push(fileName + ' (ไฟล์ใหญ่เกิน 100KB)');
+            continue;
+        }
+
+        // ตรวจสอบประเภทไฟล์ (ต้องเป็น pdf หรือ jpg)
+        if (fileType !== 'application/pdf' && !fileType.startsWith('image/jpeg')) {
+            invalidFiles.push(fileName + ' (ไม่ใช่ไฟล์ pdf หรือ jpg)');
+            continue;
+        }
+
+        // ถ้าผ่านการตรวจสอบ ก็เพิ่มไฟล์ที่ valid
+        validFiles.push(file);
+    }
+
+    // ถ้า valid files มีมากกว่า 5 ไฟล์
+    if (validFiles.length > 5) {
+        alert('คุณสามารถอัปโหลดไฟล์ได้ไม่เกิน 5 ไฟล์');
+        return;
+    }
+
+    console.log('Valid files: ', validFiles); // Debugging
+
+    // แสดงไฟล์ที่ valid
+    const validFileList = document.createElement('ul');
+    validFiles.forEach(file => {
+        const listItem = document.createElement('li');
+        listItem.textContent = 'ชื่อไฟล์: ' + file.name;
+        validFileList.appendChild(listItem);
+    });
+    fileListContainer.appendChild(validFileList);
+
+    // แสดงไฟล์ที่ไม่ valid
+    if (invalidFiles.length > 0) {
+        const invalidList = document.createElement('ul');
+        invalidFiles.forEach(invalidFile => {
+            const invalidItem = document.createElement('li');
+            invalidItem.textContent = invalidFile;
+            invalidList.appendChild(invalidItem);
+        });
+        fileListContainer.appendChild(invalidList);
+    }
+    
+    
+}
+
+
+

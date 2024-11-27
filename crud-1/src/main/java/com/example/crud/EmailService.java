@@ -43,7 +43,19 @@ public class EmailService {
                 "คำร้องของคุณได้ถูกส่งไปยังอาจารย์ที่ปรึกษาแล้ว กรุณารอการอนุมัติ\n\n" +
                 "ขอแสดงความนับถือ,\nทีมงาน";
     }
-
+ public String generateEmailContent(Form4 form4) {
+        return "เรียน " + form4.getNameTh() + ",\n\n" +
+                "รายละเอียดคำร้องของคุณ:\n" +
+                "วันที่ลงทะเบียน: " + form4.getRegistrationDate() + "\n" +
+                "ชื่อ: " + form4.getNameTh() + "\n" +
+                "ชื่อผู้ใช้: " + form4.getUsername() + "\n" +
+                "คณะ: " + form4.getFaculty() + "\n" +
+                "เหตุผล: " + form4.getReason() + "\n" +
+                "ภาคการศึกษา: " + form4.getSemester() + "\n" +
+                "ปีการศึกษา: " + form4.getAcademicYear() + "\n\n" +
+                "คำร้องลาออกของคุณได้ถูกส่งไปยังอาจารย์ที่ปรึกษาแล้ว กรุณารอการอนุมัติ\n\n" +
+                "ขอแสดงความนับถือ,\nทีมงาน";
+    }
 }
 
 

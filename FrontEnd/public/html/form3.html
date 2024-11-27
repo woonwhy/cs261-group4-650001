@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>คำร้องจดทะเบียนเพิ่ม-ถอนล่าช้า</title>
-    <link rel="stylesheet" href="../css/stylesform3.css">
+    <link rel="stylesheet" href="../css/stylesform1.css">
     <script src="../js/form1.js"></script>
 </head>
 <body>
+    
     <nav class="navbar">
         <div class="left">
             <img src="../img/tu-logo.png" alt="Logo" class="logo">
@@ -78,7 +79,7 @@
                 <h2>ที่อยู่</h2>
                 <div class="form-row">
                     <label>บ้านเลขที่/ซอย:</label>
-                    <input type="text" id="Hnum">
+                    <input type="text" id="home">
                 </div>
                 <div class="form-row">
                     <label>หมู่บ้าน:</label>
@@ -102,7 +103,7 @@
                 <h2>รายละเอียดคำร้อง</h2>
                 <div class="form-row">
                     <label>ประสงค์ในการยื่นคำร้องเรื่อง:</label>
-                    <input type="text" id="name_require">
+                    <input type="text" id="nameRequire">
                 </div>
                 <div class="form-row">
                     <label>ภาคเรียนที่:</label>
@@ -130,11 +131,11 @@
                 <label>แบบไฟล์หลักฐานเพิ่มเติม :</label>
                 <label class="file-label">
                     Choose file
-                    <input type="file" id="file" style="display: none;">
+                    <input type="file" id="file" multiple style="display: none;" onchange="handleFileSelect(event)">
                 </label>
-                <span class="file-info">(pdf,jpg มีขนาดไม่เกิน 100kB จำนวนไม่เกิน 5 ไฟล์)</span>
+                <span class="file-info">(pdf, jpg มีขนาดไม่เกิน 100kB จำนวนไม่เกิน 5 ไฟล์)</span>
             </div>
-            <div id="fileList"></div>
+            <div id="fileList" class="file-list"></div>
 
             <div class="button-group">
                 <button type="button" class="btn btn-cancel" onclick="cancel()">ยกเลิก</button>
@@ -142,16 +143,17 @@
             </div>
             
         </form>
-
-        <!-- Popup สำหรับแสดงผลสำเร็จ -->
+        
+<!-- Popup สำหรับแสดงผลสำเร็จ -->
 <div id="successPopup" class="popup-container" style="display: none;">
     <div class="popup-content">
         <span class="close-btn">X</span> <!-- ปุ่มกากบาทปิด popup -->
         <h3 style="color: green;">สำเร็จ</h3>
         <p>คำร้องถูกส่งแล้วสามารถติดตามสถานะการส่งคำร้องได้</p>
-        <button id="okButton" class="popup-btn">ดูสถานะการส่งคำร้อง</button>
+        <button id="okButton" class="popup-btn" >ดูสถานะการส่งคำร้อง</button>
     </div>
 </div>
+
 
     </main>
 
