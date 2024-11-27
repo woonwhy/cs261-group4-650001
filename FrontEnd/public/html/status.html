@@ -90,36 +90,40 @@
                 ]);
     
                 // แสดงข้อมูล form1
-                form1Requests.forEach((request) => {
-                    const requestCard = document.createElement("div");
-                    requestCard.className = "status-card";
-                    requestCard.innerHTML = `
-                        <p><strong>ประเภทคำร้อง:</strong> จดทะเบียนล่าช้า/เพิ่มล่าช้า</p>
-                        <p><strong>วันที่จดทะเบียน:</strong> ${request.registrationDate}</p>
-                        <p><strong>ประสงค์ในการยื่นคำร้องเรื่อง:</strong> ${request.nameRequire}</p>
-                        <p><strong>รหัสวิชา:</strong> ${request.course}</p>
-                        <p><strong>ชื่อ-นามสกุล:</strong> ${request.name_th}</p>
-                        <p><strong>อีเมล:</strong> ${request.email}</p>
-                        <button class="delete-btn" data-id="${request.id}" data-form="form1">DELETE</button>
-                        <button class="view-btn" data-id="${request.id}" data-form="form1">VIEW</button>
-                    `;
-                    requestsContainer.appendChild(requestCard);
-                });
-    
-                // แสดงข้อมูล form4
-                form4Requests.forEach((request) => {
-                    const requestCard = document.createElement("div");
-                    requestCard.className = "status-card";
-                    requestCard.innerHTML = `
-                        <p><strong>ประเภทคำร้อง:</strong> ลาออก</p>
-                        <p><strong>วันที่จดทะเบียน:</strong> ${request.registrationDate}</p>
-                        <p><strong>ชื่อ-นามสกุล:</strong> ${request.name_th}</p>
-                        <p><strong>อีเมล:</strong> ${request.email}</p>
-                        <button class="delete-btn" data-id="${request.id}" data-form="form4">DELETE</button>
-                        <button class="view-btn" data-id="${request.id}" data-form="form4">VIEW</button>
-                    `;
-                    requestsContainer.appendChild(requestCard);
-                });
+form1Requests.forEach((request) => {
+    const requestCard = document.createElement("div");
+    requestCard.className = "status-box";
+    requestCard.innerHTML = `
+        <p><strong>ประเภทคำร้อง:</strong> จดทะเบียนล่าช้า/เพิ่มล่าช้า</p>
+        <p><strong>วันที่จดทะเบียน:</strong> ${request.registrationDate}</p>
+        <p><strong>ประสงค์ในการยื่นคำร้องเรื่อง:</strong> ${request.nameRequire}</p>
+        <p><strong>รหัสวิชา:</strong> ${request.course}</p>
+        <p><strong>ชื่อ-นามสกุล:</strong> ${request.name_th}</p>
+        <p><strong>อีเมล:</strong> ${request.email}</p>
+        <div class="button-container">
+            <button class="delete-btn" data-id="${request.id}" data-form="form1">DELETE</button>
+            <button class="view-btn" data-id="${request.id}" data-form="form1">VIEW</button>
+        </div>
+    `;
+    requestsContainer.appendChild(requestCard);
+});
+
+// แสดงข้อมูล form4
+form4Requests.forEach((request) => {
+    const requestCard = document.createElement("div");
+    requestCard.className = "status-box";
+    requestCard.innerHTML = `
+        <p><strong>ประเภทคำร้อง:</strong> ลาออก</p>
+        <p><strong>วันที่จดทะเบียน:</strong> ${request.registrationDate}</p>
+        <p><strong>ชื่อ-นามสกุล:</strong> ${request.name_th}</p>
+        <p><strong>อีเมล:</strong> ${request.email}</p>
+        <div class="button-container">
+            <button class="delete-btn" data-id="${request.id}" data-form="form4">DELETE</button>
+            <button class="view-btn" data-id="${request.id}" data-form="form4">VIEW</button>
+        </div>
+    `;
+    requestsContainer.appendChild(requestCard);
+});
             } catch (error) {
                 console.error("Error loading requests:", error);
                 requestsContainer.innerHTML = `<p>ไม่สามารถโหลดข้อมูลได้ โปรดลองอีกครั้งภายหลัง</p>`;

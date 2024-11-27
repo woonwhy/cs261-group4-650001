@@ -269,19 +269,49 @@ window.onload = function() {
         // บันทึกข้อมูลลง localStorage (ถ้าต้องการ)
         //localStorage.setItem('submittedForm', JSON.stringify(formData));
          saveStudentData(formData)
-        
-        // แสดง alert
-        alert('บันทึกข้อมูลเรียบร้อย โปรดตรวจสอบสถานะได้ที่ สถานะคำร้อง');
+         showSuccessPopup();
         
         // redirect ไปยังหน้าหลักหลังจากกด OK ที่ alert
         //window.location.href = 'home.html';
     });
-};
+    const okButton = document.getElementById('okButton');
+    if (okButton) {
+        okButton.addEventListener('click', function () {
+            hidePopup();
+            window.location.href = 'status.html'; // ไปยังหน้า status หลังจากคลิก OK
+        });
+    }
 
-// ฟังก์ชันยกเลิกและกลับไปหน้าหลัก
+    // เพิ่ม Event Listener สำหรับปุ่มกากบาท (X) เพื่อปิด popup และอยู่หน้าเดิม
+    const closeButton = document.querySelector('.close-btn');
+    if (closeButton) {
+        closeButton.addEventListener('click', function () {
+            hidePopup(); // ปิด popup โดยไม่เปลี่ยนหน้า
+        });
+    }
+};
 function cancel() {
-    window.location.href = 'home.html';
+    window.location.href = "home.html";
 }
+// ฟังก์ชันแสดง popup
+function showSuccessPopup() {
+    const popup = document.getElementById('successPopup');
+    if (popup) {
+        popup.style.display = 'flex'; // แสดง popup
+    } else {
+        console.error('ไม่พบ Element successPopup');
+    }
+}
+
+// ฟังก์ชันซ่อน popup
+function hidePopup() {
+    const popup = document.getElementById('successPopup');
+    if (popup) {
+        popup.style.display = 'none'; // ซ่อน popup
+    } else {
+        console.error('ไม่พบ Element successPopup');
+    }
+};
 
 function saveStudentData(data) {
     fetch('http://localhost:8080/api/form4/add', { // URL ต้องตรงกับ Spring Boot endpoint
