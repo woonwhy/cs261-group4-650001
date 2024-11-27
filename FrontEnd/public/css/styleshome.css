@@ -72,7 +72,7 @@ body {
   transition: background-color 0.3s, color 0.3s;
   display: flex;
   align-items: center ;
-  justify-content: center ;
+
   height: 100%;
 }
 
